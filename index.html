@@ -149,6 +149,15 @@
     background: radial-gradient(circle, rgba(26,122,74,.2) 0%, transparent 70%);
     pointer-events: none;
   }
+  .hero-brand-icon {
+    position: absolute;
+    top: 28px;
+    right: 42px;
+    width: clamp(96px, 11vw, 144px);
+    height: auto;
+    z-index: 2;
+    filter: drop-shadow(0 3px 12px rgba(0,0,0,.22));
+  }
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
@@ -730,6 +739,7 @@
     #mob-toggle { display: flex; }
     section { padding: 60px 24px; }
     #hero { padding: 80px 24px 60px; }
+    .hero-brand-icon { top: 20px; right: 24px; width: 82px; }
     .impact-flow, .excel-grid, .flow-steps, .two-col { grid-template-columns: 1fr; }
     .flow-step { border-right: none; border-bottom: 1px solid var(--border); }
     .impact-cell { border-right: none; border-bottom: 1px solid var(--border); }
@@ -769,6 +779,7 @@
 
   <!-- HERO -->
   <section id="hero">
+    <img src="assets/ilunion-icon.png" alt="Icono ILUNION" class="hero-brand-icon">
     <div class="hero-eyebrow">📅 Sesión Formativa · Abril 2026</div>
     <h1>Cálculo del<br><em>Impacto Socioeconómico</em><br>Grupo ILUNION</h1>
     <p class="lead">Guía práctica para el Grupo ILUNION: entiende el modelo, usa la herramienta Excel con confianza e interpreta los resultados correctamente.</p>
