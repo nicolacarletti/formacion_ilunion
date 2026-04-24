@@ -80,6 +80,15 @@
     background: radial-gradient(circle, rgba(26,122,74,.2) 0%, transparent 70%);
     pointer-events: none;
   }
+  .hero-brand-icon {
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    width: clamp(140px, 16vw, 210px);
+    height: auto;
+    z-index: 2;
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,.22));
+  }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(0,85,165,.3); border: 1px solid rgba(0,85,165,.5);
@@ -104,6 +113,25 @@
   .section-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
   h2.section-title { font-family: var(--font-serif); font-size: clamp(22px, 3vw, 34px); color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
   .section-subtitle { font-size: 15px; color: var(--ink-muted); max-width: 680px; line-height: 1.65; margin-bottom: 36px; }
+  #agenda .section-subtitle { max-width: none; width: 100%; }
+  #bloque2 .section-subtitle { max-width: 748px; }
+  #bloque1 .section-subtitle {
+    max-width: 748px;
+    background: #c5dcf8;
+    border: 1px solid #3f79c0;
+    border-left: 4px solid var(--accent-dark);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    color: var(--ink-light);
+  }
+  #bloque1 .bloque1-card {
+    background: #edf4ff;
+    border: 1px solid #b8cfee;
+    border-left: 4px solid #93b8e8;
+    border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  #bloque1 .bloque1-card h3 { color: var(--accent-dark); }
 
   /* AGENDA */
   .agenda-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
@@ -129,11 +157,10 @@
   .impact-cell.direct { background: #f0f4ff; }
   .impact-cell.indirect { background: #f0f8f4; }
   .impact-cell.induced { background: #fdf5f0; }
-  .impact-cell .ic-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
-  .impact-cell.direct .ic-label { color: #3b5bdb; }
-  .impact-cell.indirect .ic-label { color: #1a7a4a; }
-  .impact-cell.induced .ic-label { color: #c05621; }
-  .impact-cell h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .impact-cell h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+  .impact-cell.direct h3 { color: #1e40af; }
+  .impact-cell.indirect h3 { color: #166534; }
+  .impact-cell.induced h3 { color: #b45309; }
   .impact-cell p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; }
   .impact-cell .example { margin-top: 12px; padding: 10px 12px; background: rgba(255,255,255,.7); border-radius: 8px; font-size: 12.5px; color: var(--ink-light); }
   .impact-cell.direct .example { border-left: 3px solid #3b5bdb; }
@@ -184,13 +211,24 @@
   .sheet-tag.output .sheet-num { background: var(--green); color: #fff; }
 
   /* FLOW STEPS */
-  .flow-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 32px; }
-  .flow-step { padding: 18px 14px; border-right: 1px solid var(--border); background: var(--surface-2); text-align: center; }
-  .flow-step:last-child { border-right: none; }
-  .flow-step:nth-child(even) { background: var(--surface); }
-  .flow-step .step-n { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
-  .flow-step h4 { font-size: 12px; font-weight: 600; margin-bottom: 5px; line-height: 1.3; }
-  .flow-step p { font-size: 11px; color: var(--ink-muted); line-height: 1.4; }
+  .flow-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 32px; }
+  .flow-step {
+    padding: 24px 18px;
+    min-height: 170px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .flow-step:nth-child(3n) { border-right: none; }
+  .flow-step:nth-child(-n+3) { border-bottom: 1px solid var(--border); }
+  .flow-step:nth-child(1) { background: #eef4ff; }
+  .flow-step:nth-child(2) { background: #deebff; }
+  .flow-step:nth-child(3) { background: #cdddff; }
+  .flow-step:nth-child(4) { background: #bccfff; }
+  .flow-step:nth-child(5) { background: #aac1ff; }
+  .flow-step:nth-child(6) { background: #97b2f2; }
+  .flow-step .step-n { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+  .flow-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+  .flow-step p { font-size: 12.5px; color: var(--ink-light); line-height: 1.5; }
 
   /* ERRORS */
   .errors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 32px; }
@@ -297,12 +335,25 @@
   .data-table td { padding: 10px 14px; border-top: 1px solid var(--border); vertical-align: top; }
   .data-table tr:nth-child(odd) td { background: var(--surface-2); }
   .data-table tr:nth-child(even) td { background: var(--surface); }
+  .data-table-business th {
+    font-size: 13px;
+    padding: 14px 16px;
+    letter-spacing: .04em;
+    text-align: center;
+  }
 
   /* PRINCIPLE CARDS */
   .principle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px; }
-  .principle-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
-  .principle-card .p-icon { font-size: 22px; margin-bottom: 8px; }
-  .principle-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 5px; color: var(--accent-dark); }
+  .principle-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+  .principle-card .p-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .principle-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--accent-dark); line-height: 1.25; }
   .principle-card p { font-size: 12px; color: var(--ink-muted); line-height: 1.5; }
 
   /* VALIDATION BOX */
@@ -326,6 +377,7 @@
     #mob-toggle { display: flex; }
     section { padding: 56px 22px; }
     #hero { padding: 72px 22px 56px; }
+    .hero-brand-icon { top: 18px; right: 18px; width: clamp(90px, 22vw, 130px); }
     .impact-flow, .excel-grid, .flow-steps, .two-col { grid-template-columns: 1fr; }
     .flow-step { border-right: none; border-bottom: 1px solid var(--border); }
     .impact-cell { border-right: none; border-bottom: 1px solid var(--border); }
@@ -363,9 +415,10 @@
 
   <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
   <section id="hero">
+    <img src="file:///C:/Users/EM2025007781/.cursor/projects/c-Users-EM2025007781-OneDrive-NFQRISK-SOLUTIONS-SL-Escritorio-formacion-impacto-ilunion/assets/c__Users_EM2025007781_AppData_Roaming_Cursor_User_workspaceStorage_d57d541e31fae466dd4818522a169f84_images_ILUNION-removebg-preview-84f56d7b-874c-4803-a977-4c8541fa62b3.png" alt="Logo ILUNION" class="hero-brand-icon">
     <div class="hero-eyebrow">📅 Sesión Formativa · Abril 2026</div>
     <h1>Cálculo del<br><em>Impacto Socioeconómico</em><br>Grupo ILUNION</h1>
-    <p class="lead">Guía práctica para el Grupo ILUNION: entiende el modelo, usa la herramienta Excel con confianza e interpreta los resultados correctamente. Basada en el informe metodológico oficial NFQ Advisory.</p>
+    <p class="lead">Guía práctica para el Grupo ILUNION: entiende el modelo, usa la herramienta Excel con confianza e interpreta los resultados correctamente.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="label">Duración</span>
@@ -395,55 +448,47 @@
   <section id="agenda">
     <div class="section-eyebrow">📋 Estructura</div>
     <h2 class="section-title">Agenda de la formación</h2>
-    <p class="section-subtitle">La sesión se estructura en 8 bloques progresivos: de los fundamentos conceptuales al uso autónomo y validación de la herramienta.</p>
+    <p class="section-subtitle">La sesión se estructura en 8 bloques: de los fundamentos conceptuales al uso autónomo y validación de la herramienta.</p>
     <div class="agenda-grid">
       <div class="agenda-card">
         <div class="block-num">Bloque 01</div>
         <h3>Impacto socioeconómico</h3>
         <p>Definición y desglose: impacto directo, indirecto e inducido. El efecto multiplicador y el efecto tractor.</p>
-        <span class="duration">⏱ ~10 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 02</div>
         <h3>Herramienta de medición</h3>
         <p>Arquitectura del Excel: pestañas y su tipología — inputs, datos, matrices I-O y resultados.</p>
-        <span class="duration">⏱ ~10 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 03</div>
         <h3>KPIs del modelo</h3>
         <p>Los 6 grupos de indicadores y su desglose por género, plantilla con discapacidad y colectivos vulnerables.</p>
-        <span class="duration">⏱ ~15 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 04</div>
         <h3>Datos a imputar</h3>
         <p>Qué información deben introducir las áreas en cada pestaña de Inputs para el correcto funcionamiento del motor.</p>
-        <span class="duration">⏱ ~15 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 05</div>
         <h3>Transformaciones de datos</h3>
         <p>Qué ocurre en las pestañas de Datos: ajustes, normalizaciones y preparación para el motor I-O.</p>
-        <span class="duration">⏱ ~10 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 06</div>
         <h3>Matrices Input-Output</h3>
         <p>Concepto, funcionamiento y outputs de la hoja Matrices I-O: la inversa de Leontief y los multiplicadores.</p>
-        <span class="duration">⏱ ~10 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 07</div>
         <h3>Resultados</h3>
         <p>Presentación de la hoja de Resultados y cómo interpretar correctamente los valores obtenidos.</p>
-        <span class="duration">⏱ ~10 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 08</div>
         <h3>Validación y checklist</h3>
         <p>Reglas de validación tras la carga de datos para asegurar el correcto funcionamiento del motor de cálculo.</p>
-        <span class="duration">⏱ ~10 min</span>
       </div>
     </div>
   </section>
@@ -452,15 +497,15 @@
   <section id="bloque1">
     <div class="section-eyebrow">🎯 Bloque 01</div>
     <h2 class="section-title">Impacto socioeconómico: definición y desglose</h2>
-    <p class="section-subtitle">El impacto socioeconómico es la contribución total que ILUNION genera sobre la economía, más allá de sus propias operaciones: incluye los efectos que se propagan a través de la cadena de suministro y del consumo de los trabajadores.</p>
+    <p class="section-subtitle">El <strong>Impacto Socioeconómico</strong> es la contribución total que ILUNION genera sobre la economía, más allá de sus propias operaciones: incluye los efectos que se propagan a través de la cadena de suministro y del consumo de los trabajadores.</p>
 
     <div class="two-col" style="margin-bottom:28px;">
-      <div>
+      <div class="bloque1-card">
         <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">¿Qué es el impacto socioeconómico?</h3>
         <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">La producción de bienes y servicios requiere adquirir inputs intermedios a proveedores de distintos sectores, activando nueva producción a lo largo de la cadena de valor. A su vez, la remuneración de los trabajadores se transforma en consumo privado, generando nuevos efectos sobre el sistema productivo.</p>
         <p style="color:var(--ink-light);line-height:1.7;">Este mecanismo de propagación —el <strong>efecto multiplicador</strong>— permite capturar la contribución real y completa de ILUNION a la economía.</p>
       </div>
-      <div>
+      <div class="bloque1-card">
         <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">¿Por qué es singular en ILUNION?</h3>
         <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">El modelo incorpora una dimensión adicional derivada del modelo empresarial de ILUNION: la integración laboral de personas con discapacidad y colectivos en situación de vulnerabilidad.</p>
         <p style="color:var(--ink-light);line-height:1.7;">Por ello, la mayoría de los indicadores se desagregan por <strong>género</strong>, <strong>discapacidad</strong> y <strong>colectivo vulnerable</strong>, reflejando la naturaleza diferencial de su contribución socioeconómica.</p>
@@ -469,22 +514,16 @@
 
     <div class="impact-flow">
       <div class="impact-cell direct">
-        <div class="ic-label">Nivel 1 · Directo</div>
         <h3>Impacto Directo</h3>
         <p>Actividad económica generada directamente por el Grupo ILUNION: empleo propio, salarios, valor añadido bruto y contribución fiscal liquidada.</p>
-        <div class="example"><strong>Componentes:</strong> Producción, PIB, empleo, sueldos y salarios, impuestos, VAB.</div>
       </div>
       <div class="impact-cell indirect">
-        <div class="ic-label">Nivel 2 · Indirecto</div>
         <h3>Impacto Indirecto</h3>
         <p>Efectos generados en la cadena de suministro: cada euro que ILUNION gasta en proveedores activa actividad adicional en esos sectores.</p>
-        <div class="example"><strong>Ejemplo:</strong> Un proveedor de suministros de limpieza contrata más personal para abastecer a ILUNION Facility Services.</div>
       </div>
       <div class="impact-cell induced">
-        <div class="ic-label">Nivel 3 · Inducido</div>
         <h3>Impacto Inducido</h3>
         <p>Efectos del consumo privado: los salarios que paga ILUNION y sus proveedores se gastan en la economía, generando más actividad.</p>
-        <div class="example"><strong>Ejemplo:</strong> Un empleado de ILUNION TextilCare gasta su salario en alimentación, transporte y ocio, sosteniendo otros empleos.</div>
       </div>
     </div>
 
@@ -492,13 +531,34 @@
       <div class="f-title">Fórmulas fundamentales del modelo</div>
       <div class="f-eq">IMPACTO TOTAL = Impacto Directo + Impacto Indirecto + Impacto Inducido</div>
       <div class="f-eq">EFECTO TRACTOR DIRECTO = Impacto Total / Impacto Directo</div>
-      <div class="f-eq">EFECTO TRACTOR INDIRECTO = Impacto Total / Impacto Indirecto</div>
+      <div class="f-eq">EFECTO TRACTOR INDIRECTO = Impacto Indirecto / Impacto Directo</div>
+      <div class="f-eq">EFECTO TRACTOR INDUCIDO = Impacto Inducido / Impacto Directo</div>
       <div class="f-note">El efecto tractor mide cuántas veces multiplica ILUNION su propio impacto. Si el tractor directo es 3, por cada euro de impacto directo se generan 3 euros en total en la economía.</div>
     </div>
 
     <div class="info-box">
-      <h4>📌 Alcance del modelo: 24 líneas de negocio</h4>
-      <p>Opera a nivel <strong>consolidado del Grupo</strong> o por línea de negocio individual. Incluye ILUNION TextilCare, Hotels, Facility Services, Contact Center BPO, IT Services, Accesibilidad, VidaSénior, Reciclados, Ecologistic y más. Alcance exclusivamente nacional (España), bajo un enfoque de equilibrio estático.</p>
+      <h4>📌 Líneas de negocio incluidas en el modelo</h4>
+      <table class="data-table data-table-business" style="margin-top:10px;margin-bottom:0;">
+        <thead>
+          <tr>
+            <th colspan="2">Líneas de negocio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Grupo ILUNION (Consolidado)</td><td>ILUNION Reciclados</td></tr>
+          <tr><td>ILUNION Automoción</td><td>ILUNION Hotels</td></tr>
+          <tr><td>ILUNION Servicios Industriales</td><td>ILUNION TextilCare</td></tr>
+          <tr><td>ILUNION Facility Services</td><td>ILUNION VidaSénior</td></tr>
+          <tr><td>ILUNION Formación</td><td>ILUNION Fisioterapia y Salud</td></tr>
+          <tr><td>ILUNION IT Services</td><td>ILUNION CEE CSC</td></tr>
+          <tr><td>ILUNION Accesibilidad</td><td>ONCISA Inmobiliaria</td></tr>
+          <tr><td>ILUNION Ibéricos de Azuaga</td><td>ILUNION Seguros</td></tr>
+          <tr><td>ILUNION Retail</td><td>Grupo ILUNION - Individual</td></tr>
+          <tr><td>ILUNION Emprende</td><td>ILUNION Fuego y Conducción</td></tr>
+          <tr><td>Ecologistic</td><td>ILUNION Valorización</td></tr>
+          <tr><td>Logiraees</td><td>ILUNION Contact Center BPO</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
@@ -506,35 +566,7 @@
   <section id="bloque2">
     <div class="section-eyebrow">📗 Bloque 02</div>
     <h2 class="section-title">Herramienta de medición: pestañas y tipología</h2>
-    <p class="section-subtitle">El Excel tiene tres bloques funcionales interconectados. Saber cuáles hojas tocar —y cuáles no— es la competencia más importante para el usuario.</p>
-
-    <div class="principle-grid" style="margin-bottom:28px;">
-      <div class="principle-card">
-        <div class="p-icon">🧩</div>
-        <h4>Modularidad</h4>
-        <p>Hojas independientes con funciones delimitadas. Actualizar un bloque de inputs no afecta al resto.</p>
-      </div>
-      <div class="principle-card">
-        <div class="p-icon">🔐</div>
-        <h4>Separación de roles</h4>
-        <p>Hojas de usuario (inputs), hojas metodológicas (motor) y hojas de resultado. Acceso diferenciado.</p>
-      </div>
-      <div class="principle-card">
-        <div class="p-icon">📅</div>
-        <h4>Actualización periódica</h4>
-        <p>Diseñado para actualizarse anualmente sustituyendo los datos de inputs, sin tocar la lógica de cálculo.</p>
-      </div>
-      <div class="principle-card">
-        <div class="p-icon">⚡</div>
-        <h4>Consistencia interna</h4>
-        <p>Incorpora validaciones que alertan ante inconsistencias, reduciendo el riesgo de error operativo.</p>
-      </div>
-      <div class="principle-card">
-        <div class="p-icon">📊</div>
-        <h4>Comparabilidad</h4>
-        <p>Outputs estandarizados para garantizar comparabilidad entre ejercicios, líneas de negocio y periodos.</p>
-      </div>
-    </div>
+    <p class="section-subtitle">El modelo Excel tiene tres bloques funcionales interconectados. Saber cuáles hojas tocar es la competencia más importante para el usuario.</p>
 
     <div class="excel-grid">
       <div class="excel-zone inputs">
@@ -577,9 +609,38 @@
       <div class="flow-step"><div class="step-n">1</div><h4>Introducir datos internos</h4><p>El usuario actualiza las 6 hojas de Inputs con datos del ejercicio analizado</p></div>
       <div class="flow-step"><div class="step-n">2</div><h4>Asignación sectorial</h4><p>Compras clasificadas por CNAE + parámetros metodológicos aplicados</p></div>
       <div class="flow-step"><div class="step-n">3</div><h4>Cálculo impacto directo</h4><p>KPIs directos desde datos internos del Grupo: empleo, VAB, fiscalidad</p></div>
-      <div class="flow-step"><div class="step-n">4</div><h4>Cálculo impacto indirecto</h4><p>Multiplicadores Tipo I aplicados al vector de compras sectoriales</p></div>
-      <div class="flow-step"><div class="step-n">5</div><h4>Cálculo impacto inducido</h4><p>Masa salarial → propensión al consumo → multiplicadores Tipo II</p></div>
+      <div class="flow-step"><div class="step-n">4</div><h4>Cálculo impacto indirecto</h4><p>Coeficiente por actividad aplicados al vector Impacto Indirecto - Producción</p></div>
+      <div class="flow-step"><div class="step-n">5</div><h4>Cálculo impacto inducido</h4><p>Coeficiente por actividad aplicados al vector Impacto Inducido - Producción</p></div>
       <div class="flow-step"><div class="step-n">6</div><h4>KPIs consolidados</h4><p>Resultados por categoría, tipo de impacto, colectivo, línea y periodo</p></div>
+    </div>
+
+    <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Consideraciones metodológicas transversales</h3>
+    <div class="principle-grid" style="margin-bottom:28px;">
+      <div class="principle-card">
+        <div class="p-icon">🧩</div>
+        <h4>Modularidad</h4>
+        <p>Hojas independientes con funciones delimitadas. Actualizar un bloque de inputs no afecta al resto.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon">🔐</div>
+        <h4>Separación de roles</h4>
+        <p>Hojas de usuario (inputs), hojas metodológicas (motor) y hojas de resultado. Acceso diferenciado.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon">📅</div>
+        <h4>Actualización periódica</h4>
+        <p>Diseñado para actualizarse anualmente sustituyendo los datos de inputs, sin tocar la lógica de cálculo.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon">⚡</div>
+        <h4>Consistencia interna</h4>
+        <p>Incorpora validaciones que alertan ante inconsistencias, reduciendo el riesgo de error operativo.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon">📊</div>
+        <h4>Comparabilidad</h4>
+        <p>Outputs estandarizados para garantizar comparabilidad entre ejercicios, líneas de negocio y periodos.</p>
+      </div>
     </div>
   </section>
 
@@ -605,15 +666,37 @@
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
-          <p style="margin-bottom:10px;">Dimensión más singular del modelo, coherente con el posicionamiento de ILUNION como empresa social. Integra tres subcategorías: <strong>colectivos vulnerables</strong>, <strong>calidad retributiva</strong> (salario digno) e <strong>igualdad de género</strong>. Se calculan en los tres niveles de impacto.</p>
-          <ul>
-            <li><strong>Empleo vulnerable de primera inserción:</strong> Empleos para personas en situación de vulnerabilidad que acceden por primera vez al mercado laboral.</li>
-            <li><strong>Empleo en colectivos con discapacidad:</strong> FTE de personas con discapacidad reconocida, directo + indirecto + inducido.</li>
-            <li><strong>Empleo con salario digno:</strong> Empleos directos cuya remuneración supera el umbral de salario digno del INE.</li>
-            <li><strong>% trabajadores sobre salario digno:</strong> Porcentaje de la plantilla directa que supera el umbral de salario digno.</li>
-            <li><strong>Brecha de salario digno:</strong> Diferencia media entre el umbral y los salarios de quienes no lo alcanzan.</li>
-            <li><strong>Empleo femenino:</strong> FTE de mujeres en los tres niveles de impacto atribuibles a la actividad.</li>
-          </ul>
+          <p style="margin-bottom:10px;">Dimensión más singular del modelo, coherente con el posicionamiento de ILUNION como empresa social. Integra tres subcategorías: <strong>personas con discapacidad, género y en colectivos vulnerables</strong>. Se calculan en los tres niveles de impacto.</p>
+          <table class="data-table" style="margin-bottom:0;">
+            <thead>
+              <tr>
+                <th>KPI</th>
+                <th>Definición</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Empleo en colectivos con discapacidad atribuible a la actividad</strong></td>
+                <td>Total de empleos generados para personas con discapacidad reconocida, agregando los impactos directo, indirecto e inducido del modelo.</td>
+              </tr>
+              <tr>
+                <td><strong>Empleo con salario digno atribuible a la actividad</strong></td>
+                <td>Empleos directos del Grupo ILUNION cuya remuneración bruta supera el umbral de salario digno definido metodológicamente para el ejercicio analizado.</td>
+              </tr>
+              <tr>
+                <td><strong>Porcentaje de trabajadores que superan el salario digno</strong></td>
+                <td>Porcentaje de empleados directos del Grupo ILUNION cuya remuneración supera el umbral de salario digno, expresada en porcentaje sobre el total de la plantilla activa.</td>
+              </tr>
+              <tr>
+                <td><strong>Brecha de salario digno</strong></td>
+                <td>Diferencia media entre el salario digno estimado y los salarios efectivamente percibidos por los trabajadores que no alcanzan dicho umbral en el ejercicio analizado.</td>
+              </tr>
+              <tr>
+                <td><strong>Empleo femenino generado atribuible a la actividad</strong></td>
+                <td>Empleos femeninos generados directamente por la plantilla propia del Grupo ILUNION en el ejercicio analizado.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div class="accordion-item">
