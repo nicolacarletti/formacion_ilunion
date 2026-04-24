@@ -26,763 +26,346 @@
     --radius-lg: 16px;
     --shadow: 0 2px 16px rgba(26,26,46,0.08);
     --shadow-md: 0 4px 24px rgba(26,26,46,0.12);
-    --nav-w: 260px;
+    --nav-w: 270px;
     --font-serif: Georgia, 'Times New Roman', Times, serif;
     --font-sans: Arial, Helvetica, system-ui, sans-serif;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--font-sans);
-    color: var(--ink);
-    background: var(--surface);
-    font-size: 15px;
-    line-height: 1.65;
-  }
+  body { font-family: var(--font-sans); color: var(--ink); background: var(--surface); font-size: 15px; line-height: 1.65; }
 
   /* NAV */
   #sidebar {
-    position: fixed;
-    top: 0; left: 0;
-    width: var(--nav-w);
-    height: 100vh;
-    background: var(--ink);
-    overflow-y: auto;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    padding: 28px 0 24px;
+    position: fixed; top: 0; left: 0; width: var(--nav-w); height: 100vh;
+    background: var(--ink); overflow-y: auto; z-index: 100;
+    display: flex; flex-direction: column; padding: 28px 0 24px;
     transition: transform .3s ease;
   }
   #sidebar::-webkit-scrollbar { width: 4px; }
   #sidebar::-webkit-scrollbar-thumb { background: #3a3a5c; border-radius: 2px; }
-
-  .nav-logo {
-    padding: 0 24px 28px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    margin-bottom: 16px;
-  }
+  .nav-logo { padding: 0 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 14px; }
   .nav-logo-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 20px;
-    margin-bottom: 10px;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff; font-size: 11px; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px;
+    border-radius: 20px; margin-bottom: 10px;
   }
-  .nav-logo h2 {
-    font-family: var(--font-serif);
-    color: #fff;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.3;
-  }
-  .nav-section-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.3);
-    padding: 12px 24px 6px;
-  }
+  .nav-logo h2 { font-family: var(--font-serif); color: #fff; font-size: 14px; font-weight: 400; line-height: 1.3; }
+  .nav-section-label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 10px 24px 5px; }
   #sidebar a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 24px;
-    color: rgba(255,255,255,.65);
-    text-decoration: none;
-    font-size: 13.5px;
-    transition: all .15s;
-    border-left: 2px solid transparent;
+    display: flex; align-items: center; gap: 10px; padding: 8px 24px;
+    color: rgba(255,255,255,.65); text-decoration: none; font-size: 13px;
+    transition: all .15s; border-left: 2px solid transparent;
   }
-  #sidebar a:hover, #sidebar a.active {
-    color: #fff;
-    background: rgba(255,255,255,.07);
-    border-left-color: var(--accent);
-  }
-  #sidebar a .nav-icon {
-    width: 20px;
-    text-align: center;
-    font-style: normal;
-    opacity: .7;
-    flex-shrink: 0;
-  }
+  #sidebar a:hover, #sidebar a.active { color: #fff; background: rgba(255,255,255,.07); border-left-color: var(--accent); }
+  #sidebar a .nav-icon { width: 20px; text-align: center; font-style: normal; opacity: .7; flex-shrink: 0; }
   #sidebar a:hover .nav-icon, #sidebar a.active .nav-icon { opacity: 1; }
 
   /* MAIN */
   main { margin-left: var(--nav-w); min-height: 100vh; }
-
-  section {
-    padding: 72px 60px;
-    border-bottom: 1px solid var(--surface-3);
-  }
+  section { padding: 68px 60px; border-bottom: 1px solid var(--surface-3); }
   section:last-child { border-bottom: none; }
 
   /* HERO */
-  #hero {
-    background: var(--ink);
-    padding: 80px 60px 72px;
-    position: relative;
-    overflow: hidden;
-  }
+  #hero { background: var(--ink); padding: 80px 60px 72px; position: relative; overflow: hidden; }
   #hero::before {
-    content: '';
-    position: absolute;
-    top: -120px; right: -80px;
+    content: ''; position: absolute; top: -120px; right: -80px;
     width: 500px; height: 500px;
     background: radial-gradient(circle, rgba(0,85,165,.35) 0%, transparent 70%);
     pointer-events: none;
   }
   #hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: 20%;
+    content: ''; position: absolute; bottom: -80px; left: 20%;
     width: 340px; height: 340px;
     background: radial-gradient(circle, rgba(26,122,74,.2) 0%, transparent 70%);
     pointer-events: none;
   }
-  .hero-brand-icon {
-    position: absolute;
-    top: 28px;
-    right: 42px;
-    width: clamp(96px, 11vw, 144px);
-    height: auto;
-    z-index: 2;
-    filter: drop-shadow(0 3px 12px rgba(0,0,0,.22));
-  }
   .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0,85,165,.3);
-    border: 1px solid rgba(0,85,165,.5);
-    color: #93b8e8;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    padding: 5px 14px;
-    border-radius: 20px;
-    margin-bottom: 24px;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,85,165,.3); border: 1px solid rgba(0,85,165,.5);
+    color: #93b8e8; font-size: 12px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 24px;
   }
-  #hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(32px, 4vw, 52px);
-    color: #fff;
-    line-height: 1.15;
-    max-width: 640px;
-    margin-bottom: 20px;
-  }
+  #hero h1 { font-family: var(--font-serif); font-size: clamp(30px, 4vw, 50px); color: #fff; line-height: 1.15; max-width: 640px; margin-bottom: 20px; }
   #hero h1 em { font-style: italic; color: #93b8e8; }
-  #hero p.lead {
-    font-size: 17px;
-    color: rgba(255,255,255,.65);
-    max-width: 580px;
-    line-height: 1.7;
-    margin-bottom: 36px;
-  }
-  .hero-meta {
-    display: flex;
-    gap: 32px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-  }
+  #hero p.lead { font-size: 16px; color: rgba(255,255,255,.65); max-width: 580px; line-height: 1.7; margin-bottom: 36px; }
+  .hero-meta { display: flex; gap: 32px; margin-bottom: 40px; flex-wrap: wrap; }
   .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
-  .hero-meta-item .label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.35);
-  }
-  .hero-meta-item .value { font-size: 15px; color: rgba(255,255,255,.8); font-weight: 500; }
+  .hero-meta-item .label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+  .hero-meta-item .value { font-size: 14px; color: rgba(255,255,255,.8); font-weight: 500; }
   .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: background .15s, transform .15s;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff; padding: 12px 24px; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px; transition: background .15s, transform .15s;
   }
   .hero-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
 
   /* SECTION HEADERS */
-  .section-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-  h2.section-title {
-    font-family: var(--font-serif);
-    font-size: clamp(24px, 3vw, 36px);
-    color: var(--ink);
-    line-height: 1.2;
-    margin-bottom: 14px;
-  }
-  .section-subtitle {
-    font-size: 16px;
-    color: var(--ink-muted);
-    max-width: 640px;
-    line-height: 1.65;
-    margin-bottom: 40px;
-  }
+  .section-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  h2.section-title { font-family: var(--font-serif); font-size: clamp(22px, 3vw, 34px); color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+  .section-subtitle { font-size: 15px; color: var(--ink-muted); max-width: 680px; line-height: 1.65; margin-bottom: 36px; }
 
   /* AGENDA */
-  .agenda-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 8px;
-  }
+  .agenda-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
   .agenda-card {
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow .2s;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 22px; position: relative; overflow: hidden; transition: box-shadow .2s;
   }
   .agenda-card:hover { box-shadow: var(--shadow-md); }
-  .agenda-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 3px 3px 0 0;
-  }
-  .agenda-card .block-num {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .agenda-card h3 { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
-  .agenda-card p { font-size: 13.5px; color: var(--ink-muted); line-height: 1.55; }
+  .agenda-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); border-radius: 3px 3px 0 0; }
+  .agenda-card .block-num { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+  .agenda-card h3 { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.35; }
+  .agenda-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; }
   .agenda-card .duration {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    margin-top: 14px;
-    background: var(--accent-light);
-    color: var(--accent-dark);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 12px;
+    display: inline-flex; align-items: center; gap: 5px; margin-top: 12px;
+    background: var(--accent-light); color: var(--accent-dark); font-size: 12px;
+    font-weight: 600; padding: 3px 10px; border-radius: 12px;
   }
 
   /* IMPACT TYPES */
-  .impact-flow {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    margin-bottom: 36px;
-  }
-  .impact-cell { padding: 28px 24px; border-right: 1px solid var(--border); }
+  .impact-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 32px; }
+  .impact-cell { padding: 26px 22px; border-right: 1px solid var(--border); }
   .impact-cell:last-child { border-right: none; }
   .impact-cell.direct { background: #f0f4ff; }
   .impact-cell.indirect { background: #f0f8f4; }
   .impact-cell.induced { background: #fdf5f0; }
-  .impact-cell .ic-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
+  .impact-cell .ic-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
   .impact-cell.direct .ic-label { color: #3b5bdb; }
   .impact-cell.indirect .ic-label { color: #1a7a4a; }
   .impact-cell.induced .ic-label { color: #c05621; }
-  .impact-cell h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
-  .impact-cell p { font-size: 13.5px; color: var(--ink-muted); line-height: 1.55; }
-  .impact-cell .example {
-    margin-top: 14px;
-    padding: 10px 14px;
-    background: rgba(255,255,255,.7);
-    border-radius: 8px;
-    font-size: 13px;
-    color: var(--ink-light);
-    border-left: 3px solid currentColor;
-  }
-  .impact-cell.direct .example { border-left-color: #3b5bdb; }
-  .impact-cell.indirect .example { border-left-color: #1a7a4a; }
-  .impact-cell.induced .example { border-left-color: #c05621; }
+  .impact-cell h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .impact-cell p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; }
+  .impact-cell .example { margin-top: 12px; padding: 10px 12px; background: rgba(255,255,255,.7); border-radius: 8px; font-size: 12.5px; color: var(--ink-light); }
+  .impact-cell.direct .example { border-left: 3px solid #3b5bdb; }
+  .impact-cell.indirect .example { border-left: 3px solid #1a7a4a; }
+  .impact-cell.induced .example { border-left: 3px solid #c05621; }
 
+  /* FORMULA */
   .formula-box {
-    background: var(--ink);
-    color: #fff;
-    border-radius: var(--radius-lg);
-    padding: 28px 32px;
-    margin-bottom: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    background: var(--ink); color: #fff; border-radius: var(--radius-lg);
+    padding: 26px 30px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 12px;
   }
-  .formula-box .f-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.45);
-  }
-  .formula-box .f-eq {
-    font-family: 'Courier New', monospace;
-    font-size: 15px;
-    color: #93b8e8;
-    background: rgba(255,255,255,.06);
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,.1);
-  }
+  .formula-box .f-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .formula-box .f-eq { font-family: 'Courier New', monospace; font-size: 14px; color: #93b8e8; background: rgba(255,255,255,.06); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,.1); }
   .formula-box .f-note { font-size: 13px; color: rgba(255,255,255,.55); }
 
-  /* KPI DIMENSIONS */
-  .kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-  .kpi-card {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 20px;
-    text-align: center;
-    transition: all .2s;
-    cursor: default;
-  }
+  /* KPI GRID */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin-bottom: 36px; }
+  .kpi-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px; text-align: center; transition: all .2s; cursor: default; }
   .kpi-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
-  .kpi-icon { font-size: 28px; margin-bottom: 10px; display: block; }
-  .kpi-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-  .kpi-card p { font-size: 12.5px; color: var(--ink-muted); line-height: 1.5; }
+  .kpi-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .kpi-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+  .kpi-card p { font-size: 12px; color: var(--ink-muted); line-height: 1.5; }
   .kpi-card.emp { border-top: 3px solid #3b5bdb; background: #f8f9ff; }
+  .kpi-card.brecha { border-top: 3px solid #7c3aed; background: #f5f3ff; }
   .kpi-card.fisc { border-top: 3px solid #c05621; background: #fff8f5; }
   .kpi-card.vab { border-top: 3px solid #1a7a4a; background: #f5fbf8; }
   .kpi-card.cost { border-top: 3px solid #b45309; background: #fffbf0; }
   .kpi-card.env { border-top: 3px solid #0d7490; background: #f0fafb; }
 
-  /* EXCEL ARCHITECTURE */
-  .excel-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 32px;
-  }
+  /* EXCEL */
+  .excel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 28px; }
   .excel-zone { border-radius: var(--radius-lg); padding: 20px; border: 1px solid var(--border); }
   .excel-zone.inputs { background: var(--accent-light); border-color: #93b8e8; }
   .excel-zone.engine { background: #fff3e8; border-color: #fbbf7a; }
   .excel-zone.results { background: var(--green-light); border-color: #6ecf9a; }
-  .excel-zone .zone-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
+  .excel-zone .zone-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
   .excel-zone.inputs .zone-label { color: var(--accent); }
   .excel-zone.engine .zone-label { color: #92400e; }
   .excel-zone.results .zone-label { color: var(--green); }
-  .excel-zone h4 { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
-  .sheet-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 12.5px;
-    font-weight: 500;
-    margin: 3px 0;
-    width: 100%;
-  }
+  .excel-zone h4 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+  .sheet-tag { display: flex; align-items: center; gap: 8px; padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; margin: 4px 0; }
   .sheet-tag.editable { background: rgba(0,85,165,.1); color: var(--accent-dark); }
   .sheet-tag.readonly { background: rgba(255,140,50,.12); color: #92400e; }
   .sheet-tag.output { background: rgba(26,122,74,.1); color: var(--green); }
-  .sheet-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px; height: 20px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
+  .sheet-num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; font-size: 10px; font-weight: 700; flex-shrink: 0; }
   .sheet-tag.editable .sheet-num { background: var(--accent); color: #fff; }
   .sheet-tag.readonly .sheet-num { background: #f59e0b; color: #fff; }
   .sheet-tag.output .sheet-num { background: var(--green); color: #fff; }
 
   /* FLOW STEPS */
-  .flow-steps {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    margin-bottom: 32px;
-  }
-  .flow-step {
-    padding: 20px 16px;
-    border-right: 1px solid var(--border);
-    background: var(--surface-2);
-    text-align: center;
-  }
+  .flow-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 32px; }
+  .flow-step { padding: 18px 14px; border-right: 1px solid var(--border); background: var(--surface-2); text-align: center; }
   .flow-step:last-child { border-right: none; }
   .flow-step:nth-child(even) { background: var(--surface); }
-  .flow-step .step-n {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #fff;
-    font-weight: 700;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 10px;
-  }
-  .flow-step h4 { font-size: 12.5px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
-  .flow-step p { font-size: 11.5px; color: var(--ink-muted); line-height: 1.45; }
+  .flow-step .step-n { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+  .flow-step h4 { font-size: 12px; font-weight: 600; margin-bottom: 5px; line-height: 1.3; }
+  .flow-step p { font-size: 11px; color: var(--ink-muted); line-height: 1.4; }
 
   /* ERRORS */
-  .errors-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 36px;
-  }
-  .error-card {
-    border-radius: var(--radius-lg);
-    padding: 20px;
-    border: 1px solid;
-    display: flex;
-    gap: 14px;
-  }
+  .errors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 32px; }
+  .error-card { border-radius: var(--radius-lg); padding: 18px; border: 1px solid; display: flex; gap: 12px; }
   .error-card.danger { background: var(--red-light); border-color: #fca5a5; }
   .error-card.warning { background: var(--amber-light); border-color: #fcd34d; }
   .error-card.info { background: var(--accent-light); border-color: #93b8e8; }
-  .error-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-  .error-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+  .error-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .error-card h4 { font-size: 13.5px; font-weight: 600; margin-bottom: 4px; }
   .error-card.danger h4 { color: var(--red); }
   .error-card.warning h4 { color: var(--amber); }
   .error-card.info h4 { color: var(--accent-dark); }
-  .error-card p { font-size: 13px; color: var(--ink-light); line-height: 1.55; }
+  .error-card p { font-size: 12.5px; color: var(--ink-light); line-height: 1.55; }
 
-  .alert-box {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    padding: 18px 20px;
-    border-radius: var(--radius);
-    margin-bottom: 20px;
-    border: 1px solid;
-  }
+  /* ALERT BOX */
+  .alert-box { display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px; border-radius: var(--radius); margin-bottom: 16px; border: 1px solid; }
   .alert-box.critical { background: var(--red-light); border-color: #fca5a5; }
   .alert-box.caution { background: var(--amber-light); border-color: #fcd34d; }
   .alert-box.good { background: var(--green-light); border-color: #6ecf9a; }
-  .alert-box .alert-icon { font-size: 20px; flex-shrink: 0; }
-  .alert-box .alert-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .alert-box .alert-icon { font-size: 18px; flex-shrink: 0; }
+  .alert-box .alert-content h4 { font-size: 13.5px; font-weight: 600; margin-bottom: 3px; }
   .alert-box.critical .alert-content h4 { color: var(--red); }
   .alert-box.caution .alert-content h4 { color: var(--amber); }
   .alert-box.good .alert-content h4 { color: var(--green); }
   .alert-box .alert-content p { font-size: 13px; color: var(--ink-light); }
 
-  /* INTERPRETATION TABLE */
-  .interp-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    margin-bottom: 32px;
-    font-size: 13.5px;
-  }
-  .interp-table th {
-    padding: 14px 18px;
-    text-align: left;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .07em;
-    text-transform: uppercase;
-  }
+  /* INTERP TABLE */
+  .interp-table { width: 100%; border-collapse: collapse; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); margin-bottom: 28px; font-size: 13px; }
+  .interp-table th { padding: 13px 16px; text-align: left; font-size: 11.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
   .interp-table th.correct { background: var(--green); color: #fff; }
   .interp-table th.incorrect { background: var(--red); color: #fff; }
-  .interp-table td { padding: 13px 18px; border-top: 1px solid var(--border); vertical-align: top; }
+  .interp-table td { padding: 12px 16px; border-top: 1px solid var(--border); vertical-align: top; }
   .interp-table tr:nth-child(odd) td { background: var(--surface-2); }
 
   /* CHECKLIST */
-  .checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .checklist li {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 16px 18px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--surface-2);
-    cursor: pointer;
-    transition: all .15s;
-    user-select: none;
-  }
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); cursor: pointer; transition: all .15s; user-select: none; }
   .checklist li:hover { border-color: var(--accent); background: var(--accent-light); }
   .checklist li.checked { background: var(--green-light); border-color: #6ecf9a; }
-  .checklist li .cb {
-    width: 22px; height: 22px;
-    border: 2px solid var(--border);
-    border-radius: 6px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    margin-top: 1px;
-    background: #fff;
-    transition: all .15s;
-  }
+  .checklist li .cb { width: 22px; height: 22px; border: 2px solid var(--border); border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; background: #fff; transition: all .15s; }
   .checklist li.checked .cb { background: var(--green); border-color: var(--green); color: #fff; }
-  .checklist li .cl-text { font-size: 14px; line-height: 1.5; }
+  .checklist li .cl-text { font-size: 13.5px; line-height: 1.5; }
   .checklist li.checked .cl-text { color: var(--green); font-weight: 500; }
-  .checklist li .cl-tag {
-    margin-left: auto;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 10px;
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
+  .checklist li .cl-tag { margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; flex-shrink: 0; white-space: nowrap; }
   .cl-tag.emp { background: #e8edff; color: #3b5bdb; }
   .cl-tag.fisc { background: #fff3e8; color: #c05621; }
   .cl-tag.comp { background: #e8f5ee; color: var(--green); }
   .cl-tag.gen { background: var(--surface-3); color: var(--ink-muted); }
-
-  .checklist-progress {
-    background: var(--surface-3);
-    border-radius: 100px;
-    height: 8px;
-    margin-bottom: 24px;
-    overflow: hidden;
-  }
-  .checklist-progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--green));
-    border-radius: 100px;
-    transition: width .3s ease;
-  }
-  .checklist-count { font-size: 13px; color: var(--ink-muted); margin-bottom: 8px; }
+  .cl-tag.crit { background: #fef2f2; color: var(--red); }
+  .checklist-progress { background: var(--surface-3); border-radius: 100px; height: 7px; margin-bottom: 20px; overflow: hidden; }
+  .checklist-progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 100px; transition: width .3s ease; }
+  .checklist-count { font-size: 13px; color: var(--ink-muted); margin-bottom: 6px; }
 
   /* CLOSING */
   #cierre { background: var(--ink); color: #fff; border-bottom: none; }
   #cierre h2 { color: #fff; }
   #cierre .section-subtitle { color: rgba(255,255,255,.6); max-width: 560px; }
-  .key-messages {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-  .key-msg {
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    transition: background .2s;
-  }
+  .key-messages { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; margin-bottom: 36px; }
+  .key-msg { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-lg); padding: 22px; transition: background .2s; }
   .key-msg:hover { background: rgba(255,255,255,.1); }
-  .key-msg .km-num {
-    font-family: var(--font-serif);
-    font-size: 40px;
-    color: rgba(0,85,165,.5);
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-  .key-msg h4 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-  .key-msg p { font-size: 13.5px; color: rgba(255,255,255,.55); line-height: 1.6; }
-
-  .closing-banner {
-    background: var(--accent);
-    border-radius: var(--radius-lg);
-    padding: 32px 36px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-  .closing-banner .cb-icon { font-size: 40px; flex-shrink: 0; }
-  .closing-banner h3 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 6px; }
-  .closing-banner p { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.6; }
+  .key-msg .km-num { font-family: var(--font-serif); font-size: 38px; color: rgba(0,85,165,.5); line-height: 1; margin-bottom: 10px; }
+  .key-msg h4 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .key-msg p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.6; }
+  .closing-banner { background: var(--accent); border-radius: var(--radius-lg); padding: 28px 32px; display: flex; align-items: center; gap: 22px; }
+  .closing-banner .cb-icon { font-size: 36px; flex-shrink: 0; }
+  .closing-banner h3 { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 5px; }
+  .closing-banner p { font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.6; }
 
   /* ACCORDION */
   .accordion { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px; }
   .accordion-item { border-bottom: 1px solid var(--border); }
   .accordion-item:last-child { border-bottom: none; }
-  .accordion-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 22px;
-    cursor: pointer;
-    background: var(--surface-2);
-    transition: background .15s;
-    gap: 12px;
-  }
+  .accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; cursor: pointer; background: var(--surface-2); transition: background .15s; gap: 12px; }
   .accordion-header:hover { background: var(--surface-3); }
   .accordion-header.open { background: var(--accent-light); }
-  .accordion-header h4 { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .accordion-header h4 { font-size: 14px; font-weight: 600; color: var(--ink); }
   .accordion-header.open h4 { color: var(--accent-dark); }
-  .accordion-arrow { font-size: 18px; color: var(--ink-muted); transition: transform .2s; flex-shrink: 0; }
+  .accordion-arrow { font-size: 16px; color: var(--ink-muted); transition: transform .2s; flex-shrink: 0; }
   .accordion-header.open .accordion-arrow { transform: rotate(180deg); color: var(--accent); }
-  .accordion-body {
-    display: none;
-    padding: 20px 22px;
-    background: var(--surface);
-    font-size: 14px;
-    color: var(--ink-light);
-    line-height: 1.65;
-  }
+  .accordion-body { display: none; padding: 18px 20px; background: var(--surface); font-size: 13.5px; color: var(--ink-light); line-height: 1.65; }
   .accordion-body.open { display: block; }
   .accordion-body ul { list-style: none; display: flex; flex-direction: column; gap: 8px; padding-left: 4px; }
   .accordion-body ul li { display: flex; gap: 8px; align-items: flex-start; }
   .accordion-body ul li::before { content: '→'; color: var(--accent); flex-shrink: 0; font-weight: 600; }
 
   /* PRACTICES */
-  .practices-list { display: flex; flex-direction: column; gap: 12px; }
-  .practice-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 16px 18px;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-  }
-  .practice-num {
-    width: 28px; height: 28px;
-    background: var(--accent);
-    color: #fff;
-    border-radius: 50%;
-    font-size: 13px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .practice-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
-  .practice-item p { font-size: 13px; color: var(--ink-muted); }
+  .practices-list { display: flex; flex-direction: column; gap: 10px; }
+  .practice-item { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius); }
+  .practice-num { width: 26px; height: 26px; background: var(--accent); color: #fff; border-radius: 50%; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .practice-item h4 { font-size: 13.5px; font-weight: 600; margin-bottom: 2px; }
+  .practice-item p { font-size: 12.5px; color: var(--ink-muted); }
 
   /* TWO COLUMNS */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
   /* INFO BOX */
-  .info-box {
-    background: var(--accent-light);
-    border: 1px solid #93b8e8;
-    border-left: 4px solid var(--accent);
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    margin-bottom: 20px;
-  }
-  .info-box h4 { font-size: 14px; font-weight: 600; color: var(--accent-dark); margin-bottom: 6px; }
-  .info-box p { font-size: 13.5px; color: var(--ink-light); line-height: 1.6; }
+  .info-box { background: var(--accent-light); border: 1px solid #93b8e8; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 18px; }
+  .info-box h4 { font-size: 13.5px; font-weight: 600; color: var(--accent-dark); margin-bottom: 5px; }
+  .info-box p { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
 
-  /* MOBILE TOGGLE */
-  #mob-toggle {
-    display: none;
-    position: fixed;
-    top: 14px; left: 14px;
-    z-index: 200;
-    background: var(--ink);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    width: 40px; height: 40px;
-    font-size: 20px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-  }
+  /* DATA TABLE */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 24px; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .data-table th { background: var(--ink); color: #fff; padding: 11px 14px; text-align: left; font-size: 11.5px; font-weight: 700; letter-spacing: .05em; }
+  .data-table td { padding: 10px 14px; border-top: 1px solid var(--border); vertical-align: top; }
+  .data-table tr:nth-child(odd) td { background: var(--surface-2); }
+  .data-table tr:nth-child(even) td { background: var(--surface); }
 
-  /* RESPONSIVE */
+  /* PRINCIPLE CARDS */
+  .principle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .principle-card { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+  .principle-card .p-icon { font-size: 22px; margin-bottom: 8px; }
+  .principle-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 5px; color: var(--accent-dark); }
+  .principle-card p { font-size: 12px; color: var(--ink-muted); line-height: 1.5; }
+
+  /* VALIDATION BOX */
+  .validation-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .val-card { border-radius: var(--radius); padding: 16px 18px; border: 1px solid; }
+  .val-card.check { background: var(--green-light); border-color: #6ecf9a; }
+  .val-card.warn { background: var(--amber-light); border-color: #fcd34d; }
+  .val-card h4 { font-size: 13.5px; font-weight: 600; margin-bottom: 5px; }
+  .val-card.check h4 { color: var(--green); }
+  .val-card.warn h4 { color: var(--amber); }
+  .val-card p { font-size: 12.5px; color: var(--ink-light); line-height: 1.5; }
+
+  /* MOBILE */
+  #mob-toggle { display: none; position: fixed; top: 14px; left: 14px; z-index: 200; background: var(--ink); color: #fff; border: none; border-radius: 8px; width: 40px; height: 40px; font-size: 20px; cursor: pointer; align-items: center; justify-content: center; }
+
   @media (max-width: 900px) {
     :root { --nav-w: 0px; }
-    #sidebar { transform: translateX(-260px); }
-    #sidebar.open { transform: translateX(0); width: 260px; }
+    #sidebar { transform: translateX(-270px); }
+    #sidebar.open { transform: translateX(0); width: 270px; }
     main { margin-left: 0; }
     #mob-toggle { display: flex; }
-    section { padding: 60px 24px; }
-    #hero { padding: 80px 24px 60px; }
-    .hero-brand-icon { top: 20px; right: 24px; width: 82px; }
+    section { padding: 56px 22px; }
+    #hero { padding: 72px 22px 56px; }
     .impact-flow, .excel-grid, .flow-steps, .two-col { grid-template-columns: 1fr; }
     .flow-step { border-right: none; border-bottom: 1px solid var(--border); }
     .impact-cell { border-right: none; border-bottom: 1px solid var(--border); }
     .impact-cell:last-child { border-bottom: none; }
   }
   @media (max-width: 560px) {
-    .agenda-grid, .kpi-grid, .errors-grid, .key-messages { grid-template-columns: 1fr; }
+    .agenda-grid, .kpi-grid, .errors-grid, .key-messages, .principle-grid, .validation-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-
 <button id="mob-toggle" onclick="toggleNav()" aria-label="Menú">☰</button>
-
 <nav id="sidebar">
   <div class="nav-logo">
     <div class="nav-logo-badge">🏢 ILUNION</div>
     <h2>Medición de Impacto<br>Socioeconómico</h2>
   </div>
-  <div class="nav-section-label">Formación</div>
-  <a href="#hero"><i class="nav-icon">🏠</i>Inicio</a>
+  <div class="nav-section-label">Inicio</div>
+  <a href="#hero"><i class="nav-icon">🏠</i>Portada</a>
   <a href="#agenda"><i class="nav-icon">📋</i>Agenda</a>
-  <div class="nav-section-label">El Modelo</div>
-  <a href="#contexto"><i class="nav-icon">🎯</i>Contexto y propósito</a>
-  <a href="#modelo"><i class="nav-icon">⚙️</i>Cómo funciona el modelo</a>
-  <a href="#dimensiones"><i class="nav-icon">📊</i>Dimensiones e indicadores</a>
-  <div class="nav-section-label">La Herramienta</div>
-  <a href="#excel"><i class="nav-icon">📗</i>Arquitectura Excel</a>
-  <a href="#errores"><i class="nav-icon">⚠️</i>Errores y riesgos</a>
-  <a href="#interpretacion"><i class="nav-icon">🔍</i>Interpretación de resultados</a>
+  <div class="nav-section-label">Bloques de formación</div>
+  <a href="#bloque1"><i class="nav-icon">🎯</i>B1 · Impacto socioeconómico</a>
+  <a href="#bloque2"><i class="nav-icon">📗</i>B2 · Herramienta de medición</a>
+  <a href="#bloque3"><i class="nav-icon">📊</i>B3 · KPIs del modelo</a>
+  <a href="#bloque4"><i class="nav-icon">✏️</i>B4 · Datos a imputar</a>
+  <a href="#bloque5"><i class="nav-icon">⚙️</i>B5 · Transformaciones de datos</a>
+  <a href="#bloque6"><i class="nav-icon">🔢</i>B6 · Matrices I-O</a>
+  <a href="#bloque7"><i class="nav-icon">📈</i>B7 · Resultados</a>
+  <a href="#bloque8"><i class="nav-icon">✅</i>B8 · Validación y checklist</a>
   <div class="nav-section-label">Cierre</div>
-  <a href="#checklist"><i class="nav-icon">✅</i>Checklist de uso</a>
   <a href="#cierre"><i class="nav-icon">🌱</i>Mensajes clave</a>
 </nav>
 
 <main>
 
-  <!-- HERO -->
+  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
   <section id="hero">
-    <img src="assets/ilunion-icon.png" alt="Icono ILUNION" class="hero-brand-icon">
     <div class="hero-eyebrow">📅 Sesión Formativa · Abril 2026</div>
     <h1>Cálculo del<br><em>Impacto Socioeconómico</em><br>Grupo ILUNION</h1>
-    <p class="lead">Guía práctica para el Grupo ILUNION: entiende el modelo, usa la herramienta Excel con confianza e interpreta los resultados correctamente.</p>
+    <p class="lead">Guía práctica para el Grupo ILUNION: entiende el modelo, usa la herramienta Excel con confianza e interpreta los resultados correctamente. Basada en el informe metodológico oficial NFQ Advisory.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="label">Duración</span>
@@ -790,451 +373,626 @@
       </div>
       <div class="hero-meta-item">
         <span class="label">Dirigido a</span>
-        <span class="value">Equipo Sostenibilidad</span>
+        <span class="value">Empleados de ILUNION</span>
       </div>
       <div class="hero-meta-item">
         <span class="label">Herramienta</span>
         <span class="value">Modelo Excel I-O</span>
       </div>
       <div class="hero-meta-item">
-        <span class="label">Dimensiones</span>
-        <span class="value">5 KPIs principales</span>
+        <span class="label">Bloques</span>
+        <span class="value">8 módulos</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Líneas de negocio</span>
+        <span class="value">24 unidades del Grupo</span>
       </div>
     </div>
     <a href="#agenda" class="hero-cta">Comenzar la formación →</a>
   </section>
 
-  <!-- AGENDA -->
+  <!-- ═══════════════════════════════ AGENDA ═══════════════════════════════ -->
   <section id="agenda">
     <div class="section-eyebrow">📋 Estructura</div>
     <h2 class="section-title">Agenda de la formación</h2>
-    <p class="section-subtitle">La sesión se estructura en 6 bloques progresivos: de los conceptos fundamentales al uso autónomo de la herramienta.</p>
+    <p class="section-subtitle">La sesión se estructura en 8 bloques progresivos: de los fundamentos conceptuales al uso autónomo y validación de la herramienta.</p>
     <div class="agenda-grid">
       <div class="agenda-card">
         <div class="block-num">Bloque 01</div>
-        <h3>Contexto y propósito del modelo</h3>
-        <p>Qué es el modelo de impacto socioeconómico, para qué sirve en ILUNION y por qué es estratégico para el área de Sostenibilidad.</p>
+        <h3>Impacto socioeconómico</h3>
+        <p>Definición y desglose: impacto directo, indirecto e inducido. El efecto multiplicador y el efecto tractor.</p>
+        <span class="duration">⏱ ~10 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 02</div>
-        <h3>Conceptos clave del modelo</h3>
-        <p>Impacto directo, indirecto e inducido. El efecto multiplicador. Enfoque Input-Output de Leontief explicado sin ecuaciones.</p>
+        <h3>Herramienta de medición</h3>
+        <p>Arquitectura del Excel: pestañas y su tipología — inputs, datos, matrices I-O y resultados.</p>
+        <span class="duration">⏱ ~10 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 03</div>
-        <h3>Arquitectura y uso de la herramienta Excel</h3>
-        <p>Qué hojas existen, cuáles toca el usuario, cuáles no debe tocar nunca. Flujo completo de inputs a resultados.</p>
+        <h3>KPIs del modelo</h3>
+        <p>Los 6 grupos de indicadores y su desglose por género, plantilla con discapacidad y colectivos vulnerables.</p>
+        <span class="duration">⏱ ~15 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 04</div>
-        <h3>Errores comunes y buenas prácticas</h3>
-        <p>Errores típicos al rellenar inputs, errores de interpretación, reglas obligatorias y recomendaciones operativas.</p>
+        <h3>Datos a imputar</h3>
+        <p>Qué información deben introducir las áreas en cada pestaña de Inputs para el correcto funcionamiento del motor.</p>
+        <span class="duration">⏱ ~15 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 05</div>
-        <h3>Interpretación de resultados y KPIs</h3>
-        <p>Cómo leer los indicadores de las 5 dimensiones. Qué se puede concluir y qué no. Diferencias entre interpretaciones correctas e incorrectas.</p>
+        <h3>Transformaciones de datos</h3>
+        <p>Qué ocurre en las pestañas de Datos: ajustes, normalizaciones y preparación para el motor I-O.</p>
+        <span class="duration">⏱ ~10 min</span>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 06</div>
-        <h3>Cierre y checklist de uso</h3>
-        <p>Lista de verificación antes de cerrar el modelo. Mensajes clave de negocio. Próximos pasos y autonomía del equipo.</p>
+        <h3>Matrices Input-Output</h3>
+        <p>Concepto, funcionamiento y outputs de la hoja Matrices I-O: la inversa de Leontief y los multiplicadores.</p>
+        <span class="duration">⏱ ~10 min</span>
+      </div>
+      <div class="agenda-card">
+        <div class="block-num">Bloque 07</div>
+        <h3>Resultados</h3>
+        <p>Presentación de la hoja de Resultados y cómo interpretar correctamente los valores obtenidos.</p>
+        <span class="duration">⏱ ~10 min</span>
+      </div>
+      <div class="agenda-card">
+        <div class="block-num">Bloque 08</div>
+        <h3>Validación y checklist</h3>
+        <p>Reglas de validación tras la carga de datos para asegurar el correcto funcionamiento del motor de cálculo.</p>
+        <span class="duration">⏱ ~10 min</span>
       </div>
     </div>
   </section>
 
-  <!-- CONTEXTO -->
-  <section id="contexto">
+  <!-- ═══════════════════════════════ BLOQUE 1 ═══════════════════════════════ -->
+  <section id="bloque1">
     <div class="section-eyebrow">🎯 Bloque 01</div>
-    <h2 class="section-title">Contexto y propósito del modelo</h2>
-    <p class="section-subtitle">Antes de usar cualquier herramienta, hay que entender para qué existe. Aquí está la respuesta.</p>
-    <div class="two-col" style="margin-bottom:32px;">
-      <div>
-        <h3 style="font-size:18px;font-weight:600;margin-bottom:12px;">¿ Cuáles son los deatlles del modelo?</h3>
-        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:16px;">El modelo de impacto socioeconómico del Grupo ILUNION es una <strong>herramienta de medición cuantitativa</strong> que permite calcular de forma rigurosa y reproducible cuánto aporta ILUNION a la economía y la sociedad española.</p>
-        <p style="color:var(--ink-light);line-height:1.7;">Está construido en Excel y se basa en el modelo económico Input-Output de Leontief, que utiliza las tablas oficiales del INE para capturar cómo la actividad de ILUNION se transmite al resto de la economía.</p>
-      </div>
-      <div>
-        <h3 style="font-size:18px;font-weight:600;margin-bottom:12px;">¿Para qué sirve en ILUNION?</h3>
-        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:16px;">El modelo permite <strong>cuantificar con evidencia</strong> lo que ILUNION ya sabe que hace: generar empleo de calidad, contribuir a las finanzas públicas, reducir costes sociales y ser un actor económico relevante en España.</p>
-        <p style="color:var(--ink-light);line-height:1.7;">Esta evidencia es esencial para comunicación institucional, informes de sostenibilidad, diálogo con administraciones y posicionamiento estratégico del Grupo.</p>
-      </div>
-    </div>
-    <div class="info-box">
-      <h4>📌 El modelo puede trabajar a varios niveles</h4>
-      <p>Opera a nivel <strong>consolidado del Grupo</strong> o por línea de negocio individual (ILUNION TextilCare, Hotels, Facility Services, etc.). También permite comparar ejercicios anuales o agregar varios períodos. En total, cubre más de 16 líneas de negocio.</p>
-    </div>
-    <div class="kpi-grid">
-      <div class="kpi-card emp"><span class="kpi-icon">👥</span><h4>Empleo</h4><p>Volumen, calidad e inclusividad del empleo generado</p></div>
-      <div class="kpi-card fisc"><span class="kpi-icon">🏛️</span><h4>Fiscal</h4><p>Contribución al erario público: IS, IRPF, SS, IVA</p></div>
-      <div class="kpi-card vab"><span class="kpi-icon">📈</span><h4>Valor Añadido Bruto</h4><p>Contribución al PIB en sus tres niveles de impacto</p></div>
-      <div class="kpi-card cost"><span class="kpi-icon">💶</span><h4>Coste Evitado</h4><p>Ahorro público por integración de colectivos vulnerables</p></div>
-      <div class="kpi-card env"><span class="kpi-icon">🌿</span><h4>Socioambiental</h4><p>Valor monetizado de la reducción de emisiones y residuos</p></div>
-    </div>
-  </section>
+    <h2 class="section-title">Impacto socioeconómico: definición y desglose</h2>
+    <p class="section-subtitle">El impacto socioeconómico es la contribución total que ILUNION genera sobre la economía, más allá de sus propias operaciones: incluye los efectos que se propagan a través de la cadena de suministro y del consumo de los trabajadores.</p>
 
-  <!-- MODELO CONCEPTUAL -->
-  <section id="modelo">
-    <div class="section-eyebrow">⚙️ Bloque 02</div>
-    <h2 class="section-title">Cómo funciona el modelo</h2>
-    <p class="section-subtitle">El corazón del modelo explicado de forma sencilla: tres tipos de impacto y cómo se encadenan.</p>
+    <div class="two-col" style="margin-bottom:28px;">
+      <div>
+        <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">¿Qué es el impacto socioeconómico?</h3>
+        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">La producción de bienes y servicios requiere adquirir inputs intermedios a proveedores de distintos sectores, activando nueva producción a lo largo de la cadena de valor. A su vez, la remuneración de los trabajadores se transforma en consumo privado, generando nuevos efectos sobre el sistema productivo.</p>
+        <p style="color:var(--ink-light);line-height:1.7;">Este mecanismo de propagación —el <strong>efecto multiplicador</strong>— permite capturar la contribución real y completa de ILUNION a la economía.</p>
+      </div>
+      <div>
+        <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">¿Por qué es singular en ILUNION?</h3>
+        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">El modelo incorpora una dimensión adicional derivada del modelo empresarial de ILUNION: la integración laboral de personas con discapacidad y colectivos en situación de vulnerabilidad.</p>
+        <p style="color:var(--ink-light);line-height:1.7;">Por ello, la mayoría de los indicadores se desagregan por <strong>género</strong>, <strong>discapacidad</strong> y <strong>colectivo vulnerable</strong>, reflejando la naturaleza diferencial de su contribución socioeconómica.</p>
+      </div>
+    </div>
+
     <div class="impact-flow">
       <div class="impact-cell direct">
-        <div class="ic-label">Nivel 1</div>
+        <div class="ic-label">Nivel 1 · Directo</div>
         <h3>Impacto Directo</h3>
-        <p>Lo que ocurre directamente en ILUNION: empleo propio, salarios pagados, impuestos liquidados, valor generado por su actividad.</p>
-        <div class="example"><strong>Ejemplo ILUNION:</strong> Los 40.000+ empleados de ILUNION, las cotizaciones a la Seguridad Social pagadas, el VAB contable del Grupo.</div>
+        <p>Actividad económica generada directamente por el Grupo ILUNION: empleo propio, salarios, valor añadido bruto y contribución fiscal liquidada.</p>
+        <div class="example"><strong>Componentes:</strong> Producción, PIB, empleo, sueldos y salarios, impuestos, VAB.</div>
       </div>
       <div class="impact-cell indirect">
-        <div class="ic-label">Nivel 2</div>
+        <div class="ic-label">Nivel 2 · Indirecto</div>
         <h3>Impacto Indirecto</h3>
-        <p>Lo que activa ILUNION en su cadena de suministro: cada euro que ILUNION gasta en proveedores genera actividad adicional en esas empresas.</p>
-        <div class="example"><strong>Ejemplo ILUNION:</strong> Un proveedor de suministros de limpieza contrata más personal para abastecer a ILUNION Facility Services.</div>
+        <p>Efectos generados en la cadena de suministro: cada euro que ILUNION gasta en proveedores activa actividad adicional en esos sectores.</p>
+        <div class="example"><strong>Ejemplo:</strong> Un proveedor de suministros de limpieza contrata más personal para abastecer a ILUNION Facility Services.</div>
       </div>
       <div class="impact-cell induced">
-        <div class="ic-label">Nivel 3</div>
+        <div class="ic-label">Nivel 3 · Inducido</div>
         <h3>Impacto Inducido</h3>
-        <p>El efecto del consumo de los trabajadores: los salarios que paga ILUNION (y sus proveedores) se gastan en la economía, generando más actividad.</p>
-        <div class="example"><strong>Ejemplo ILUNION:</strong> Un empleado de ILUNION TextilCare gasta su salario en alimentación, transporte y ocio, sosteniendo otros empleos.</div>
+        <p>Efectos del consumo privado: los salarios que paga ILUNION y sus proveedores se gastan en la economía, generando más actividad.</p>
+        <div class="example"><strong>Ejemplo:</strong> Un empleado de ILUNION TextilCare gasta su salario en alimentación, transporte y ocio, sosteniendo otros empleos.</div>
       </div>
     </div>
+
     <div class="formula-box">
-      <div class="f-title">Fórmula fundamental del modelo</div>
+      <div class="f-title">Fórmulas fundamentales del modelo</div>
       <div class="f-eq">IMPACTO TOTAL = Impacto Directo + Impacto Indirecto + Impacto Inducido</div>
-      <div class="f-eq">EFECTO TRACTOR = Impacto Total / Impacto Directo</div>
-      <div class="f-note">El efecto tractor mide cuántas veces multiplica ILUNION su propio impacto en la economía. Si el tractor es 3, por cada euro de impacto directo se generan 3 en total.</div>
+      <div class="f-eq">EFECTO TRACTOR DIRECTO = Impacto Total / Impacto Directo</div>
+      <div class="f-eq">EFECTO TRACTOR INDIRECTO = Impacto Total / Impacto Indirecto</div>
+      <div class="f-note">El efecto tractor mide cuántas veces multiplica ILUNION su propio impacto. Si el tractor directo es 3, por cada euro de impacto directo se generan 3 euros en total en la economía.</div>
     </div>
-    <h3 style="font-size:18px;font-weight:600;margin-bottom:16px;">¿Qué es el enfoque Input-Output?</h3>
-    <p style="color:var(--ink-light);margin-bottom:20px;line-height:1.7;max-width:700px;">Las tablas Input-Output del INE describen cómo se relacionan todos los sectores económicos en España: qué compra cada sector a los demás. El modelo usa estas tablas para calcular, a partir del gasto de ILUNION, cuánta actividad adicional se genera en toda la economía.</p>
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🔢 Los multiplicadores: cómo se calcula el efecto indirecto e inducido</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:12px;">El modelo usa dos tipos de multiplicadores económicos, derivados de la <strong>inversa de Leontief</strong>:</p>
-          <ul>
-            <li><strong>Multiplicador Tipo I:</strong> Captura los encadenamientos en la cadena de suministro (efectos indirectos). Se calcula como Impacto Directo × Coeficiente del sector CNAE del proveedor.</li>
-            <li><strong>Multiplicador Tipo II:</strong> Añade el circuito de retroalimentación del consumo privado (efectos inducidos). Incorpora cómo los salarios se gastan en la economía.</li>
-            <li>Estos coeficientes están precargados en la hoja <strong>Matrices I-O</strong> del Excel (protegida). El usuario no los toca: se aplican automáticamente cuando se clasifican las compras por CNAE.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🏦 ¿Qué datos macroeconómicos usa el modelo?</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:12px;">El modelo combina datos internos de ILUNION con datos externos oficiales:</p>
-          <ul>
-            <li><strong>Tablas Input-Output INE 2022:</strong> Base de las relaciones intersectoriales de la economía española. Están en la hoja Matrices I-O (protegida, no editar).</li>
-            <li><strong>Deflactores del VAB sectorial:</strong> Para convertir todos los valores a precios del año base 2022 y hacer comparables los datos de distintos ejercicios.</li>
-            <li><strong>Precio social del carbono:</strong> Para monetizar el impacto de reducción de emisiones (Alcances 1 y 2).</li>
-            <li><strong>Umbrales de salario digno:</strong> Para calcular los KPIs de calidad del empleo y brecha salarial.</li>
-            <li>Todos estos parámetros externos están en la hoja <strong>Datos de Fuentes Externas</strong>. El equipo de metodología los actualiza; el usuario de Sostenibilidad no los modifica.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>⚖️ Principios metodológicos: cómo se garantiza la calidad</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <ul>
-            <li><strong>No doble contabilización:</strong> Ningún efecto se cuenta más de una vez entre los tres niveles.</li>
-            <li><strong>Trazabilidad:</strong> Cada KPI se puede rastrear hasta su fuente de datos primaria.</li>
-            <li><strong>Comparabilidad temporal:</strong> Los deflactores aseguran que los datos de distintos años sean comparables.</li>
-            <li><strong>Replicabilidad:</strong> El proceso está documentado para poder ser reproducido por otros equipos.</li>
-            <li><strong>Coherencia metodológica:</strong> Todos los indicadores se calculan bajo el mismo marco, sin criterios heterogéneos entre categorías.</li>
-          </ul>
-        </div>
-      </div>
+
+    <div class="info-box">
+      <h4>📌 Alcance del modelo: 24 líneas de negocio</h4>
+      <p>Opera a nivel <strong>consolidado del Grupo</strong> o por línea de negocio individual. Incluye ILUNION TextilCare, Hotels, Facility Services, Contact Center BPO, IT Services, Accesibilidad, VidaSénior, Reciclados, Ecologistic y más. Alcance exclusivamente nacional (España), bajo un enfoque de equilibrio estático.</p>
     </div>
   </section>
 
-  <!-- DIMENSIONES -->
-  <section id="dimensiones">
-    <div class="section-eyebrow">📊 KPIs del modelo</div>
-    <h2 class="section-title">Las 5 dimensiones de impacto</h2>
-    <p class="section-subtitle">El modelo genera 23+ indicadores organizados en cinco categorías. Aquí tienes los más importantes de cada una.</p>
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>👥 KPIs de Empleo (KPI 1–9)</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:12px;"><strong>¿Qué miden?</strong> El número de puestos de trabajo generados, su calidad (salario digno) e inclusividad (personas con discapacidad, mujeres, jóvenes). Diferenciados por tipo de impacto: directo, indirecto e inducido.</p>
-          <ul>
-            <li><strong>KPI 1 – Empleo joven sin oferta previa:</strong> Jóvenes incorporados al mercado laboral gracias a ILUNION.</li>
-            <li><strong>KPI 2 – Empleo en colectivos con discapacidad:</strong> FTE de personas con discapacidad directamente empleadas.</li>
-            <li><strong>KPI 3 – Empleo con salario digno:</strong> Empleos que superan el umbral de salario digno de referencia.</li>
-            <li><strong>KPI 4 – % trabajadores sobre salario digno:</strong> Porcentaje de la plantilla que supera el umbral.</li>
-            <li><strong>KPI 5 – Brecha de salario digno:</strong> Distancia entre salario medio y umbral digno.</li>
-            <li><strong>KPI 6 – Empleo femenino:</strong> FTE de mujeres atribuible a la actividad.</li>
-            <li><strong>KPIs 7–9 – Reducción de brecha salarial:</strong> Por género, discapacidad y colectivos vulnerables.</li>
-          </ul>
-        </div>
+  <!-- ═══════════════════════════════ BLOQUE 2 ═══════════════════════════════ -->
+  <section id="bloque2">
+    <div class="section-eyebrow">📗 Bloque 02</div>
+    <h2 class="section-title">Herramienta de medición: pestañas y tipología</h2>
+    <p class="section-subtitle">El Excel tiene tres bloques funcionales interconectados. Saber cuáles hojas tocar —y cuáles no— es la competencia más importante para el usuario.</p>
+
+    <div class="principle-grid" style="margin-bottom:28px;">
+      <div class="principle-card">
+        <div class="p-icon">🧩</div>
+        <h4>Modularidad</h4>
+        <p>Hojas independientes con funciones delimitadas. Actualizar un bloque de inputs no afecta al resto.</p>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🏛️ KPIs Fiscales (KPI 10–14)</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:12px;"><strong>¿Qué miden?</strong> La contribución tributaria total generada por la actividad de ILUNION: directa (impuestos propios), indirecta (cadena de suministro) e inducida (consumo salarial).</p>
-          <ul>
-            <li><strong>KPI 10 – Contribución fiscal total:</strong> Suma de todos los impuestos y cotizaciones atribuibles.</li>
-            <li><strong>KPI 11 – Impuesto de Sociedades:</strong> IS liquidado directamente por el Grupo.</li>
-            <li><strong>KPI 12 – Seguridad Social:</strong> Cotizaciones empresariales generadas por el empleo.</li>
-            <li><strong>KPI 13 – IRPF:</strong> Retenciones atribuibles al empleo directo, indirecto e inducido.</li>
-            <li><strong>KPI 14 – IVA neto:</strong> Contribución fiscal vía IVA generado por la actividad.</li>
-          </ul>
-        </div>
+      <div class="principle-card">
+        <div class="p-icon">🔐</div>
+        <h4>Separación de roles</h4>
+        <p>Hojas de usuario (inputs), hojas metodológicas (motor) y hojas de resultado. Acceso diferenciado.</p>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>📈 KPIs de Valor Añadido Bruto (KPI 15–21)</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:12px;"><strong>¿Qué miden?</strong> La contribución al PIB y VAB de España, en sus tres niveles. Miden la riqueza total generada por la actividad de ILUNION.</p>
-          <ul>
-            <li><strong>KPI 15 – Empleo indirecto en cadena de suministro:</strong> Empleos sostenidos en proveedores.</li>
-            <li><strong>KPI 16 – Empleo total atribuible:</strong> Suma de empleo directo + indirecto + inducido.</li>
-            <li><strong>KPI 17 – VAB total:</strong> Valor Añadido Bruto sumando los tres niveles de impacto.</li>
-            <li><strong>KPI 18 – PIB total atribuible:</strong> Contribución agregada al PIB nacional.</li>
-            <li><strong>KPI 19–21 – Empleo en proveedores estratégicos/críticos y valor local:</strong> Granularidad por tipo de proveedor y economía local.</li>
-          </ul>
-        </div>
+      <div class="principle-card">
+        <div class="p-icon">📅</div>
+        <h4>Actualización periódica</h4>
+        <p>Diseñado para actualizarse anualmente sustituyendo los datos de inputs, sin tocar la lógica de cálculo.</p>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>💶 KPIs de Costes Evitados (KPI 22–23)</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:12px;"><strong>¿Qué miden?</strong> El ahorro que ILUNION genera al sector público al reducir la necesidad de prestaciones sociales, subsidios y atención sanitaria.</p>
-          <ul>
-            <li><strong>KPI 22 – Coste evitado por estabilización de colectivos vulnerables:</strong> Ahorro en prestaciones sociales y subsidios por desempleo evitados gracias a la integración laboral de personas en riesgo de exclusión.</li>
-            <li><strong>KPI 23 – Coste evitado por reducción de accidentes laborales:</strong> Ahorro en atención sanitaria, indemnizaciones y bajas derivado de la política de PRL del Grupo.</li>
-          </ul>
-        </div>
+      <div class="principle-card">
+        <div class="p-icon">⚡</div>
+        <h4>Consistencia interna</h4>
+        <p>Incorpora validaciones que alertan ante inconsistencias, reduciendo el riesgo de error operativo.</p>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🌿 KPIs Socioambientales</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:12px;"><strong>¿Qué miden?</strong> El valor social monetizado de las políticas de sostenibilidad ambiental del Grupo: reducción de emisiones, eficiencia hídrica y gestión de residuos.</p>
-          <ul>
-            <li><strong>Reducción de emisiones Alcance 1 y 2:</strong> Toneladas de CO₂ evitadas × precio social del carbono (€/tCO₂eq).</li>
-            <li><strong>Eficiencia hídrica:</strong> Agua ahorrada en procesos productivos, expresada en valor económico.</li>
-            <li><strong>Gestión de residuos:</strong> Residuos desviados de vertedero, cuantificados por su coste de tratamiento evitado.</li>
-          </ul>
-        </div>
+      <div class="principle-card">
+        <div class="p-icon">📊</div>
+        <h4>Comparabilidad</h4>
+        <p>Outputs estandarizados para garantizar comparabilidad entre ejercicios, líneas de negocio y periodos.</p>
       </div>
     </div>
-  </section>
 
-  <!-- EXCEL -->
-  <section id="excel">
-    <div class="section-eyebrow">📗 Bloque 03</div>
-    <h2 class="section-title">Arquitectura y uso de la herramienta Excel</h2>
-    <p class="section-subtitle">El Excel tiene 13 hojas organizadas en tres zonas. Saber cuáles tocar (y cuáles no) es la habilidad más importante.</p>
     <div class="excel-grid">
       <div class="excel-zone inputs">
-        <div class="zone-label">✏️ Zona 1 · Inputs del usuario</div>
+        <div class="zone-label">✏️ Bloque 1 · Entrada de datos</div>
         <h4>Hojas que rellenas tú</h4>
-        <p style="font-size:13px;color:var(--ink-muted);margin-bottom:14px;">Estas son las únicas hojas donde introduce datos el equipo de Sostenibilidad.</p>
+        <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Únicas hojas que requieren intervención del usuario en cada ciclo anual.</p>
         <div class="sheet-tag editable"><span class="sheet-num">1</span> Instrucciones</div>
         <div class="sheet-tag editable"><span class="sheet-num">2</span> Inputs Empleo</div>
         <div class="sheet-tag editable"><span class="sheet-num">3</span> Inputs Fiscales</div>
         <div class="sheet-tag editable"><span class="sheet-num">4</span> Inputs de Compras</div>
-        <div class="sheet-tag editable"><span class="sheet-num">5</span> Inputs Coste Evitado</div>
+        <div class="sheet-tag editable"><span class="sheet-num">5</span> Inputs Seguridad y Salud</div>
+        <div class="sheet-tag editable"><span class="sheet-num">6</span> Inputs Medioambientales</div>
       </div>
       <div class="excel-zone engine">
-        <div class="zone-label">🔒 Zona 2 · Motor metodológico</div>
+        <div class="zone-label">🔒 Bloque 2 · Motor metodológico</div>
         <h4>Hojas que NO debes tocar</h4>
-        <p style="font-size:13px;color:var(--ink-muted);margin-bottom:14px;">Contienen los datos externos y el motor de cálculo. Están protegidas. Nunca las modifiques.</p>
-        <div class="sheet-tag readonly"><span class="sheet-num">6</span> Datos Empleo (aux.)</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">7</span> Datos Fiscales (aux.)</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">8</span> Datos Compras (aux.)</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">9</span> Datos Coste Evitado</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">10</span> Fuentes externas</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">11</span> Matrices I-O (INE 2022)</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">12</span> AUX (cálculo intermedio)</div>
+        <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Núcleo analítico. Su modificación puede generar errores e invalidar resultados.</p>
+        <div class="sheet-tag readonly"><span class="sheet-num">7</span> Datos de Empleo</div>
+        <div class="sheet-tag readonly"><span class="sheet-num">8</span> Datos Fiscales</div>
+        <div class="sheet-tag readonly"><span class="sheet-num">9</span> Datos de Compras</div>
+        <div class="sheet-tag readonly"><span class="sheet-num">10</span> Datos Seguridad y Salud</div>
+        <div class="sheet-tag readonly"><span class="sheet-num">11</span> Datos Medioambientales</div>
+        <div class="sheet-tag readonly"><span class="sheet-num">12</span> Datos Fuentes Externas</div>
+        <div class="sheet-tag readonly"><span class="sheet-num">13</span> Matrices I-O (INE 2022)</div>
+        <div class="sheet-tag readonly"><span class="sheet-num">14</span> AUX (cálculo intermedio)</div>
       </div>
       <div class="excel-zone results">
-        <div class="zone-label">📊 Zona 3 · Resultados</div>
-        <h4>Hoja de outputs</h4>
-        <p style="font-size:13px;color:var(--ink-muted);margin-bottom:14px;">Los KPIs finales se calculan automáticamente. Solo leer.</p>
-        <div class="sheet-tag output"><span class="sheet-num">13</span> Resultados (KPIs)</div>
-        <div style="margin-top:14px;padding:12px;background:rgba(26,122,74,.08);border-radius:8px;font-size:13px;color:var(--green);">
-          ✓ Los resultados se actualizan solos al completar los inputs. No necesitas hacer nada más.
+        <div class="zone-label">📊 Bloque 3 · Resultados</div>
+        <h4>Hoja de outputs · Solo lectura</h4>
+        <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Los KPIs finales se calculan automáticamente. No modificar fórmulas ni estructura.</p>
+        <div class="sheet-tag output"><span class="sheet-num">15</span> Resultados (KPIs)</div>
+        <div style="margin-top:12px;padding:10px;background:rgba(26,122,74,.08);border-radius:8px;font-size:12.5px;color:var(--green);">
+          ✓ Los resultados se actualizan automáticamente al completar los inputs. No se requiere ninguna acción adicional.
         </div>
       </div>
     </div>
-    <h3 style="font-size:18px;font-weight:600;margin-bottom:16px;">Flujo automático: 6 etapas desde datos hasta resultados</h3>
+
+    <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Flujo de cálculo automático: 6 etapas</h3>
     <div class="flow-steps">
-      <div class="flow-step"><div class="step-n">1</div><h4>Introducir datos internos</h4><p>Completa las 5 hojas de Inputs con datos del ejercicio</p></div>
-      <div class="flow-step"><div class="step-n">2</div><h4>Deflactación automática</h4><p>El modelo convierte los valores a precios base 2022</p></div>
-      <div class="flow-step"><div class="step-n">3</div><h4>Cálculo impacto directo</h4><p>Agrega datos reales: empleo, VAB y costes evitados</p></div>
-      <div class="flow-step"><div class="step-n">4</div><h4>Cálculo impacto indirecto</h4><p>Aplica multiplicadores Tipo I a las compras por CNAE</p></div>
-      <div class="flow-step"><div class="step-n">5</div><h4>Cálculo impacto inducido</h4><p>Aplica multiplicadores Tipo II sobre masa salarial y PMC</p></div>
-      <div class="flow-step"><div class="step-n">6</div><h4>KPIs consolidados</h4><p>Resultados listos por categoría, línea y período</p></div>
+      <div class="flow-step"><div class="step-n">1</div><h4>Introducir datos internos</h4><p>El usuario actualiza las 6 hojas de Inputs con datos del ejercicio analizado</p></div>
+      <div class="flow-step"><div class="step-n">2</div><h4>Asignación sectorial</h4><p>Compras clasificadas por CNAE + parámetros metodológicos aplicados</p></div>
+      <div class="flow-step"><div class="step-n">3</div><h4>Cálculo impacto directo</h4><p>KPIs directos desde datos internos del Grupo: empleo, VAB, fiscalidad</p></div>
+      <div class="flow-step"><div class="step-n">4</div><h4>Cálculo impacto indirecto</h4><p>Multiplicadores Tipo I aplicados al vector de compras sectoriales</p></div>
+      <div class="flow-step"><div class="step-n">5</div><h4>Cálculo impacto inducido</h4><p>Masa salarial → propensión al consumo → multiplicadores Tipo II</p></div>
+      <div class="flow-step"><div class="step-n">6</div><h4>KPIs consolidados</h4><p>Resultados por categoría, tipo de impacto, colectivo, línea y periodo</p></div>
     </div>
-    <h3 style="font-size:18px;font-weight:600;margin-bottom:20px;">Guía de inputs: qué introducir en cada hoja</h3>
+  </section>
+
+  <!-- ═══════════════════════════════ BLOQUE 3 ═══════════════════════════════ -->
+  <section id="bloque3">
+    <div class="section-eyebrow">📊 Bloque 03</div>
+    <h2 class="section-title">KPIs del modelo y su desglose</h2>
+    <p class="section-subtitle">El modelo genera indicadores organizados en 6 categorías temáticas. Todos los desagregables incluyen un total agregado para garantizar la coherencia y evitar la doble contabilización.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card emp"><span class="kpi-icon">👥</span><h4>Empleo</h4><p>Volumen, calidad e inclusividad del empleo generado</p></div>
+      <div class="kpi-card brecha"><span class="kpi-icon">⚖️</span><h4>Brecha</h4><p>Reducción de brechas salariales en colectivos clave</p></div>
+      <div class="kpi-card fisc"><span class="kpi-icon">🏛️</span><h4>Fiscal</h4><p>Contribución al erario: IS, IRPF, SS, IVA</p></div>
+      <div class="kpi-card vab"><span class="kpi-icon">📈</span><h4>Valor Añadido Bruto</h4><p>Contribución al PIB en sus tres niveles de impacto</p></div>
+      <div class="kpi-card cost"><span class="kpi-icon">💶</span><h4>Coste Evitado</h4><p>Ahorro público por integración de colectivos vulnerables</p></div>
+      <div class="kpi-card env"><span class="kpi-icon">🌿</span><h4>Socioambiental</h4><p>Valor monetizado: emisiones, energía renovable, agua</p></div>
+    </div>
+
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>📋 Hoja 2 · Inputs Empleo — ¿Qué datos van aquí?</h4>
+          <h4>👥 KPIs de Empleo — Volumen, calidad e inclusividad</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
+          <p style="margin-bottom:10px;">Dimensión más singular del modelo, coherente con el posicionamiento de ILUNION como empresa social. Integra tres subcategorías: <strong>colectivos vulnerables</strong>, <strong>calidad retributiva</strong> (salario digno) e <strong>igualdad de género</strong>. Se calculan en los tres niveles de impacto.</p>
           <ul>
-            <li>Plantilla total por empresa y línea de negocio, en <strong>FTE (equivalente a tiempo completo)</strong>. Los contratos parciales se deben convertir a FTE antes de introducirlos.</li>
-            <li>Salario bruto medio por categoría o por entidad (o masa salarial total).</li>
-            <li>Desglose por colectivos: personas con discapacidad, mujeres, jóvenes sin empleo previo, colectivos vulnerables.</li>
-            <li><strong>Regla clave:</strong> Los subgrupos (discapacidad, género) son porcentajes aplicados al FTE total. No sumes el colectivo al total general: ya está incluido.</li>
+            <li><strong>Empleo vulnerable de primera inserción:</strong> Empleos para personas en situación de vulnerabilidad que acceden por primera vez al mercado laboral.</li>
+            <li><strong>Empleo en colectivos con discapacidad:</strong> FTE de personas con discapacidad reconocida, directo + indirecto + inducido.</li>
+            <li><strong>Empleo con salario digno:</strong> Empleos directos cuya remuneración supera el umbral de salario digno del INE.</li>
+            <li><strong>% trabajadores sobre salario digno:</strong> Porcentaje de la plantilla directa que supera el umbral de salario digno.</li>
+            <li><strong>Brecha de salario digno:</strong> Diferencia media entre el umbral y los salarios de quienes no lo alcanzan.</li>
+            <li><strong>Empleo femenino:</strong> FTE de mujeres en los tres niveles de impacto atribuibles a la actividad.</li>
           </ul>
         </div>
       </div>
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>📋 Hoja 3 · Inputs Fiscales — ¿Qué datos van aquí?</h4>
+          <h4>⚖️ KPIs de Brecha — Reducción de desigualdades salariales</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
+          <p style="margin-bottom:10px;">Miden el impacto en la reducción de desigualdades salariales estructurales. Se basan en la comparación con referencias de mercado para estimar el efecto diferencial atribuible a la política de empleo inclusivo del Grupo. Son exclusivamente de <strong>impacto directo</strong>.</p>
           <ul>
-            <li>Impuesto de Sociedades (IS) liquidado en el ejercicio.</li>
-            <li>IVA neto devengado (IVA repercutido menos IVA soportado).</li>
-            <li>IRPF retenido a empleados (cuota empresarial).</li>
-            <li>Cotizaciones a la Seguridad Social (cuota empresarial).</li>
-            <li>Tributos municipales y autonómicos significativos.</li>
-            <li><strong>Regla clave:</strong> Datos de declaraciones AEAT y liquidaciones SS. No estimar: usar cifras reales liquidadas.</li>
+            <li><strong>Reducción de brecha salarial de género:</strong> Mejora en puntos porcentuales respecto al mercado de referencia para mujeres.</li>
+            <li><strong>Reducción de brecha salarial por discapacidad:</strong> Mejora relativa de las condiciones salariales de personas con discapacidad vs. media del mercado.</li>
+            <li><strong>Reducción de brecha salarial de colectivos vulnerables:</strong> Diferencial salarial frente a condiciones alternativas de empleo precario.</li>
           </ul>
         </div>
       </div>
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>📋 Hoja 4 · Inputs Compras — ¿Qué datos van aquí?</h4>
+          <h4>🏛️ KPIs Fiscal — Contribución a las finanzas públicas</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
+          <p style="margin-bottom:10px;">Cuantifican la contribución tributaria total generada por la actividad de ILUNION. Incluyen impacto <strong>directo</strong> (tributos liquidados por el Grupo), <strong>indirecto</strong> (atribuible a compras) e <strong>inducido</strong> (atribuible al consumo salarial).</p>
           <ul>
-            <li>Volumen de compras a proveedores (€), clasificado por <strong>código CNAE</strong> del proveedor.</li>
-            <li>Esta clasificación sectorial es lo que activa los multiplicadores correctos en la matriz I-O.</li>
-            <li><strong>Regla crítica:</strong> Revisar y actualizar la clasificación CNAE de proveedores cada año. Si un proveedor cambia de actividad o aparecen nuevos proveedores, la clasificación debe actualizarse.</li>
-            <li>Usar facturas clasificadas contablemente, no estimaciones agregadas.</li>
+            <li><strong>Contribución fiscal total:</strong> Suma de todos los impuestos y cotizaciones atribuibles (directos + indirectos + inducidos).</li>
+            <li><strong>Contribución atribuible a las compras:</strong> Impacto fiscal generado en la cadena de suministro.</li>
+            <li><strong>Contribución atribuible al consumo del salario:</strong> Impacto fiscal inducido por el gasto de los trabajadores.</li>
+            <li><strong>Impuesto de Sociedades:</strong> IS liquidado directamente por el Grupo.</li>
+            <li><strong>Seguridad Social:</strong> Cotizaciones patronales generadas por el empleo directo.</li>
+            <li><strong>IRPF:</strong> Retenciones atribuibles al empleo generado.</li>
+            <li><strong>IVA neto:</strong> IVA repercutido neto de IVA soportado deducible.</li>
           </ul>
         </div>
       </div>
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>📋 Hoja 5 · Inputs Coste Evitado — ¿Qué datos van aquí?</h4>
+          <h4>📈 KPIs de Valor Añadido Bruto — Contribución al PIB</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
+          <p style="margin-bottom:10px;">Eje central del modelo I-O. Miden la contribución al PIB y VAB en los tres niveles. Son las estimaciones más comparables con estadísticas macroeconómicas oficiales del INE.</p>
           <ul>
-            <li>Número de empleados en colectivos vulnerables (discapacidad, en riesgo de exclusión, etc.).</li>
-            <li>Datos de siniestralidad laboral: número de accidentes con baja, días de baja, severidad.</li>
-            <li>Comparativa con referencias del sector para calcular la reducción de accidentalidad.</li>
-            <li><strong>Regla clave:</strong> El modelo aplica automáticamente los parámetros del mercado laboral. No los introduzcas tú: están en Fuentes Externas.</li>
+            <li><strong>Empleo indirecto en cadena de suministro:</strong> FTE generados en proveedores por las compras de ILUNION.</li>
+            <li><strong>Empleo total atribuible:</strong> Suma directo + indirecto + inducido.</li>
+            <li><strong>VAB total:</strong> Valor Añadido Bruto agregado de los tres niveles.</li>
+            <li><strong>PIB total atribuible:</strong> VAB total ajustado por impuestos netos sobre los productos.</li>
+            <li><strong>Empleo en proveedores estratégicos y críticos:</strong> Granularidad por tipología de proveedor.</li>
+            <li><strong>VAB en economía local:</strong> Valor generado territorialmente por la red de proveedores locales.</li>
           </ul>
         </div>
       </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>💶 KPIs de Coste Evitado — Ahorro para el sector público</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p style="margin-bottom:10px;">Estiman el ahorro potencial en gasto público derivado de la integración laboral de colectivos vulnerables y de las políticas de PRL. Son exclusivamente de <strong>impacto directo</strong>.</p>
+          <ul>
+            <li><strong>Coste público evitado por estabilización de colectivos vulnerables:</strong> Ahorro en prestaciones por desempleo, subsidios de inserción y servicios sociales especializados por la integración laboral estable de personas vulnerables.</li>
+            <li><strong>Coste público evitado por reducción de accidentes laborales:</strong> Costes sanitarios y prestacionales evitados gracias a las políticas de prevención de riesgos del Grupo.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🌿 KPIs Socioambiental — Valor monetizado de la sostenibilidad</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p style="margin-bottom:10px;">Monetizan el impacto ambiental aplicando el Coste Social del Carbono y precios de referencia para agua y residuos. Son de <strong>impacto directo</strong>.</p>
+          <ul>
+            <li><strong>Coste social evitado por reducción de emisiones totales:</strong> Toneladas CO₂ evitadas × precio social del carbono.</li>
+            <li><strong>Coste social evitado por reducción de emisiones Alcance 1:</strong> Emisiones directas de la actividad propia de ILUNION.</li>
+            <li><strong>Coste social evitado por reducción de emisiones Alcance 2:</strong> Emisiones indirectas asociadas a la energía eléctrica consumida.</li>
+            <li><strong>Coste social evitado por consumo de electricidad renovable:</strong> Impacto positivo del uso de energía de fuentes renovables.</li>
+            <li><strong>Coste evitado por reducción del consumo hídrico:</strong> Impacto económico de las medidas de eficiencia en agua.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>🔍 Desagregación especial en ILUNION</h4>
+      <p>La mayoría de los KPIs de empleo se desagregan por tres dimensiones: <strong>género</strong> (hombre/mujer), <strong>discapacidad</strong> (sí/no) y <strong>colectivo vulnerable</strong> (incluye colectivo trans, étnico-racial, personas refugiadas, víctimas de violencia de género, internos en centros penitenciarios, entre otros). Esta desagregación es el diferencial metodológico del modelo para ILUNION.</p>
     </div>
   </section>
 
-  <!-- ERRORES -->
-  <section id="errores">
-    <div class="section-eyebrow">⚠️ Bloque 04</div>
-    <h2 class="section-title">Errores comunes y riesgos operativos</h2>
-    <p class="section-subtitle">La calidad de los resultados depende directamente de la calidad de los datos. El modelo <strong>no corrige inconsistencias automáticamente</strong>.</p>
-    <h3 style="font-size:17px;font-weight:600;margin-bottom:16px;">🚨 Errores críticos (nunca deben ocurrir)</h3>
-    <div class="errors-grid">
-      <div class="error-card danger">
-        <span class="error-icon">🚫</span>
-        <div><h4>Modificar hojas protegidas</h4><p>No desproteger ni editar las hojas Matrices I-O, AUX ni Datos de Fuentes Externas. Hacerlo invalidaría todos los cálculos del modelo.</p></div>
+  <!-- ═══════════════════════════════ BLOQUE 4 ═══════════════════════════════ -->
+  <section id="bloque4">
+    <div class="section-eyebrow">✏️ Bloque 04</div>
+    <h2 class="section-title">Datos a imputar por las áreas en los Inputs</h2>
+    <p class="section-subtitle">La calidad de los resultados depende directamente de la calidad de los datos introducidos. El modelo aplica criterios metodológicos predefinidos, pero no corrige inconsistencias automáticamente.</p>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>👥 Inputs Empleo — ¿Qué datos van aquí?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p style="margin-bottom:10px;">Información laboral, salarial y de empleo inclusivo del Grupo a nivel individual de empleado. Base para todos los KPIs de empleo, brecha y coste evitado.</p>
+          <ul>
+            <li><strong>Plantilla en FTE por línea de negocio:</strong> Equivalente a tiempo completo. Los contratos parciales deben convertirse a FTE antes de introducirlos (0,5 FTE un contrato a media jornada).</li>
+            <li><strong>Salario bruto individual o masa salarial:</strong> Para el cálculo de calidad salarial y brecha con el living wage.</li>
+            <li><strong>Género:</strong> Normalizado como Hombre / Mujer. Utilizado para KPIs de empleo femenino y brecha de género.</li>
+            <li><strong>Discapacidad:</strong> Normalizado como Sí / No. Para KPIs de empleo en colectivos con discapacidad.</li>
+            <li><strong>Colectivo vulnerable:</strong> Sí / No. Incluye más de 15 tipologías (colectivo trans, refugiados, víctimas de violencia de género, etc.).</li>
+            <li><strong>Comunidad autónoma:</strong> Para asignar el umbral de salario digno regional correspondiente.</li>
+            <li><strong>Regla crítica:</strong> Los colectivos (discapacidad, mujeres, vulnerables) son subconjuntos del FTE total. <strong>No los sumes al total:</strong> ya están incluidos.</li>
+          </ul>
+        </div>
       </div>
-      <div class="error-card danger">
-        <span class="error-icon">🚫</span>
-        <div><h4>Introducir texto o fórmulas en celdas de input</h4><p>Solo valores numéricos directos. Ni fórmulas Excel, ni texto, ni caracteres especiales. Las celdas de input son estrictamente numéricas.</p></div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🏛️ Inputs Fiscales — ¿Qué datos van aquí?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p style="margin-bottom:10px;">Tributos y cotizaciones sociales directamente atribuibles al Grupo en el ejercicio analizado. Base para los KPIs fiscales directos.</p>
+          <ul>
+            <li><strong>Impuesto de Sociedades (IS):</strong> Cuota liquidada en el ejercicio conforme a normativa AEAT.</li>
+            <li><strong>IVA neto devengado:</strong> IVA repercutido menos IVA soportado deducible.</li>
+            <li><strong>IRPF retenido:</strong> Retenciones practicadas sobre rentas salariales e ingresadas en la AEAT.</li>
+            <li><strong>Cotizaciones a la Seguridad Social:</strong> Cuota patronal del ejercicio analizado.</li>
+            <li><strong>CNAE y Producto:</strong> Variables de clasificación sectorial para el cruce con la matriz I-O.</li>
+            <li><strong>Regla crítica:</strong> Usar cifras reales liquidadas de declaraciones AEAT y SS. No estimar.</li>
+          </ul>
+        </div>
       </div>
-      <div class="error-card danger">
-        <span class="error-icon">🚫</span>
-        <div><h4>Dejar celdas obligatorias en blanco</h4><p>Si un campo aplica pero el valor es cero, escribe 0. Un blanco puede romper cálculos encadenados silenciosamente.</p></div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🛒 Inputs Compras — ¿Qué datos van aquí?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p style="margin-bottom:10px;">Base de datos de proveedores y volumen de compras. Es el input más crítico para el cálculo del impacto indirecto: activa los multiplicadores I-O correctos según el sector del proveedor.</p>
+          <ul>
+            <li><strong>Volumen de compras en euros por proveedor:</strong> Base sobre la que se aplican los multiplicadores del modelo.</li>
+            <li><strong>CNAE del proveedor (CNAE acreedor):</strong> Código de actividad económica del proveedor. Determina qué multiplicador sectorial se aplica.</li>
+            <li><strong>Tipo de compra:</strong> Clasificación de cada transacción según su naturaleza.</li>
+            <li><strong>País del proveedor:</strong> Para distinguir compras domésticas vs. importaciones (las importaciones no aplican multiplicadores nacionales).</li>
+            <li><strong>Línea de negocio compradora:</strong> Para atribuir correctamente el impacto a cada unidad de negocio.</li>
+            <li><strong>Compras intragrupo:</strong> Identificadas y tratadas específicamente. En el consolidado se eliminan para evitar doble contabilización.</li>
+            <li><strong>Regla crítica:</strong> Revisar y actualizar la clasificación CNAE anualmente. Un CNAE incorrecto genera un multiplicador equivocado.</li>
+          </ul>
+        </div>
       </div>
-      <div class="error-card danger">
-        <span class="error-icon">🚫</span>
-        <div><h4>Alterar la estructura del modelo</h4><p>No eliminar filas, no añadir columnas, no reordenar hojas. La estructura es la que habilita los vínculos entre hojas.</p></div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🦺 Inputs Seguridad y Salud — ¿Qué datos van aquí?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p style="margin-bottom:10px;">Datos de siniestralidad laboral del Grupo. Base para calcular el coste evitado por reducción de accidentes laborales.</p>
+          <ul>
+            <li><strong>Número de accidentes con baja laboral:</strong> En el ejercicio reportado, por línea de negocio.</li>
+            <li><strong>Días de baja por accidente:</strong> Para calcular el coste unitario del absentismo evitado.</li>
+            <li><strong>Severidad de los accidentes:</strong> Para estimar el coste sanitario y prestacional generado.</li>
+            <li><strong>Regla:</strong> El modelo aplica automáticamente el coste unitario de baja laboral de Fuentes Externas. No introducir ese parámetro tú.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🌿 Inputs Medioambientales — ¿Qué datos van aquí?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p style="margin-bottom:10px;">Datos de emisiones, consumos energéticos e hídricos. Base para los KPIs socioambientales.</p>
+          <ul>
+            <li><strong>Emisiones de Alcance 1:</strong> Emisiones directas de la actividad propia (en tCO₂eq).</li>
+            <li><strong>Emisiones de Alcance 2:</strong> Emisiones indirectas por consumo de electricidad (en kWh → el modelo aplica el factor mix eléctrico).</li>
+            <li><strong>Emisiones de Alcance 3:</strong> Emisiones de la cadena de valor (si disponibles).</li>
+            <li><strong>Consumo de electricidad renovable:</strong> kWh procedentes de fuentes renovables.</li>
+            <li><strong>Consumo hídrico:</strong> Volumen de agua consumida en m³.</li>
+            <li><strong>Regla:</strong> El Coste Social del Carbono y el precio del agua están en Fuentes Externas. No los introduzcas en los inputs.</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <h3 style="font-size:17px;font-weight:600;margin-bottom:16px;margin-top:8px;">⚡ Errores frecuentes de datos</h3>
-    <div class="errors-grid">
-      <div class="error-card warning">
-        <span class="error-icon">⚠️</span>
-        <div><h4>Confundir empleados con FTE</h4><p>Un empleado a media jornada no es 1 FTE, es 0,5 FTE. Introducir el número de contratos sin convertir sobreestima el empleo.</p></div>
-      </div>
-      <div class="error-card warning">
-        <span class="error-icon">⚠️</span>
-        <div><h4>Sumar colectivos al total</h4><p>Las personas con discapacidad ya están incluidas en el FTE total. No las añadas por separado: generarías doble conteo en el modelo.</p></div>
-      </div>
-      <div class="error-card warning">
-        <span class="error-icon">⚠️</span>
-        <div><h4>CNAE desactualizado en compras</h4><p>Si un proveedor ha cambiado de actividad o hay proveedores nuevos sin clasificar, el multiplicador aplicado será incorrecto. Revisar anualmente.</p></div>
-      </div>
-      <div class="error-card warning">
-        <span class="error-icon">⚠️</span>
-        <div><h4>Datos de ejercicios distintos mezclados</h4><p>Todos los inputs deben corresponder al mismo período de referencia. No mezclar datos de 2023 con 2024 en la misma carga.</p></div>
-      </div>
-      <div class="error-card info">
-        <span class="error-icon">ℹ️</span>
-        <div><h4>No verificar coherencia con contabilidad</h4><p>Antes de cerrar el modelo, contrastar los totales con los registros contables o de RRHH para detectar desviaciones significativas.</p></div>
-      </div>
-      <div class="error-card info">
-        <span class="error-icon">ℹ️</span>
-        <div><h4>No documentar datos estimados</h4><p>Si algún dato es provisional, documéntalo: fuente, método de estimación y fecha de revisión prevista.</p></div>
-      </div>
-    </div>
-    <h3 style="font-size:17px;font-weight:600;margin-bottom:16px;margin-top:8px;">✅ Normas generales obligatorias</h3>
+
+    <h3 style="font-size:16px;font-weight:600;margin:20px 0 14px;">Normas generales obligatorias para todos los inputs</h3>
     <div class="practices-list">
       <div class="practice-item"><div class="practice-num">1</div><div><h4>Solo valores numéricos directos en los campos cuantitativos</h4><p>Sin texto, sin formato especial, sin fórmulas. Valores numéricos puros.</p></div></div>
-      <div class="practice-item"><div class="practice-num">2</div><div><h4>Escribir 0 cuando el campo aplica pero el valor es nulo</h4><p>Nunca dejar en blanco un campo que aplica a tu línea de negocio.</p></div></div>
-      <div class="practice-item"><div class="practice-num">3</div><div><h4>No añadir columnas ni insertar filas fuera de las habilitadas</h4><p>La estructura del modelo es fija. Alterarla rompe los vínculos internos.</p></div></div>
+      <div class="practice-item"><div class="practice-num">2</div><div><h4>Escribir 0 cuando el campo aplica pero el valor es nulo</h4><p>Nunca dejar en blanco un campo que aplica a tu línea de negocio. Un blanco puede romper cálculos encadenados silenciosamente.</p></div></div>
+      <div class="practice-item"><div class="practice-num">3</div><div><h4>No añadir columnas ni insertar filas fuera de las habilitadas</h4><p>La estructura es fija. Alterarla rompe los vínculos internos del motor de cálculo.</p></div></div>
       <div class="practice-item"><div class="practice-num">4</div><div><h4>Cada línea de negocio rellena solo sus campos</h4><p>No cumplimentar campos de otras líneas. Coordinar si varias personas acceden en paralelo.</p></div></div>
-      <div class="practice-item"><div class="practice-num">5</div><div><h4>Guardar copia antes de cada sesión de edición masiva</h4><p>Mantener al menos una versión de respaldo antes de modificar datos significativos.</p></div></div>
+      <div class="practice-item"><div class="practice-num">5</div><div><h4>Todos los datos deben corresponder al mismo ejercicio de referencia</h4><p>No mezclar datos de ejercicios distintos en la misma carga del modelo.</p></div></div>
     </div>
   </section>
 
-  <!-- INTERPRETACIÓN -->
-  <section id="interpretacion">
-    <div class="section-eyebrow">🔍 Bloque 05</div>
-    <h2 class="section-title">Interpretación de resultados</h2>
-    <p class="section-subtitle">Los números del modelo tienen un contexto metodológico. Saber qué se puede decir (y qué no) es tan importante como saber calcularlo.</p>
-    <div class="alert-box critical">
-      <span class="alert-icon">🔴</span>
-      <div class="alert-content"><h4>El modelo es una fotografía estática, no una predicción</h4><p>Los resultados reflejan el impacto del ejercicio reportado bajo las condiciones de ese período. No proyectan impacto futuro ni incorporan tendencias dinámicas.</p></div>
+  <!-- ═══════════════════════════════ BLOQUE 5 ═══════════════════════════════ -->
+  <section id="bloque5">
+    <div class="section-eyebrow">⚙️ Bloque 05</div>
+    <h2 class="section-title">Transformaciones de información en las pestañas de Datos</h2>
+    <p class="section-subtitle">Las hojas de Datos (protegidas) transforman los inputs brutos en variables listas para el motor I-O. No interviene el usuario, pero es importante entender qué ocurre en cada una.</p>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>👥 Datos de Empleo — ¿Qué transformaciones se realizan?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p style="margin-bottom:10px;">A partir de los inputs individuales de empleados, se derivan variables normalizadas y se cruzan con parámetros externos:</p>
+          <ul>
+            <li><strong>División NFQ:</strong> Asigna a cada empleado la línea de negocio del perímetro empresarial definido.</li>
+            <li><strong>Género NFQ:</strong> Normaliza los códigos originales a las categorías <em>Hombre</em> y <em>Mujer</em>.</li>
+            <li><strong>FTE NFQ:</strong> Convierte el valor de FTE a formato porcentual para el modelo.</li>
+            <li><strong>Comunidad NFQ:</strong> Normaliza la denominación territorial a las 17 CC.AA. y Ceuta/Melilla (nomenclatura INE).</li>
+            <li><strong>Discapacidad NFQ:</strong> Normaliza a Sí / No.</li>
+            <li><strong>Colectivo vulnerable NFQ:</strong> Recodifica a Sí / No agrupando todas las tipologías de vulnerabilidad.</li>
+            <li><strong>Brecha de salario digno:</strong> Cruce individual con el umbral de salario digno regional asignado.</li>
+            <li><strong>Indicador de superación del umbral:</strong> Variable binaria (1/0) para cada empleado.</li>
+            <li><strong>Producto:</strong> Variable de clasificación sectorial para el cruce con la matriz I-O.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🛒 Datos de Compras — ¿Qué transformaciones se realizan?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Clasificación CNAE acreedor:</strong> Verifica y asigna el código CNAE del proveedor para el cruce sectorial con la matriz I-O.</li>
+            <li><strong>Segmentación doméstico/importación:</strong> Separa compras a proveedores nacionales (aplican multiplicadores I-O nacionales) de importaciones (no aplican).</li>
+            <li><strong>Tratamiento intragrupo:</strong> Identifica y etiqueta las compras entre entidades del Grupo para evitar doble contabilización en el consolidado.</li>
+            <li><strong>Deflactación a precios base 2022:</strong> Convierte los importes en precios corrientes a precios constantes del año base de las matrices I-O.</li>
+            <li><strong>Asignación de producto:</strong> Mapea el CNAE a la nomenclatura de productos de la matriz I-O del INE.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🏛️ Datos Fiscales — ¿Qué transformaciones se realizan?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Asignación de CNAE:</strong> Vincula cada registro fiscal al código de actividad económica correspondiente.</li>
+            <li><strong>Clasificación de producto:</strong> Habilita la correspondencia sectorial requerida por el modelo para los impactos fiscales indirectos.</li>
+            <li><strong>Cálculo de ratios fiscales:</strong> Aplica el tipo medio efectivo de IRPF, el porcentaje de SS y la cuña fiscal total sobre las magnitudes salariales.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🌿 Datos Medioambientales — ¿Qué transformaciones se realizan?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Conversión kWh → tCO₂eq:</strong> Aplica el factor del mix eléctrico español sobre el consumo de electricidad para calcular emisiones de Alcance 2.</li>
+            <li><strong>Monetización de emisiones:</strong> Multiplica las toneladas de CO₂ evitadas por el Coste Social del Carbono de referencia.</li>
+            <li><strong>Monetización hídrica:</strong> Aplica el precio medio del agua (€/m³) sobre el volumen de ahorro hídrico.</li>
+            <li><strong>Asignación de CNAE y Producto:</strong> Para el cruce sectorial en el modelo I-O.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>📐 Ajuste temporal: deflactación y actualización de precios</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p style="margin-bottom:10px;">Las matrices I-O del INE están referenciadas a un año base fijo (2022). Los datos del Grupo están en precios corrientes del ejercicio analizado. El modelo aplica dos ajustes automáticos:</p>
+          <ul>
+            <li><strong>Deflactor implícito del PIB:</strong> Convierte magnitudes nominales a reales con base 2020 = 100.</li>
+            <li><strong>Factor de actualización 2022 → ejercicio analizado:</strong> Expresa los resultados finales en precios corrientes del año analizado.</li>
+            <li><strong>Factor de actualización 2024 → 2022:</strong> Para la aplicación de los coeficientes técnicos de las matrices.</li>
+            <li>Todos estos parámetros están en la hoja <strong>Datos Fuentes Externas</strong> (protegida). El equipo metodológico los actualiza anualmente.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ BLOQUE 6 ═══════════════════════════════ -->
+  <section id="bloque6">
+    <div class="section-eyebrow">🔢 Bloque 06</div>
+    <h2 class="section-title">Matrices Input-Output: concepto, funcionamiento y outputs</h2>
+    <p class="section-subtitle">El núcleo metodológico del modelo. Las matrices I-O del INE describen cómo se relacionan todos los sectores económicos en España. A partir de ellas se calculan los multiplicadores que transforman el gasto de ILUNION en impacto económico total.</p>
+
+    <div class="two-col" style="margin-bottom:28px;">
+      <div>
+        <h3 style="font-size:16px;font-weight:600;margin-bottom:10px;">¿Qué son las Tablas I-O del INE?</h3>
+        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:12px;">Las Tablas Input-Output publicadas por el INE describen qué compra cada sector económico a los demás. Son la fotografía estadística de las relaciones de interdependencia productiva de la economía española.</p>
+        <p style="color:var(--ink-light);line-height:1.7;">El modelo usa las tablas de <strong>2022</strong> como año base. Para ejercicios más recientes, se aplican deflactores para actualizar los coeficientes técnicos.</p>
+      </div>
+      <div>
+        <h3 style="font-size:16px;font-weight:600;margin-bottom:10px;">¿Qué es la Inversa de Leontief?</h3>
+        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:12px;">Es la operación matemática central del modelo. A partir de la matriz de coeficientes técnicos, la inversión de Leontief permite calcular cuánta producción total se requiere en cada sector para satisfacer una unidad adicional de demanda final.</p>
+        <p style="color:var(--ink-light);line-height:1.7;">La hoja <strong>Matrices I-O</strong> está protegida. Nunca modificar: alberga la inversa de Leontief y los vectores de multiplicadores sectoriales.</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🔢 Multiplicadores Tipo I — Efecto indirecto en la cadena de suministro</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Qué captura:</strong> Los encadenamientos productivos en la cadena de suministro (efectos indirectos).</li>
+            <li><strong>Cómo se calcula:</strong> Compras sectoriales del Grupo ILUNION × coeficiente técnico del sector CNAE del proveedor (derivado de la inversa de Leontief).</li>
+            <li><strong>Resultado:</strong> Empleo, VAB, contribución fiscal y producción activados en los sectores proveedores.</li>
+            <li><strong>Aplicación práctica:</strong> Si ILUNION compra €10M en servicios de transporte (CNAE H), el multiplicador Tipo I del sector H determina cuántos FTE, VAB y tributos genera ese gasto en toda la cadena logística española.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🔢 Multiplicadores Tipo II — Efecto inducido por el consumo salarial</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Qué captura:</strong> El circuito de retroalimentación del consumo privado (efectos inducidos).</li>
+            <li><strong>Cómo se calcula:</strong> Masa salarial total (directa + indirecta) × propensión marginal al consumo (PMC) → distribución sectorial del consumo → multiplicadores sobre esa demanda.</li>
+            <li><strong>Resultado:</strong> Empleo, VAB y tributos activados por el gasto de los trabajadores en la economía.</li>
+            <li><strong>Importante:</strong> El Tipo II incorpora el efecto del consumo de los hogares sobre la demanda agregada. Captura un dinamismo económico que el Tipo I no recoge.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>📊 ¿Qué outputs genera la hoja Matrices I-O?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Producción total activada (directa + indirecta + inducida):</strong> En euros, desagregada por sector económico.</li>
+            <li><strong>Producción inducida neta:</strong> Producción total inducida menos el patrón de consumo inducido, para evitar doble contabilización.</li>
+            <li><strong>Empleo indirecto e inducido:</strong> FTE generados en cada sector por efecto de las compras y del consumo salarial.</li>
+            <li><strong>VAB indirecto e inducido:</strong> Valor añadido generado en la cadena de suministro y por el consumo.</li>
+            <li><strong>Contribución fiscal indirecta e inducida:</strong> Aplicando coeficientes fiscales sectoriales sobre la producción activada.</li>
+            <li><strong>La hoja AUX</strong> recoge los cálculos intermedios y la relación entre CNAE y productos I-O antes de la consolidación en Resultados.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-box">
+      <div class="f-title">Lógica de cálculo — Ejemplo impacto indirecto VAB</div>
+      <div class="f-eq">Compras sectoriales (€) × Coeficiente VAB sector (inversa Leontief) = VAB indirecto (€)</div>
+      <div class="f-title" style="margin-top:4px;">Lógica de cálculo — Ejemplo impacto inducido fiscal</div>
+      <div class="f-eq">(Producción total inducida − Patrón de consumo inducido) × Coeficiente fiscal inducido = Contribución fiscal inducida (€)</div>
+      <div class="f-note">Estos cálculos son completamente automáticos. El usuario solo necesita asegurarse de que las compras están bien clasificadas por CNAE en Inputs Compras.</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ BLOQUE 7 ═══════════════════════════════ -->
+  <section id="bloque7">
+    <div class="section-eyebrow">📈 Bloque 07</div>
+    <h2 class="section-title">Resultados: presentación e interpretación de valores</h2>
+    <p class="section-subtitle">La hoja de Resultados presenta los KPIs consolidados por categoría, tipo de impacto, colectivo, línea de negocio y periodo. Saber qué se puede afirmar —y qué no— es tan importante como saber calcularlo.</p>
+
+    <div class="alert-box good">
+      <span class="alert-icon">🟢</span>
+      <div class="alert-content"><h4>El impacto directo es 100% verificable</h4><p>Se basa en datos reales: nóminas, declaraciones AEAT, estados contables. Es la base objetiva del modelo y el único nivel con datos fuente directos auditables.</p></div>
     </div>
     <div class="alert-box caution">
       <span class="alert-icon">🟡</span>
-      <div class="alert-content"><h4>Los efectos indirecto e inducido son estimaciones, no cifras contables</h4><p>Se basan en multiplicadores económicos derivados de las tablas I-O del INE. Son metodológicamente sólidos y ampliamente utilizados, pero no son datos verificables como el impacto directo.</p></div>
+      <div class="alert-content"><h4>Los efectos indirecto e inducido son estimaciones metodológicas</h4><p>Se basan en multiplicadores económicos derivados de las tablas I-O del INE. Son sólidos metodológicamente y ampliamente usados a nivel internacional, pero no son cifras contables verificables individualmente.</p></div>
     </div>
-    <div class="alert-box good">
-      <span class="alert-icon">🟢</span>
-      <div class="alert-content"><h4>El impacto directo sí es 100% verificable</h4><p>Se basa en datos reales: nóminas, declaraciones AEAT, estados contables. Es la base objetiva del modelo y el único nivel auditado con datos fuente directos.</p></div>
+    <div class="alert-box critical">
+      <span class="alert-icon">🔴</span>
+      <div class="alert-content"><h4>El modelo es una fotografía estática del ejercicio reportado</h4><p>No proyecta impacto futuro ni incorpora tendencias dinámicas. Los resultados no son comparables entre ejercicios sin verificar que usan el mismo año base de deflactores.</p></div>
     </div>
-    <h3 style="font-size:17px;font-weight:600;margin:28px 0 16px;">Interpretaciones correctas vs. incorrectas</h3>
+
+    <h3 style="font-size:16px;font-weight:600;margin:24px 0 14px;">Interpretaciones correctas vs. incorrectas</h3>
     <table class="interp-table">
       <thead>
         <tr>
-          <th class="correct">✓ Correcto — Puedes decir esto</th>
-          <th class="incorrect">✗ Incorrecto — No puedes decir esto</th>
+          <th class="correct">✓ Puedes decir esto</th>
+          <th class="incorrect">✗ No puedes decir esto</th>
         </tr>
       </thead>
       <tbody>
@@ -1243,11 +1001,11 @@
           <td>"ILUNION <strong>crea</strong> X empleos en la economía española." (El modelo estima empleos sostenidos, no necesariamente nuevos.)</td>
         </tr>
         <tr>
-          <td>"La actividad de ILUNION <strong>está asociada a</strong> una contribución fiscal total de X millones de euros."</td>
+          <td>"La actividad de ILUNION <strong>está asociada a</strong> una contribución fiscal total estimada de X millones de euros."</td>
           <td>"ILUNION <strong>paga</strong> X millones en impuestos." (Solo el impacto directo son pagos reales; los indirectos e inducidos son estimados.)</td>
         </tr>
         <tr>
-          <td>"El efecto tractor indica que por cada euro de VAB directo de ILUNION, se generan X euros en total en la economía."</td>
+          <td>"Por cada euro de VAB directo de ILUNION, se generan X euros en total en la economía (efecto tractor)."</td>
           <td>"Sin ILUNION, la economía española perdería exactamente X euros de PIB." (El modelo no es un contrafactual.)</td>
         </tr>
         <tr>
@@ -1255,74 +1013,150 @@
           <td>"ILUNION ahorra al Estado X euros." (Es una estimación con supuestos metodológicos explícitos, no una transferencia verificada.)</td>
         </tr>
         <tr>
-          <td>"El modelo muestra una <strong>tendencia positiva</strong> en la contribución fiscal entre 2022 y 2024."</td>
-          <td>"Los resultados de 2022 y 2024 son directamente comparables sin ajuste." (Solo son comparables si ambos usan el mismo año base y deflactores consistentes.)</td>
+          <td>"El modelo muestra una <strong>tendencia positiva</strong> en la contribución fiscal entre 2022 y 2024, una vez aplicados los deflactores consistentes."</td>
+          <td>"Los resultados de 2022 y 2024 son directamente comparables." (Solo lo son si usan el mismo año base y deflactores coherentes.)</td>
         </tr>
       </tbody>
     </table>
-    <h3 style="font-size:17px;font-weight:600;margin-bottom:16px;">Cómo leer el efecto tractor</h3>
+
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:14px;">Estructura de la hoja de Resultados</h3>
     <div class="two-col">
       <div class="info-box" style="margin-bottom:0;">
-        <h4>📐 Fórmula: Efecto Tractor = Impacto Total / Impacto Directo</h4>
-        <p>Si el efecto tractor es <strong>3,2</strong>, significa que por cada euro de impacto que ILUNION genera directamente, se generan 3,2 euros en total en la economía. Es un indicador de la capacidad tractora de la organización sobre el tejido productivo español.</p>
+        <h4>📋 Ejes de desagregación disponibles</h4>
+        <p>Los KPIs se presentan desagregados por: <strong>tipo de impacto</strong> (directo / indirecto / inducido / total), <strong>categoría</strong> (empleo, brecha, fiscal, VAB, coste evitado, socioambiental), <strong>colectivo</strong> (género, discapacidad, vulnerabilidad), <strong>línea de negocio</strong> (24 unidades) y <strong>periodo</strong> (ejercicio o acumulado).</p>
       </div>
       <div class="info-box" style="margin-bottom:0;background:var(--green-light);border-color:#6ecf9a;border-left-color:var(--green);">
-        <h4 style="color:var(--green);">💡 Insight clave para sostenibilidad</h4>
-        <p>Un efecto tractor alto refuerza el argumento de que ILUNION no es solo una empresa generadora de empleo directo: es un <strong>dinamizador del ecosistema económico</strong> español, especialmente relevante en sectores con alto volumen de compras a proveedores locales.</p>
+        <h4 style="color:var(--green);">💡 Insight: el efecto tractor como argumento estratégico</h4>
+        <p>Un efecto tractor alto refuerza que ILUNION no es solo una empresa generadora de empleo directo: es un <strong>dinamizador del ecosistema económico</strong> español. Especialmente relevante en líneas de negocio con alto volumen de compras a proveedores locales.</p>
       </div>
     </div>
   </section>
 
-  <!-- CHECKLIST -->
-  <section id="checklist">
-    <div class="section-eyebrow">✅ Bloque 06</div>
-    <h2 class="section-title">Checklist de uso</h2>
-    <p class="section-subtitle">Antes de cerrar o compartir el modelo, verifica estos puntos. Márcalos uno a uno.</p>
+  <!-- ═══════════════════════════════ BLOQUE 8 ═══════════════════════════════ -->
+  <section id="bloque8">
+    <div class="section-eyebrow">✅ Bloque 08</div>
+    <h2 class="section-title">Validación y checklist de uso</h2>
+    <p class="section-subtitle">Antes de leer los resultados tras una actualización, verifica que no existen alertas de inconsistencia activas y que todos los campos obligatorios han sido cumplimentados. El modelo no corrige errores de entrada automáticamente.</p>
+
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:14px;">🚨 Errores críticos — Nunca deben ocurrir</h3>
+    <div class="errors-grid">
+      <div class="error-card danger">
+        <span class="error-icon">🚫</span>
+        <div><h4>Modificar hojas protegidas</h4><p>No desproteger ni editar Matrices I-O, AUX ni Datos de Fuentes Externas. Invalidaría todos los cálculos del modelo.</p></div>
+      </div>
+      <div class="error-card danger">
+        <span class="error-icon">🚫</span>
+        <div><h4>Introducir texto o fórmulas en celdas de input</h4><p>Solo valores numéricos directos. Ni fórmulas Excel, ni texto, ni caracteres especiales.</p></div>
+      </div>
+      <div class="error-card danger">
+        <span class="error-icon">🚫</span>
+        <div><h4>Dejar celdas obligatorias en blanco</h4><p>Si un campo aplica pero el valor es cero, escribe 0. Un blanco puede romper cálculos encadenados sin avisar.</p></div>
+      </div>
+      <div class="error-card danger">
+        <span class="error-icon">🚫</span>
+        <div><h4>Alterar la estructura del modelo</h4><p>No eliminar filas, no añadir columnas, no reordenar hojas. La estructura habilita los vínculos entre hojas.</p></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:14px;">⚠️ Errores frecuentes de datos</h3>
+    <div class="errors-grid">
+      <div class="error-card warning">
+        <span class="error-icon">⚠️</span>
+        <div><h4>Confundir empleados con FTE</h4><p>Un empleado a media jornada es 0,5 FTE, no 1. Introducir el número de contratos sobreestima el empleo.</p></div>
+      </div>
+      <div class="error-card warning">
+        <span class="error-icon">⚠️</span>
+        <div><h4>Sumar colectivos al total de FTE</h4><p>Las personas con discapacidad ya están en el FTE total. No las añadas por separado: doble conteo.</p></div>
+      </div>
+      <div class="error-card warning">
+        <span class="error-icon">⚠️</span>
+        <div><h4>CNAE desactualizado en compras</h4><p>Si un proveedor cambió de actividad o hay nuevos proveedores sin clasificar, el multiplicador será incorrecto. Revisar anualmente.</p></div>
+      </div>
+      <div class="error-card warning">
+        <span class="error-icon">⚠️</span>
+        <div><h4>Mezclar datos de ejercicios distintos</h4><p>Todos los inputs deben corresponder al mismo período de referencia. No mezclar 2023 con 2024 en la misma carga.</p></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:14px;">Puntos de validación tras la carga de datos</h3>
+    <div class="validation-grid">
+      <div class="val-card check">
+        <h4>✓ Consistencia interanual</h4>
+        <p>Verificar y revisar la consistencia de los datos respecto al ejercicio anterior antes de confirmar la carga.</p>
+      </div>
+      <div class="val-card check">
+        <h4>✓ Correspondencia con registros internos</h4>
+        <p>Contrastar los totales de empleo y fiscalidad del modelo con RRHH y contabilidad para detectar desviaciones.</p>
+      </div>
+      <div class="val-card check">
+        <h4>✓ Ausencia de alertas activas</h4>
+        <p>El modelo incorpora validaciones que alertan ante inconsistencias. Revisar que no hay ninguna activa antes de leer resultados.</p>
+      </div>
+      <div class="val-card check">
+        <h4>✓ Cobertura de líneas de negocio</h4>
+        <p>Verificar que todas las líneas de negocio incluidas en el perímetro han aportado sus datos de inputs.</p>
+      </div>
+      <div class="val-card warn">
+        <h4>⚠ Datos estimados documentados</h4>
+        <p>Si algún dato es provisional, documentar fuente, método de estimación y fecha de revisión prevista en el registro de versiones.</p>
+      </div>
+      <div class="val-card warn">
+        <h4>⚠ CNAE de proveedores revisado</h4>
+        <p>Confirmar que la clasificación sectorial de proveedores es la actualizada para el ejercicio reportado, especialmente en nuevos proveedores.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:600;margin:4px 0 14px;">Checklist interactivo — Márcalo antes de compartir el modelo</h3>
     <div class="checklist-count" id="cl-count">0 de 12 completados</div>
     <div class="checklist-progress"><div class="checklist-progress-bar" id="cl-bar" style="width:0%"></div></div>
     <ul class="checklist" id="checklist-items">
-      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">He completado todas las hojas de Inputs (Empleo, Fiscales, Compras, Coste Evitado) con datos del mismo ejercicio de referencia.</span><span class="cl-tag gen">General</span></li>
-      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">He introducido solo valores numéricos directos. Ninguna celda tiene texto, fórmulas ni caracteres especiales.</span><span class="cl-tag gen">General</span></li>
+      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">He completado todas las hojas de Inputs (Empleo, Fiscales, Compras, Seguridad y Salud, Medioambientales) con datos del mismo ejercicio de referencia.</span><span class="cl-tag gen">General</span></li>
+      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">He introducido solo valores numéricos directos. Ninguna celda de input tiene texto, fórmulas ni caracteres especiales.</span><span class="cl-tag gen">General</span></li>
       <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Los campos con valor cero tienen un 0 explícito, no están en blanco.</span><span class="cl-tag gen">General</span></li>
       <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Los datos de empleo están en FTE (equivalente a tiempo completo), no en número de contratos.</span><span class="cl-tag emp">Empleo</span></li>
-      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Los colectivos (discapacidad, mujeres, jóvenes) no están sumados al total general de FTE: son subgrupos ya incluidos en él.</span><span class="cl-tag emp">Empleo</span></li>
+      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Los colectivos (discapacidad, mujeres, vulnerables) no están sumados al total general de FTE: son subgrupos ya incluidos en él.</span><span class="cl-tag emp">Empleo</span></li>
       <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Los datos fiscales son los liquidados en el ejercicio según declaraciones AEAT y liquidaciones SS, no estimaciones.</span><span class="cl-tag fisc">Fiscal</span></li>
       <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Las compras a proveedores están clasificadas con el CNAE correcto y actualizado para el ejercicio reportado.</span><span class="cl-tag comp">Compras</span></li>
       <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">He verificado que los totales de empleo y fiscalidad del modelo son coherentes con los registros internos (RRHH, contabilidad).</span><span class="cl-tag gen">General</span></li>
-      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">No he modificado ni desprotegido ninguna hoja del motor metodológico (Matrices I-O, AUX, Fuentes Externas).</span><span class="cl-tag gen">Crítico</span></li>
+      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">No he modificado ni desprotegido ninguna hoja del motor metodológico (Matrices I-O, AUX, Fuentes Externas, Datos).</span><span class="cl-tag crit">Crítico</span></li>
       <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">He guardado una copia de seguridad del archivo antes de esta sesión de trabajo.</span><span class="cl-tag gen">General</span></li>
-      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Los datos estimados o provisionales están documentados en el registro externo (fuente, método, fecha de revisión).</span><span class="cl-tag gen">General</span></li>
-      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Tengo claro qué puedo afirmar con los resultados (contribución estimada) y qué no (datos contables exactos para impactos indirecto/inducido).</span><span class="cl-tag gen">Interpretación</span></li>
+      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Los datos estimados o provisionales están documentados en el registro de versiones del modelo (fuente, método, fecha de revisión).</span><span class="cl-tag gen">General</span></li>
+      <li onclick="toggleCheck(this)"><div class="cb"></div><span class="cl-text">Tengo claro qué puedo afirmar con los resultados (contribución estimada) y qué no (los efectos indirecto e inducido no son cifras contables verificables).</span><span class="cl-tag gen">Interpretación</span></li>
     </ul>
   </section>
 
-  <!-- CIERRE -->
+  <!-- ═══════════════════════════════ CIERRE ═══════════════════════════════ -->
   <section id="cierre">
     <div class="section-eyebrow" style="color:#93b8e8;">🌱 Mensajes clave</div>
     <h2 class="section-title">Lo que debes llevarte de esta formación</h2>
-    <p class="section-subtitle">Tres ideas que resumen por qué este modelo importa y cómo usarlo bien.</p>
+    <p class="section-subtitle">Cuatro ideas que resumen por qué este modelo importa y cómo usarlo bien.</p>
     <div class="key-messages">
       <div class="key-msg">
         <div class="km-num">01</div>
-        <h4>El modelo es una herramienta de evidencia, no de marketing</h4>
-        <p>Permite cuantificar con rigor metodológico lo que ILUNION ya hace: generar empleo inclusivo, sostener economías locales y contribuir a las finanzas públicas. La credibilidad del modelo depende de la calidad de los datos que introducimos.</p>
+        <h4>El modelo es evidencia, no marketing</h4>
+        <p>Cuantifica con rigor metodológico lo que ILUNION ya hace: generar empleo inclusivo, sostener economías locales y contribuir a las finanzas públicas. Su credibilidad depende de la calidad de los datos que introducimos.</p>
       </div>
       <div class="key-msg">
         <div class="km-num">02</div>
-        <h4>Impacto directo, indirecto e inducido: los tres siempre van juntos</h4>
+        <h4>Directo, indirecto e inducido: los tres siempre van juntos</h4>
         <p>El impacto total de ILUNION va mucho más allá de su plantilla propia. Cada euro que gasta activa cadenas de suministro y consumo que sostienen miles de empleos adicionales en la economía española.</p>
       </div>
       <div class="key-msg">
         <div class="km-num">03</div>
+        <h4>El dato de entrada es tu responsabilidad</h4>
+        <p>El modelo no corrige inconsistencias automáticamente. La calidad del resultado es directamente proporcional a la calidad del input. Un CNAE mal asignado o un FTE mal convertido distorsiona el resultado sin que el sistema avise.</p>
+      </div>
+      <div class="key-msg">
+        <div class="km-num">04</div>
         <h4>Sostenibilidad e impacto socioeconómico son la misma historia</h4>
-        <p>El modelo conecta dimensiones medioambientales (emisiones, residuos), sociales (empleo inclusivo, brecha salarial) y económicas (VAB, fiscalidad) en un único marco comparable. Esta integración es el diferencial estratégico de ILUNION.</p>
+        <p>El modelo conecta dimensiones medioambientales (emisiones, agua), sociales (empleo inclusivo, brecha salarial) y económicas (VAB, fiscalidad) en un único marco comparable. Esta integración es el diferencial estratégico de ILUNION.</p>
       </div>
     </div>
     <div class="closing-banner">
       <span class="cb-icon">🚀</span>
       <div>
-        <h3>Ya tienes todo lo que necesitas para ser autónomo con el modelo</h3>
-        <p>Conoces la arquitectura del Excel, sabes qué hojas tocar y cuáles no, entiendes los tres niveles de impacto y sabes cómo interpretar los resultados con criterio. Cualquier duda puntual, consulta esta guía o al responsable metodológico del modelo.</p>
+        <h3>Ya tienes todo lo que necesitas para usar el modelo con autonomía</h3>
+        <p>Conoces la arquitectura del Excel, sabes qué hojas tocar y cuáles no, entiendes los tres niveles de impacto, los 6 grupos de KPIs y cómo interpretar los resultados con criterio. Para cualquier duda metodológica, consulta el informe de referencia o al responsable metodológico.</p>
       </div>
     </div>
   </section>
@@ -1333,10 +1167,8 @@
   function toggleNav() {
     document.getElementById('sidebar').classList.toggle('open');
   }
-
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('#sidebar a');
-
   function setActiveNav() {
     let current = '';
     sections.forEach(s => {
@@ -1348,25 +1180,19 @@
   }
   window.addEventListener('scroll', setActiveNav, { passive: true });
   setActiveNav();
-
   function toggleAccordion(header) {
     const body = header.nextElementSibling;
     const isOpen = body.classList.contains('open');
     document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
     document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('open'));
-    if (!isOpen) {
-      body.classList.add('open');
-      header.classList.add('open');
-    }
+    if (!isOpen) { body.classList.add('open'); header.classList.add('open'); }
   }
-
   function toggleCheck(item) {
     item.classList.toggle('checked');
     const cb = item.querySelector('.cb');
     cb.textContent = item.classList.contains('checked') ? '✓' : '';
     updateProgress();
   }
-
   function updateProgress() {
     const items = document.querySelectorAll('#checklist-items li');
     const checked = document.querySelectorAll('#checklist-items li.checked').length;
@@ -1374,7 +1200,6 @@
     document.getElementById('cl-bar').style.width = pct + '%';
     document.getElementById('cl-count').textContent = checked + ' de ' + items.length + ' completados';
   }
-
   navLinks.forEach(a => a.addEventListener('click', () => {
     document.getElementById('sidebar').classList.remove('open');
   }));
