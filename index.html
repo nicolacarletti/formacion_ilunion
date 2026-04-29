@@ -828,7 +828,7 @@
   <section id="bloque2">
     <div class="section-eyebrow">📊 Bloque 02</div>
     <h2 class="section-title">KPIs del modelo y su desglose</h2>
-    <p class="section-subtitle">El modelo genera indicadores organizados en 6 categorías temáticas. Todos los desagregables incluyen un total agregado para garantizar la coherencia y evitar la doble contabilización.</p>
+    <p class="section-subtitle">El modelo combina un núcleo de KPIs troncales de impacto socioeconómico con categorías específicas de desglose, permitiendo una lectura integral y consistente de los resultados.</p>
 
     <h3 style="font-size:16px;font-weight:600;margin-bottom:10px;">KPIs troncales del modelo de cálculo de impacto socioeconómico</h3>
     <div class="kpi-grid troncales">
@@ -841,14 +841,81 @@
       <div class="kpi-card troncal env"><span class="kpi-icon">🧾</span><h4>Contribución fiscal e impuestos netos</h4><p>Fiscalidad total y otros impuestos netos sobre la producción</p></div>
     </div>
 
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:10px;">Detalle metodológico de KPIs troncales</h3>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🔁 Efecto tractor — Indicador multiplicador de la actividad</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>Expresa cuántas unidades de impacto total se asocian por cada unidad de impacto de referencia, considerando la agregación de los vectores directo, indirecto e inducido. Permite interpretar la capacidad de arrastre de la actividad de ILUNION sobre el resto del sistema económico.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🏗️ Contribución al PIB mediante VAB</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>Cuantifica la aportación económica del modelo a través del Valor Añadido Bruto generado por los impactos directo, indirecto e inducido, como aproximación consistente a la contribución al PIB.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🧮 Empleo generado en FTE</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>Mide el empleo asociado a la actividad en equivalentes a tiempo completo (FTE), diferenciando empleo directo, empleo indirecto en cadena de suministro y empleo inducido por el consumo asociado a rentas salariales.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>💼 Remuneración total del trabajo</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>Recoge la compensación laboral agregada atribuible a la actividad económica modelizada, desagregada en componentes directos, indirectos e inducidos, e incluyendo sueldos, salarios y otros componentes de la remuneración del trabajo.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>💵 Sueldos y salarios brutos</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>Refleja la masa salarial bruta vinculada a la actividad, con lectura por impacto directo, indirecto e inducido, como variable base para interpretar el impacto laboral y los efectos de consumo asociados a rentas salariales.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🛡️ Cotizaciones sociales</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>Incluye las aportaciones sociales asociadas al empleo generado en los tres vectores de impacto (directo, indirecto e inducido), como componente troncal para estimar la contribución al sistema de protección social.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🧾 Contribución fiscal e impuestos netos</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <p>Integra la contribución fiscal y otros impuestos netos sobre la producción asociados a la actividad, diferenciando el componente directo y los impactos indirecto e inducido estimados en el resto de la economía.</p>
+        </div>
+      </div>
+    </div>
+
     <h3 style="font-size:16px;font-weight:600;margin-bottom:10px;">Categorías específicas de KPIs</h3>
     <div class="kpi-grid">
-      <div class="kpi-card emp"><span class="kpi-icon">👥</span><h4>Empleo</h4><p>Volumen, calidad e inclusividad del empleo generado</p></div>
-      <div class="kpi-card brecha"><span class="kpi-icon">⚖️</span><h4>Brecha</h4><p>Reducción de brechas salariales en colectivos clave</p></div>
-      <div class="kpi-card fisc"><span class="kpi-icon">🏛️</span><h4>Fiscal</h4><p>Contribución al erario: IS, IRPF, SS, IVA</p></div>
-      <div class="kpi-card vab"><span class="kpi-icon">📈</span><h4>Valor Añadido Bruto</h4><p>Contribución al PIB en sus tres niveles de impacto</p></div>
-      <div class="kpi-card cost"><span class="kpi-icon">💶</span><h4>Coste Evitado</h4><p>Ahorro público por integración de colectivos vulnerables</p></div>
-      <div class="kpi-card env"><span class="kpi-icon">🌿</span><h4>Socioambiental</h4><p>Valor monetizado: emisiones, energía renovable, agua</p></div>
+      <div class="kpi-card emp"><span class="kpi-icon">👥</span><h4>Empleo</h4><p>Indicadores vinculados al volumen, composición y calidad del empleo generado por la actividad del Grupo ILUNION, incluyendo empleo de personas con discapacidad, otros colectivos con barreras de empleabilidad, salario digno y empleo femenino.</p></div>
+      <div class="kpi-card brecha"><span class="kpi-icon">⚖️</span><h4>Brecha</h4><p>Indicadores orientados a medir diferencias salariales en colectivos clave, incluyendo brecha salarial de género, brecha salarial de personas con discapacidad y brecha salarial de colectivos vulnerables</p></div>
+      <div class="kpi-card fisc"><span class="kpi-icon">🏛️</span><h4>Fiscal</h4><p>Indicadores asociados a la contribución fiscal atribuible a la actividad del Grupo ILUNION, incluyendo impuestos directos reportados, cotizaciones sociales y contribución pública estimada en los impactos indirectos e inducidos.</p></div>
+      <div class="kpi-card vab"><span class="kpi-icon">📈</span><h4>Valor Añadido Bruto</h4><p>Indicadores que cuantifican el Valor Añadido Bruto generado por la actividad del Grupo ILUNION y su contribución al PIB aproximada mediante VAB, diferenciando impacto directo, indirecto, inducido y total.</p></div>
+      <div class="kpi-card cost"><span class="kpi-icon">💶</span><h4>Coste Evitado</h4><p>Indicadores que estiman costes públicos o socioeconómicos potencialmente evitados asociados a la integración laboral de colectivos vulnerables, la estabilidad en el empleo y la reducción de bajas laborales o siniestralidad</p></div>
+      <div class="kpi-card env"><span class="kpi-icon">🌿</span><h4>Socioambiental</h4><p>Indicadores monetizados asociados a determinadas variables ambientales, como emisiones de gases de efecto invernadero, consumo de electricidad renovable, consumo hídrico y otros impactos ambientales seleccionados.</p></div>
     </div>
 
     <div class="accordion">
