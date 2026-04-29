@@ -230,23 +230,27 @@
   .kpi-card.troncal.tractor { grid-column: 1 / -1; text-align: center; }
 
   /* EXCEL */
-  .excel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+  .excel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-bottom: 28px; }
   .excel-zone { border-radius: var(--radius-lg); padding: 20px; border: 1px solid var(--border); }
   .excel-zone.inputs { background: var(--accent-light); border-color: #93b8e8; }
   .excel-zone.engine { background: #fff3e8; border-color: #fbbf7a; }
+  .excel-zone.calc { background: #f5f3ff; border-color: #c4b5fd; }
   .excel-zone.results { background: var(--green-light); border-color: #6ecf9a; }
   .excel-zone .zone-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
   .excel-zone.inputs .zone-label { color: var(--accent); }
   .excel-zone.engine .zone-label { color: #92400e; }
+  .excel-zone.calc .zone-label { color: #5b21b6; }
   .excel-zone.results .zone-label { color: var(--green); }
   .excel-zone h4 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
   .sheet-tag { display: flex; align-items: center; gap: 8px; padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; margin: 4px 0; }
   .sheet-tag.editable { background: rgba(0,85,165,.1); color: var(--accent-dark); }
   .sheet-tag.readonly { background: rgba(255,140,50,.12); color: #92400e; }
+  .excel-zone.calc .sheet-tag.readonly { background: rgba(91,33,182,.12); color: #5b21b6; }
   .sheet-tag.output { background: rgba(26,122,74,.1); color: var(--green); }
   .sheet-num { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; font-size: 10px; font-weight: 700; flex-shrink: 0; }
   .sheet-tag.editable .sheet-num { background: var(--accent); color: #fff; }
   .sheet-tag.readonly .sheet-num { background: #f59e0b; color: #fff; }
+  .excel-zone.calc .sheet-tag.readonly .sheet-num { background: #7c3aed; color: #fff; }
   .sheet-tag.output .sheet-num { background: var(--green); color: #fff; }
 
   /* FLOW STEPS */
@@ -807,12 +811,11 @@
   <section id="bloque4">
     <div class="section-eyebrow">📗 Bloque 04</div>
     <h2 class="section-title">Herramienta de medición: pestañas y tipología</h2>
-    <p class="section-subtitle">El modelo Excel tiene tres bloques funcionales interconectados. Saber cuáles hojas tocar es la competencia más importante para el usuario.</p>
+    <p class="section-subtitle">El modelo Excel tiene cuatro bloques funcionales interconectados. Saber cuáles hojas tocar es la competencia más importante para el usuario.</p>
 
     <div class="excel-grid">
       <div class="excel-zone inputs">
         <div class="zone-label">✏️ Bloque 1 · Entrada de datos</div>
-        <h4>Hojas que rellenas tú</h4>
         <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Únicas hojas que requieren intervención del usuario en cada ciclo anual.</p>
         <div class="sheet-tag editable"><span class="sheet-num">1</span> Instrucciones</div>
         <div class="sheet-tag editable"><span class="sheet-num">2</span> Inputs Empleo</div>
@@ -820,10 +823,10 @@
         <div class="sheet-tag editable"><span class="sheet-num">4</span> Inputs de Compras</div>
         <div class="sheet-tag editable"><span class="sheet-num">5</span> Inputs Seguridad y Salud</div>
         <div class="sheet-tag editable"><span class="sheet-num">6</span> Inputs Medioambientales</div>
+        <img src="assets/input Grupo ILUNION.jpg" alt="Vista de la hoja de inputs de Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(18,44,92,.18);" loading="lazy">
       </div>
       <div class="excel-zone engine">
-        <div class="zone-label">🔒 Bloque 2 · Motor metodológico</div>
-        <h4>Hojas que NO debes tocar</h4>
+        <div class="zone-label">🔒 Bloque 2 · Tratamientos de datos</div>
         <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Núcleo analítico. Su modificación puede generar errores e invalidar resultados.</p>
         <div class="sheet-tag readonly"><span class="sheet-num">7</span> Datos de Empleo</div>
         <div class="sheet-tag readonly"><span class="sheet-num">8</span> Datos Fiscales</div>
@@ -831,17 +834,23 @@
         <div class="sheet-tag readonly"><span class="sheet-num">10</span> Datos Seguridad y Salud</div>
         <div class="sheet-tag readonly"><span class="sheet-num">11</span> Datos Medioambientales</div>
         <div class="sheet-tag readonly"><span class="sheet-num">12</span> Datos Fuentes Externas</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">13</span> Matrices I-O (INE 2022)</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">14</span> AUX (cálculo intermedio)</div>
+        <img src="assets/datos Grupo ILUNION.jpg" alt="Vista de la hoja de datos de Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(18,44,92,.18);" loading="lazy">
+      </div>
+      <div class="excel-zone calc">
+        <div class="zone-label">🧮 Bloque 3 · Motor metodológico</div>
+        <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Hojas de soporte técnico para las matrices y operaciones internas del modelo.</p>
+        <div class="sheet-tag readonly"><span class="sheet-num">13</span> Matrices I-O INE 2022</div>
+        <div class="sheet-tag readonly"><span class="sheet-num">14</span> AUX cálculo intermedio</div>
+        <img src="assets/Matrice Grupo ILUNION.jpg" alt="Vista de la matriz del Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(91,33,182,.25);" loading="lazy">
       </div>
       <div class="excel-zone results">
-        <div class="zone-label">📊 Bloque 3 · Resultados</div>
-        <h4>Hoja de outputs · Solo lectura</h4>
+        <div class="zone-label">📊 Bloque 4 · Resultados</div>
         <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Los KPIs finales se calculan automáticamente. No modificar fórmulas ni estructura.</p>
         <div class="sheet-tag output"><span class="sheet-num">15</span> Resultados (KPIs)</div>
         <div style="margin-top:12px;padding:10px;background:rgba(26,122,74,.08);border-radius:8px;font-size:12.5px;color:var(--green);">
           ✓ Los resultados se actualizan automáticamente al completar los inputs. No se requiere ninguna acción adicional.
         </div>
+        <img src="assets/Resultados Grupo ILUNION.jpg" alt="Vista de la hoja de resultados del Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(26,122,74,.25);" loading="lazy">
       </div>
     </div>
 
@@ -1135,93 +1144,53 @@
   <!-- ═══════════════════════════════ BLOQUE 5 ═══════════════════════════════ -->
   <section id="bloque5">
     <div class="section-eyebrow">✏️ Bloque 05</div>
-    <h2 class="section-title">Datos a imputar por las áreas en los Inputs</h2>
+    <h2 class="section-title">Caso de uso</h2>
     <p class="section-subtitle">La calidad de los resultados depende directamente de la calidad de los datos introducidos. El modelo aplica criterios metodológicos predefinidos, pero no corrige inconsistencias automáticamente.</p>
 
     <div class="accordion">
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>👥 Inputs Empleo — ¿Qué datos van aquí?</h4>
+          <h4>👥 Inputs Empleo</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
           <p style="margin-bottom:10px;">Información laboral, salarial y de empleo inclusivo del Grupo a nivel individual de empleado. Base para todos los KPIs de empleo, brecha y coste evitado.</p>
-          <ul>
-            <li><strong>Plantilla en FTE por línea de negocio:</strong> Equivalente a tiempo completo. Los contratos parciales deben convertirse a FTE antes de introducirlos (0,5 FTE un contrato a media jornada).</li>
-            <li><strong>Salario bruto individual o masa salarial:</strong> Para el cálculo de calidad salarial y brecha con el living wage.</li>
-            <li><strong>Género:</strong> Normalizado como Hombre / Mujer. Utilizado para KPIs de empleo femenino y brecha de género.</li>
-            <li><strong>Discapacidad:</strong> Normalizado como Sí / No. Para KPIs de empleo en colectivos con discapacidad.</li>
-            <li><strong>Colectivo vulnerable:</strong> Sí / No. Incluye más de 15 tipologías (colectivo trans, refugiados, víctimas de violencia de género, etc.).</li>
-            <li><strong>Comunidad autónoma:</strong> Para asignar el umbral de salario digno regional correspondiente.</li>
-            <li><strong>Regla crítica:</strong> Los colectivos (discapacidad, mujeres, vulnerables) son subconjuntos del FTE total. <strong>No los sumes al total:</strong> ya están incluidos.</li>
-          </ul>
         </div>
       </div>
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🏛️ Inputs Fiscales — ¿Qué datos van aquí?</h4>
+          <h4>🏛️ Inputs Fiscales</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
           <p style="margin-bottom:10px;">Tributos y cotizaciones sociales directamente atribuibles al Grupo en el ejercicio analizado. Base para los KPIs fiscales directos.</p>
-          <ul>
-            <li><strong>Impuesto de Sociedades (IS):</strong> Cuota liquidada en el ejercicio conforme a normativa AEAT.</li>
-            <li><strong>IVA neto devengado:</strong> IVA repercutido menos IVA soportado deducible.</li>
-            <li><strong>IRPF retenido:</strong> Retenciones practicadas sobre rentas salariales e ingresadas en la AEAT.</li>
-            <li><strong>Cotizaciones a la Seguridad Social:</strong> Cuota patronal del ejercicio analizado.</li>
-            <li><strong>CNAE y Producto:</strong> Variables de clasificación sectorial para el cruce con la matriz I-O.</li>
-            <li><strong>Regla crítica:</strong> Usar cifras reales liquidadas de declaraciones AEAT y SS. No estimar.</li>
-          </ul>
         </div>
       </div>
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🛒 Inputs Compras — ¿Qué datos van aquí?</h4>
+          <h4>🛒 Inputs Compras</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
           <p style="margin-bottom:10px;">Base de datos de proveedores y volumen de compras. Es el input más crítico para el cálculo del impacto indirecto: activa los multiplicadores I-O correctos según el sector del proveedor.</p>
-          <ul>
-            <li><strong>Volumen de compras en euros por proveedor:</strong> Base sobre la que se aplican los multiplicadores del modelo.</li>
-            <li><strong>CNAE del proveedor (CNAE acreedor):</strong> Código de actividad económica del proveedor. Determina qué multiplicador sectorial se aplica.</li>
-            <li><strong>Tipo de compra:</strong> Clasificación de cada transacción según su naturaleza.</li>
-            <li><strong>País del proveedor:</strong> Para distinguir compras domésticas vs. importaciones (las importaciones no aplican multiplicadores nacionales).</li>
-            <li><strong>Línea de negocio compradora:</strong> Para atribuir correctamente el impacto a cada unidad de negocio.</li>
-            <li><strong>Compras intragrupo:</strong> Identificadas y tratadas específicamente. En el consolidado se eliminan para evitar doble contabilización.</li>
-            <li><strong>Regla crítica:</strong> Revisar y actualizar la clasificación CNAE anualmente. Un CNAE incorrecto genera un multiplicador equivocado.</li>
-          </ul>
         </div>
       </div>
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🦺 Inputs Seguridad y Salud — ¿Qué datos van aquí?</h4>
+          <h4>🦺 Inputs Seguridad y Salud</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
           <p style="margin-bottom:10px;">Datos de siniestralidad laboral del Grupo. Base para calcular el coste evitado por reducción de accidentes laborales.</p>
-          <ul>
-            <li><strong>Número de accidentes con baja laboral:</strong> En el ejercicio reportado, por línea de negocio.</li>
-            <li><strong>Días de baja por accidente:</strong> Para calcular el coste unitario del absentismo evitado.</li>
-            <li><strong>Severidad de los accidentes:</strong> Para estimar el coste sanitario y prestacional generado.</li>
-            <li><strong>Regla:</strong> El modelo aplica automáticamente el coste unitario de baja laboral de Fuentes Externas. No introducir ese parámetro tú.</li>
-          </ul>
         </div>
       </div>
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🌿 Inputs Medioambientales — ¿Qué datos van aquí?</h4>
+          <h4>🌿 Inputs Medioambientales</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
           <p style="margin-bottom:10px;">Datos de emisiones, consumos energéticos e hídricos. Base para los KPIs socioambientales.</p>
-          <ul>
-            <li><strong>Emisiones de Alcance 1:</strong> Emisiones directas de la actividad propia (en tCO₂eq).</li>
-            <li><strong>Emisiones de Alcance 2:</strong> Emisiones indirectas por consumo de electricidad (en kWh → el modelo aplica el factor mix eléctrico).</li>
-            <li><strong>Emisiones de Alcance 3:</strong> Emisiones de la cadena de valor (si disponibles).</li>
-            <li><strong>Consumo de electricidad renovable:</strong> kWh procedentes de fuentes renovables.</li>
-            <li><strong>Consumo hídrico:</strong> Volumen de agua consumida en m³.</li>
-            <li><strong>Regla:</strong> El Coste Social del Carbono y el precio del agua están en Fuentes Externas. No los introduzcas en los inputs.</li>
-          </ul>
         </div>
       </div>
     </div>
