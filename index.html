@@ -50,7 +50,7 @@
     letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px;
     border-radius: 20px; margin-bottom: 10px;
   }
-  .nav-logo h2 { font-family: var(--font-serif); color: #fff; font-size: 14px; font-weight: 400; line-height: 1.3; }
+  .nav-logo h2 { font-family: var(--font-serif); color: #fff; font-size: 1.25rem; font-weight: 700; line-height: 1.25; }
   .nav-section-label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 10px 24px 5px; }
   #sidebar a {
     display: flex; align-items: center; gap: 10px; padding: 8px 24px;
@@ -62,9 +62,43 @@
   #sidebar a:hover .nav-icon, #sidebar a.active .nav-icon { opacity: 1; }
 
   /* MAIN */
-  main { margin-left: var(--nav-w); min-height: 100vh; display: flex; flex-direction: column; }
-  section { padding: 68px 60px; border-bottom: 1px solid var(--surface-3); }
+  main { margin-left: var(--nav-w); min-height: 100vh; display: flex; flex-direction: column; counter-reset: bloquePage; }
+  section { padding: 68px 60px; border-bottom: 1px solid var(--surface-3); position: relative; }
   section:last-child { border-bottom: none; }
+  section[id^="bloque"] { counter-increment: bloquePage; padding-bottom: 82px; margin-bottom: 18px; border-bottom: 1px dashed #ced9e9; }
+  body.paged-blocks section.page-item {
+    display: none;
+    min-height: calc(100vh - 40px);
+    margin-bottom: 0;
+  }
+  body.paged-blocks section.page-item.active-block-page { display: block; }
+  body.paged-blocks { overflow-y: auto; }
+  .next-block-nav {
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    bottom: 12px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .next-block-link {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid #b7c6dd;
+    background: #f5f9ff;
+    color: #355f93;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 1;
+    transition: all .15s;
+  }
+  .next-block-link:hover { background: #e8f1ff; border-color: #97b0d4; transform: translateY(1px); }
   #hero { order: 1; }
   #agenda { order: 2; }
   #bloque1 { order: 3; }
@@ -72,10 +106,9 @@
   #bloque3 { order: 5; }
   #bloque4 { order: 6; }
   #bloque5 { order: 7; }
-  #bloque6 { order: 8; }
-  #bloque7 { order: 9; }
-  #bloque8 { order: 10; }
-  #cierre { order: 11; }
+  #bloque7 { order: 8; }
+  #bloque8 { order: 9; }
+  #cierre { order: 10; }
 
   /* HERO */
   #hero { background: var(--ink); padding: 80px 60px 72px; position: relative; overflow: hidden; }
@@ -209,6 +242,48 @@
   .formula-box .f-title { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #fff; }
   .formula-box .f-eq { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: #93b8e8; background: rgba(255,255,255,.06); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,.1); }
   .formula-box .f-note { font-size: 13px; color: #fff; }
+  .formula-box.flow-logic .f-eq {
+    color: #123a6b;
+    background: #eef5ff;
+    border: 1px solid #bfd4f2;
+  }
+  .formula-box.flow-logic .f-eq.induced-step {
+    color: #14532d;
+    background: #ebf9f0;
+    border: 1px solid #b7e4c7;
+  }
+  .formula-box.flow-logic .f-note { color: #e6effa; }
+  .formula-box.temporal-flow {
+    background: #eef4fb;
+    border: 1px solid #c9d9ee;
+    color: var(--ink);
+    box-shadow: none;
+  }
+  .formula-box.temporal-flow .f-eq {
+    color: #1f4f8a;
+    background: #f8fbff;
+    border: 1px solid #d7e4f3;
+    font-weight: 700;
+  }
+  .formula-box.territorial-flow {
+    background: #f6f8fb;
+    border: 1px solid #d7dee9;
+    color: var(--ink);
+    box-shadow: none;
+    text-align: center;
+    align-items: center;
+  }
+  .formula-box.territorial-flow .f-eq {
+    color: #1f2f46;
+    background: #ffffff;
+    border: 1px solid #d9e1ea;
+    font-weight: 700;
+    width: 100%;
+  }
+  .formula-box.territorial-flow .f-note {
+    color: var(--ink-muted);
+    text-align: center;
+  }
 
   /* KPI GRID */
   .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin-bottom: 36px; }
@@ -329,13 +404,24 @@
   /* CLOSING */
   #cierre { background: var(--ink); color: #fff; border-bottom: none; }
   #cierre h2 { color: #fff; }
-  #cierre .section-subtitle { color: rgba(255,255,255,.6); max-width: 560px; }
+  #cierre .section-subtitle { color: rgba(255,255,255,.82); max-width: 560px; }
   .key-messages { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; margin-bottom: 36px; }
-  .key-msg { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-lg); padding: 22px; transition: background .2s; }
-  .key-msg:hover { background: rgba(255,255,255,.1); }
-  .key-msg .km-num { font-family: var(--font-serif); font-size: 38px; color: rgba(0,85,165,.5); line-height: 1; margin-bottom: 10px; }
+  .key-msg {
+    background: linear-gradient(180deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.1) 100%);
+    border: 1px solid rgba(147,184,232,.55);
+    border-left: 4px solid #93b8e8;
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.22);
+    transition: transform .2s, background .2s;
+  }
+  .key-msg:hover {
+    background: linear-gradient(180deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.14) 100%);
+    transform: translateY(-2px);
+  }
+  .key-msg .km-num { font-family: var(--font-serif); font-size: 38px; color: #cfe2ff; line-height: 1; margin-bottom: 10px; }
   .key-msg h4 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 6px; }
-  .key-msg p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.6; }
+  .key-msg p { font-size: 13px; color: rgba(255,255,255,.9); line-height: 1.6; }
   .closing-banner { background: var(--accent); border-radius: var(--radius-lg); padding: 28px 32px; display: flex; align-items: center; gap: 22px; }
   .closing-banner .cb-icon { font-size: 36px; flex-shrink: 0; }
   .closing-banner h3 { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 5px; }
@@ -357,6 +443,31 @@
   .accordion-body ul { list-style: none; display: flex; flex-direction: column; gap: 8px; padding-left: 4px; }
   .accordion-body ul li { display: flex; gap: 8px; align-items: flex-start; }
   .accordion-body ul li::before { content: '→'; color: var(--accent); flex-shrink: 0; font-weight: 600; }
+  #bloque4 .excel-zone.engine .accordion {
+    border-color: #fbbf7a;
+    background: #fff7ef;
+    margin-top: 6px;
+  }
+  #bloque4 .excel-zone.engine .accordion-header {
+    background: #ffefd9;
+  }
+  #bloque4 .excel-zone.engine .accordion-header:hover {
+    background: #ffe6c7;
+  }
+  #bloque4 .excel-zone.engine .accordion-header.open {
+    background: #ffe0b6;
+  }
+  #bloque4 .excel-zone.engine .accordion-header h4,
+  #bloque4 .excel-zone.engine .accordion-header.open h4 {
+    color: #92400e;
+  }
+  #bloque4 .excel-zone.engine .accordion-arrow,
+  #bloque4 .excel-zone.engine .accordion-header.open .accordion-arrow {
+    color: #b45309;
+  }
+  #bloque4 .excel-zone.engine .accordion-body {
+    background: #fffaf3;
+  }
 
   /* PRACTICES */
   .practices-list { display: flex; flex-direction: column; gap: 10px; }
@@ -499,6 +610,10 @@
   @media (max-width: 560px) {
     .agenda-grid, .kpi-grid, .errors-grid, .key-messages, .principle-grid, .validation-grid { grid-template-columns: 1fr; }
   }
+  @media print {
+    section[id^="bloque"] { break-after: page; page-break-after: always; }
+    .next-block-nav { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -516,10 +631,9 @@
   <a href="#bloque2"><i class="nav-icon">🔢</i>B2 · Enfoque metodológico</a>
   <a href="#bloque3"><i class="nav-icon">📊</i>B3 · KPIs del modelo</a>
   <a href="#bloque4"><i class="nav-icon">📗</i>B4 · Herramienta de medición</a>
-  <a href="#bloque5"><i class="nav-icon">✏️</i>B5 · Datos a imputar</a>
-  <a href="#bloque6"><i class="nav-icon">⚙️</i>B6 · Transformaciones de datos</a>
-  <a href="#bloque7"><i class="nav-icon">📈</i>B7 · Resultados</a>
-  <a href="#bloque8"><i class="nav-icon">✅</i>B8 · Validación y checklist</a>
+  <a href="#bloque5"><i class="nav-icon">✏️</i>B5 · Ejemplo práctico del cálculo del impacto socioeconómico</a>
+  <a href="#bloque7"><i class="nav-icon">📈</i>B6 · Resultados: presentación e interpretación de valores</a>
+  <a href="#bloque8"><i class="nav-icon">📐</i>B7 · Supuestos metodológicos</a>
   <div class="nav-section-label">Cierre</div>
   <a href="#cierre"><i class="nav-icon">🌱</i>Mensajes clave</a>
 </nav>
@@ -530,7 +644,7 @@
   <section id="hero">
     <div class="hero-eyebrow">📅 Sesión Formativa · Abril 2026</div>
     <h1>Cálculo del<br><em>Impacto Socioeconómico</em><br>Grupo ILUNION</h1>
-    <p class="lead">Guía práctica para el Grupo ILUNION: entiende el modelo, usa la herramienta Excel con confianza e interpreta los resultados correctamente.</p>
+    <p class="lead">Objetivo de la formación: entender qué es el impacto socioeconómico, cómo se calcula y cómo se desagrega en impacto directo, indirecto e inducido.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="label">Duración</span>
@@ -550,7 +664,7 @@
       </div>
       <div class="hero-meta-item">
         <span class="label">Líneas de negocio</span>
-        <span class="value">21 unidades del Grupo</span>
+        <span class="value">20 unidades de negocio y Grupo ILUNION</span>
       </div>
     </div>
     <a href="#agenda" class="hero-cta">Comenzar la formación →</a>
@@ -560,7 +674,7 @@
   <section id="agenda">
     <div class="section-eyebrow">📋 Estructura</div>
     <h2 class="section-title">Agenda de la formación</h2>
-    <p class="section-subtitle">La sesión se estructura en 8 bloques: de los fundamentos conceptuales al uso autónomo y validación de la herramienta.</p>
+    <p class="section-subtitle">La sesión se organiza en 7 bloques de contenido, alineados con la estructura actual de navegación, más un cierre con mensajes clave.</p>
     <div class="agenda-grid">
       <div class="agenda-card">
         <div class="block-num">Bloque 01</div>
@@ -580,27 +694,27 @@
       <div class="agenda-card">
         <div class="block-num">Bloque 04</div>
         <h3>Herramienta de medición</h3>
-        <p>Arquitectura del Excel: pestañas y su tipología — inputs, datos, matrices I-O y resultados.</p>
+        <p>Arquitectura del Excel: inputs, tratamientos de datos (incluye transformaciones metodológicas), matrices I-O y resultados.</p>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 05</div>
-        <h3>Datos a imputar</h3>
-        <p>Qué información deben introducir las áreas en cada pestaña de Inputs para el correcto funcionamiento del motor.</p>
+        <h3>Ejemplo práctico del cálculo del impacto socioeconómico</h3>
+        <p>Caso de uso funcional completo de impacto directo, indirecto, inducido y total consolidado con validaciones.</p>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 06</div>
-        <h3>Transformaciones de datos</h3>
-        <p>Qué ocurre en las pestañas de Datos: ajustes, normalizaciones y preparación para el motor I-O.</p>
+        <h3>Resultados: presentación e interpretación de valores</h3>
+        <p>Lectura de resultados con criterios de interpretación para diferenciar dato observado, estimación modelizada y proxy externa.</p>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 07</div>
-        <h3>Resultados</h3>
-        <p>Presentación de la hoja de Resultados y cómo interpretar correctamente los valores obtenidos.</p>
+        <h3>Supuestos metodológicos del modelo</h3>
+        <p>Supuestos, límites y reglas de interpretación para preservar consistencia, comparabilidad y trazabilidad del modelo.</p>
       </div>
       <div class="agenda-card">
-        <div class="block-num">Bloque 08</div>
-        <h3>Validación y checklist</h3>
-        <p>Reglas de validación tras la carga de datos para asegurar el correcto funcionamiento del motor de cálculo.</p>
+        <div class="block-num">Cierre</div>
+        <h3>Mensajes clave</h3>
+        <p>Síntesis final para uso autónomo de la herramienta y comunicación rigurosa del impacto socioeconómico.</p>
       </div>
     </div>
   </section>
@@ -608,7 +722,7 @@
   <!-- ═══════════════════════════════ BLOQUE 1 ═══════════════════════════════ -->
   <section id="bloque1">
     <div class="section-eyebrow">🎯 Bloque 01</div>
-    <h2 class="section-title">Introducción</h2>
+    <h2 class="section-title">¿Qué es el impacto socioeconómico?</h2>
     <p class="section-subtitle">Esta formación presenta la metodología desarrollada por NFQ Advisory para cuantificar el impacto socioeconómico del Grupo ILUNION, basada en un modelo Input-Output y una herramienta propia de modelización económica. Su objetivo es proporcionar un marco técnico sólido que facilite la comprensión del modelo, su correcta aplicación y la consistencia en futuras actualizaciones.<br><br>La herramienta mide de forma estructurada la contribución del Grupo ILUNION a la economía española, estimando impactos directos, indirectos e inducidos. Para ello, combina datos internos (empleo, salarios, compras, impuestos) con información macroeconómica oficial, generando métricas homogéneas y comparables de impacto económico.</p>
 
     <div class="two-col" style="margin-bottom:28px;grid-template-columns:1fr;gap:16px;">
@@ -637,11 +751,6 @@
         <p>Resultado agregado de la suma de los efectos directos, indirectos e inducidos, que refleja la contribución socioeconómica completa atribuible a la actividad del Grupo ILUNION.</p>
         <div class="example"><strong>Impacto total = Impacto directo + Impacto indirecto + Impacto inducido</strong></div>
       </div>
-    </div>
-
-    <div class="formula-box">
-      <div class="f-title">Transición al enfoque metodológico</div>
-      <div class="f-note">Con la base conceptual definida, el siguiente bloque explica el funcionamiento técnico del modelo Input-Output, la lógica de la inversa de Leontief y la forma en que se obtienen los impactos directos, indirectos e inducidos a partir de datos de actividad, compras y salarios.</div>
     </div>
 
     <div class="info-box">
@@ -676,6 +785,11 @@
       <h4>🌍 Alcance geográfico del modelo</h4>
       <p>El alcance geográfico se circunscribe a España, dado que las matrices Input-Output empleadas corresponden a la estructura productiva de la economía nacional, procedentes de las matrices del Instituto Nacional de Estadística (INE).</p>
     </div>
+
+    <div class="formula-box">
+      <div class="f-title">Transición al enfoque metodológico</div>
+      <div class="f-note">Con la base conceptual definida, el siguiente bloque explica el funcionamiento técnico del modelo Input-Output, la lógica de la inversa de Leontief y la forma en que se obtienen los impactos directos, indirectos e inducidos a partir de datos de actividad, compras y salarios.</div>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════ BLOQUE 2 ═══════════════════════════════ -->
@@ -702,6 +816,8 @@
         <p style="color:var(--ink-light);line-height:1.7;margin-bottom:12px;">Las Tablas Input-Output publicadas por el INE describen qué compra cada sector económico a los demás. Son la fotografía estadística de las relaciones de interdependencia productiva de la economía española y la base informativa sobre la que opera el modelo.</p>
         <img src="./assets/imagen i-o.png" alt="Tabla input-output a precios básicos" style="width:100%;height:auto;border:1px solid var(--border);border-radius:8px;margin-bottom:12px;">
         <p style="color:var(--ink-light);line-height:1.7;">El modelo usa las tablas del INE como base para construir los coeficientes técnicos sectoriales y aplicar la lógica Input-Output en la estimación de impactos. A partir de esta estructura se calculan los efectos indirectos e inducidos asociados a la actividad del Grupo ILUNION.</p>
+        <h4 style="font-size:14px;font-weight:700;margin:14px 0 6px;color:var(--accent-dark);">Ajuste de precios: por qué y para qué</h4>
+        <p style="color:var(--ink-light);line-height:1.7;">Como la matriz Input-Output está referida a un año base y los datos operativos del Grupo se reportan en euros corrientes del ejercicio analizado, el modelo aplica ajustes de precios para homogeneizar ambas bases monetarias. Primero convierte las magnitudes de entrada al año base de la matriz y, tras el cálculo, reexpresa los resultados al año del análisis. Este procedimiento evita sesgos en la estimación y permite una comparación temporal metodológicamente consistente.</p>
       </div>
       <div class="method-card">
         <h3 class="method-chip" style="font-size:16px;font-weight:700;">¿Qué es la Inversa de Leontief?</h3>
@@ -740,7 +856,7 @@
             </thead>
             <tbody>
               <tr><td><strong>Qué captura</strong></td><td>Los encadenamientos productivos en la cadena de suministro (efectos indirectos).</td></tr>
-              <tr><td><strong>Cómo se calcula</strong></td><td>Compras sectoriales del Grupo ILUNION x coeficiente técnico del sector CNAE del proveedor (derivado de la inversa de Leontief).</td></tr>
+              <tr><td><strong>Cómo se calcula</strong></td><td>Compras domésticas del Grupo ILUNION clasificadas por sector (CNAE/Producto) x matriz inversa de Leontief → producción indirecta por sector; sobre esa producción se aplican coeficientes técnicos para estimar empleo, VAB, salarios, cotizaciones y fiscalidad indirecta.</td></tr>
               <tr><td><strong>Resultado</strong></td><td>Producción, empleo, VAB, salarios, cotizaciones y fiscalidad activados en los sectores proveedores.</td></tr>
               <tr><td><strong>Aplicación práctica</strong></td><td>Si ILUNION compra EUR 10M en servicios de transporte, el modelo estima el impacto indirecto total generado en la cadena logística.</td></tr>
             </tbody>
@@ -767,6 +883,7 @@
               <tr><td><strong>Importante</strong></td><td>Este bloque recoge el efecto económico adicional generado por el gasto de los hogares, complementando el impacto indirecto de la cadena de suministro.</td></tr>
             </tbody>
           </table>
+          <p style="margin-top:8px;font-size:12px;color:var(--ink-muted);"><em>Nota:</em> en este contexto, la propensión marginal al consumo (PMC) se corresponde con el patrón de gasto de los hogares, habitualmente denominado "cesta de la compra".</p>
         </div>
       </div>
       <div class="accordion-item">
@@ -796,15 +913,16 @@
       </div>
     </div>
 
-    <div class="formula-box">
+    <div class="formula-box flow-logic">
       <div class="f-title">Lógica de cálculo — Ejemplo impacto indirecto</div>
-      <div class="f-eq"><strong>Entrada:</strong> Compras domésticas del Grupo (vector de demanda final y)</div>
-      <div class="f-eq"><strong>Motor del modelo:</strong> La herramienta reparte esas compras entre sectores y calcula el efecto en cadena que generan en la economía</div>
-      <div class="f-eq"><strong>Salida:</strong> Producción indirecta por sector → aplicación de coeficientes técnicos → KPIs indirectos (empleo, VAB, salarios, cotizaciones y fiscalidad)</div>
+      <div class="f-eq indirect-step"><strong>Entrada:</strong> Compras domésticas del Grupo (vector de demanda final y)</div>
+      <div class="f-eq indirect-step"><strong>Motor del modelo:</strong> La herramienta reparte esas compras entre sectores y calcula el efecto en cadena que generan en la economía</div>
+      <div class="f-eq indirect-step"><strong>Salida:</strong> Producción indirecta por sector → aplicación de coeficientes técnicos → KPIs indirectos (empleo, VAB, salarios, cotizaciones y fiscalidad)</div>
       <div class="f-title" style="margin-top:4px;">Lógica de cálculo — Ejemplo impacto inducido</div>
-      <div class="f-eq"><strong>Entrada:</strong> Consumo de hogares asociado a la masa salarial de empleados propios de ILUNION y de empleados de sus proveedores (ajustado por PMC y estructura de gasto)</div>
-      <div class="f-eq"><strong>Motor del modelo:</strong> La herramienta transforma ese consumo en actividad económica y estima su efecto en cadena sobre otros sectores</div>
-      <div class="f-eq"><strong>Salida:</strong> Producción inducida por sector → aplicación de coeficientes técnicos → KPIs inducidos</div>
+      <div class="f-eq induced-step"><strong>Entrada:</strong> Consumo de hogares asociado a la masa salarial de empleados propios de ILUNION y de empleados de sus proveedores (vector de demanda de consumo ajustado por PMC y estructura de gasto)</div>
+      <div class="f-eq induced-step"><strong>Motor del modelo:</strong> La herramienta transforma ese consumo en demanda sectorial y calcula el efecto en cadena que genera en la economía</div>
+      <div class="f-eq induced-step"><strong>Salida:</strong> Producción inducida por sector → aplicación de coeficientes técnicos → KPIs inducidos (empleo, VAB, salarios, cotizaciones y fiscalidad)</div>
+      <div class="f-note">Nota metodológica: una vez obtenidos los resultados en la base temporal de cálculo del modelo, las magnitudes monetarias se reexpresan en precios corrientes del año de reporte para su presentación e interpretación.</div>
     </div>
   </section>
 
@@ -812,7 +930,7 @@
   <section id="bloque4">
     <div class="section-eyebrow">📗 Bloque 04</div>
     <h2 class="section-title">Herramienta de medición: pestañas y tipología</h2>
-    <p class="section-subtitle">El modelo Excel tiene cuatro bloques funcionales interconectados. Saber cuáles hojas tocar es la competencia más importante para el usuario.</p>
+    <p class="section-subtitle">La herramienta se estructura en cuatro bloques funcionales interdependientes. La correcta delimitación entre hojas de entrada, transformación, cálculo y resultados es un requisito metodológico para preservar la consistencia del modelo.</p>
 
     <div class="excel-grid">
       <div class="excel-zone inputs">
@@ -824,34 +942,133 @@
         <div class="sheet-tag editable"><span class="sheet-num">4</span> Inputs de Compras</div>
         <div class="sheet-tag editable"><span class="sheet-num">5</span> Inputs Seguridad y Salud</div>
         <div class="sheet-tag editable"><span class="sheet-num">6</span> Inputs Medioambientales</div>
-        <img src="assets/input Grupo ILUNION.jpg" alt="Vista de la hoja de inputs de Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(18,44,92,.18);" loading="lazy">
+        <img src="assets/inputs compras.png" alt="Vista de la hoja de inputs de compras de Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(18,44,92,.18);" loading="lazy">
       </div>
       <div class="excel-zone engine">
         <div class="zone-label">🔒 Bloque 2 · Tratamientos de datos</div>
-        <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Núcleo analítico. Su modificación puede generar errores e invalidar resultados.</p>
+        <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Estas pestañas aplican las transformaciones metodológicas necesarias para la correcta implementación de las matrices Input-Output, incluyendo clasificación sectorial, ajustes de estructura de compras y preparación de variables para el cálculo de impactos indirectos e inducidos.</p>
         <div class="sheet-tag readonly"><span class="sheet-num">7</span> Datos de Empleo</div>
         <div class="sheet-tag readonly"><span class="sheet-num">8</span> Datos Fiscales</div>
         <div class="sheet-tag readonly"><span class="sheet-num">9</span> Datos de Compras</div>
         <div class="sheet-tag readonly"><span class="sheet-num">10</span> Datos Seguridad y Salud</div>
         <div class="sheet-tag readonly"><span class="sheet-num">11</span> Datos Medioambientales</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">12</span> Datos Fuentes Externas</div>
-        <img src="assets/datos Grupo ILUNION.jpg" alt="Vista de la hoja de datos de Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(18,44,92,.18);" loading="lazy">
+        <div class="sheet-tag readonly"><span class="sheet-num">12</span> Datos Fuentes Externas - Parámetros y referencias (INE, deflactores, factores y precios de referencia)</div>
+        <img src="assets/datos compra.png" alt="Vista de la hoja de transformación de datos de compras de Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(18,44,92,.18);" loading="lazy">
+        <h4 style="font-size:15px;font-weight:600;margin:14px 0 10px;color:#92400e;">Detalle de transformaciones metodológicas</h4>
+        <div class="accordion">
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <h4>Datos de empleo</h4>
+              <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+              <table class="data-table" style="margin-bottom:10px;">
+                <thead><tr><th>Tipo de variable</th><th>Aplicación</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Normalizadas</strong></td><td>División, línea de negocio, género, FTE, comunidad autónoma, país, discapacidad y colectivo vulnerable.</td></tr>
+                  <tr><td><strong>Derivadas</strong></td><td>Salario digno territorial asignado, brecha de salario digno, excedente de salario digno e indicador de superación del umbral.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <h4>Datos de compras</h4>
+              <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+              <table class="data-table" style="margin-bottom:10px;">
+                <thead><tr><th>Variable de tratamiento</th><th>Uso en el modelo</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Tipo de compra y origen geográfico</strong></td><td>Diferencia compras domésticas, importaciones e intragrupo.</td></tr>
+                  <tr><td><strong>CNAE proveedor / actividad comprada</strong></td><td>Permite la correspondencia con rama Input-Output.</td></tr>
+                  <tr><td><strong>Producto / rama Input-Output</strong></td><td>Construye el vector sectorial de compras.</td></tr>
+                  <tr><td><strong>Proveedor estratégico/crítico</strong></td><td>Habilita cortes analíticos específicos de la cadena de suministro.</td></tr>
+                  <tr><td><strong>Importe y geografía</strong></td><td>Base monetaria del shock y territorialización.</td></tr>
+                </tbody>
+              </table>
+              <p style="margin-bottom:0;font-size:12px;color:var(--ink-muted);"><strong>Criterio metodológico:</strong> solo las compras domésticas clasificadas y trazables alimentan el impacto indirecto; las importaciones se reportan aparte y las compras sin CNAE/rama/geografía suficiente quedan fuera del shock Input-Output hasta su correcta clasificación.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <h4>Datos fiscales</h4>
+              <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+              <p style="margin-bottom:10px;">Se incorporan variables de clasificación y cruce para explotar los datos por línea, periodo y rama sectorial, manteniendo la trazabilidad de las partidas fiscales y económicas reportadas.</p>
+              <table class="data-table" style="margin-bottom:0;">
+                <thead><tr><th>Ámbito</th><th>Partidas principales</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Económico</strong></td><td>Importe neto de cifra de negocios, variación de existencias, otros ingresos, aprovisionamientos y otros gastos de explotación.</td></tr>
+                  <tr><td><strong>Fiscal</strong></td><td>Impuesto sobre Sociedades, Seguridad Social a cargo de la empresa, retenciones IRPF, IVA repercutido/soportado, IBI e impuestos y tasas ligados a la actividad.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <h4>Datos de seguridad y salud</h4>
+              <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+              <table class="data-table" style="margin-bottom:10px;">
+                <thead><tr><th>Variables tratadas</th><th>Uso en el modelo</th></tr></thead>
+                <tbody>
+                  <tr><td>Índice de gravedad (referencia y actual), horas trabajadas, coste unitario de día de baja y factor territorial.</td><td>Estimación y monetización del coste público potencialmente evitado (o coste adicional estimado) asociado a la variación de siniestralidad.</td></tr>
+                </tbody>
+              </table>
+              <p style="margin-bottom:0;font-size:12px;color:var(--ink-muted);"><strong>Interpretación del signo:</strong> si la siniestralidad baja, se interpreta como coste potencialmente evitado; si sube, puede generar un coste adicional estimado.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <h4>Datos medioambientales</h4>
+              <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+              <table class="data-table" style="margin-bottom:10px;">
+                <thead><tr><th>Variable</th><th>Tratamiento aplicado</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Emisiones GEI (totales y alcances 1, 2 y 3)</strong></td><td>Estandarización, validación y estructuración de series para su uso consistente en el cálculo de indicadores ambientales.</td></tr>
+                  <tr><td><strong>Electricidad renovable</strong></td><td>Estandarización, validación y estructuración de magnitudes energéticas para su tratamiento consistente en el modelo.</td></tr>
+                  <tr><td><strong>Consumo hídrico</strong></td><td>Estandarización, validación y estructuración de unidades de consumo para su tratamiento consistente en el modelo.</td></tr>
+                </tbody>
+              </table>
+              <p style="margin-bottom:0;font-size:12px;color:var(--ink-muted);"><strong>Nota metodológica:</strong> en este bloque se preparan y estructuran los datos. La estimación y monetización final de indicadores ambientales se presenta en la hoja de Resultados.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <h4>Fuentes externas y controles de calidad</h4>
+              <span class="accordion-arrow">▼</span>
+            </div>
+            <div class="accordion-body">
+              <table class="data-table" style="margin-bottom:10px;">
+                <thead><tr><th>Bloque</th><th>Contenido metodológico</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Fuentes externas</strong></td><td>Deflactores, matrices Input-Output, propensión marginal al consumo, distribución sectorial del consumo, salario digno territorial, coste social del carbono, factor mix eléctrico, tipo de cambio, precio unitario del agua, coste unitario de baja y otros parámetros de referencia.</td></tr>
+                  <tr><td><strong>Control de calidad</strong></td><td>Validación de campos obligatorios, coherencia de unidades y periodos, consistencia de clasificaciones (CNAE/rama/geografía), trazabilidad de cambios y documentación de supuestos aplicados.</td></tr>
+                </tbody>
+              </table>
+              <p style="margin-bottom:0;font-size:12px;color:var(--ink-muted);">Todos los parámetros externos deben actualizarse y documentarse con fuente, año de referencia y fecha de actualización para preservar comparabilidad interanual.</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="excel-zone calc">
         <div class="zone-label">🧮 Bloque 3 · Motor metodológico</div>
         <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Hojas de soporte técnico para las matrices y operaciones internas del modelo.</p>
         <div class="sheet-tag readonly"><span class="sheet-num">13</span> Matrices I-O INE 2022</div>
-        <div class="sheet-tag readonly"><span class="sheet-num">14</span> AUX cálculo intermedio</div>
+        <div class="sheet-tag readonly"><span class="sheet-num">14</span> AUX - Cálculos auxiliares para correspondencias sectoriales, trazabilidad de variables y homogeneización temporal de magnitudes monetarias</div>
         <img src="assets/Matrice Grupo ILUNION.jpg" alt="Vista de la matriz del Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(91,33,182,.25);" loading="lazy">
       </div>
       <div class="excel-zone results">
         <div class="zone-label">📊 Bloque 4 · Resultados</div>
-        <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">Los KPIs finales se calculan automáticamente. No modificar fórmulas ni estructura.</p>
+        <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px;">En esta hoja se presentan los resultados finales del modelo, incluyendo los KPIs calculados automáticamente a partir de los datos y parámetros metodológicos.</p>
         <div class="sheet-tag output"><span class="sheet-num">15</span> Resultados (KPIs)</div>
-        <div style="margin-top:12px;padding:10px;background:rgba(26,122,74,.08);border-radius:8px;font-size:12.5px;color:var(--green);">
-          ✓ Los resultados se actualizan automáticamente al completar los inputs. No se requiere ninguna acción adicional.
-        </div>
         <img src="assets/Resultados Grupo ILUNION.jpg" alt="Vista de la hoja de resultados del Grupo ILUNION" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(26,122,74,.25);" loading="lazy">
+        <img src="assets/graficos de resultados.png" alt="Gráficos de resultados del modelo de impacto socioeconómico" style="display:block;width:100%;margin-top:12px;border-radius:8px;border:1px solid rgba(26,122,74,.25);" loading="lazy">
       </div>
     </div>
 
@@ -866,31 +1083,26 @@
     </div>
 
     <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Consideraciones metodológicas transversales</h3>
-    <div class="principle-grid" style="margin-bottom:28px;">
+    <div class="principle-grid" style="margin-bottom:28px;grid-template-columns:repeat(2, minmax(0, 1fr));">
       <div class="principle-card">
         <div class="p-icon">🧩</div>
         <h4>Modularidad</h4>
-        <p>Hojas independientes con funciones delimitadas. Actualizar un bloque de inputs no afecta al resto.</p>
+        <p>Estructura por bloques funcionales independientes. Permite actualizar inputs, parámetros o salidas sin alterar la lógica completa, reduciendo riesgo de propagación de errores.</p>
       </div>
       <div class="principle-card">
         <div class="p-icon">🔐</div>
         <h4>Separación de roles</h4>
-        <p>Hojas de usuario (inputs), hojas metodológicas (motor) y hojas de resultado. Acceso diferenciado.</p>
+        <p>Distingue hojas de carga de usuario, hojas metodológicas de cálculo y hojas de resultados. Esta separación protege el motor analítico y mejora la gobernanza del proceso.</p>
       </div>
       <div class="principle-card">
         <div class="p-icon">📅</div>
         <h4>Actualización periódica</h4>
-        <p>Diseñado para actualizarse anualmente sustituyendo los datos de inputs, sin tocar la lógica de cálculo.</p>
-      </div>
-      <div class="principle-card">
-        <div class="p-icon">⚡</div>
-        <h4>Consistencia interna</h4>
-        <p>Incorpora validaciones que alertan ante inconsistencias, reduciendo el riesgo de error operativo.</p>
+        <p>El diseño permite actualizar el modelo por ejercicio sustituyendo datos y parámetros sin reconfigurar fórmulas estructurales, preservando continuidad metodológica.</p>
       </div>
       <div class="principle-card">
         <div class="p-icon">📊</div>
         <h4>Comparabilidad</h4>
-        <p>Outputs estandarizados para garantizar comparabilidad entre ejercicios, líneas de negocio y periodos.</p>
+        <p>Los outputs se generan con definiciones homogéneas por categoría, tipo de impacto y periodo, facilitando comparaciones consistentes entre ejercicios y líneas de negocio.</p>
       </div>
     </div>
   </section>
@@ -1145,171 +1357,29 @@
   <!-- ═══════════════════════════════ BLOQUE 5 ═══════════════════════════════ -->
   <section id="bloque5">
     <div class="section-eyebrow">✏️ Bloque 05</div>
-    <h2 class="section-title">Caso de uso</h2>
-    <p class="section-subtitle">La calidad de los resultados depende directamente de la calidad de los datos introducidos. El modelo aplica criterios metodológicos predefinidos, pero no corrige inconsistencias automáticamente.</p>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>👥 Inputs Empleo</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:10px;">Información laboral, salarial y de empleo inclusivo del Grupo a nivel individual de empleado. Base para todos los KPIs de empleo, brecha y coste evitado.</p>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🏛️ Inputs Fiscales</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:10px;">Tributos y cotizaciones sociales directamente atribuibles al Grupo en el ejercicio analizado. Base para los KPIs fiscales directos.</p>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🛒 Inputs Compras</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:10px;">Base de datos de proveedores y volumen de compras. Es el input más crítico para el cálculo del impacto indirecto: activa los multiplicadores I-O correctos según el sector del proveedor.</p>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🦺 Inputs Seguridad y Salud</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:10px;">Datos de siniestralidad laboral del Grupo. Base para calcular el coste evitado por reducción de accidentes laborales.</p>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🌿 Inputs Medioambientales</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:10px;">Datos de emisiones, consumos energéticos e hídricos. Base para los KPIs socioambientales.</p>
-        </div>
-      </div>
+    <h2 class="section-title">Ejemplo práctico del cálculo del impacto socioeconómico del Grupo ILUNION</h2>
+    <p class="section-subtitle">En este bloque se muestra, de forma aplicada, cómo se calcula el impacto socioeconómico del Grupo ILUNION a partir de datos de entrada reales. Se recorre el proceso completo de cálculo de impactos directos, indirectos e inducidos y se explica cómo interpretar los resultados obtenidos en empleo, VAB, salarios, cotizaciones e impacto fiscal.</p>
+    <div class="alert-box caution" style="margin-bottom:14px;">
+      <span class="alert-icon">🏷️</span>
+      <div class="alert-content"><h4>Tipología de dato en este módulo</h4><p><strong>Dato observado:</strong> inputs directos internos. <strong>Estimación modelizada:</strong> resultados indirectos e inducidos por modelo I-O. <strong>Proxy externa:</strong> parámetros como PMC, % discapacidad de referencia, coste social del carbono o tipo de cambio.</p></div>
     </div>
+    <div id="ilunion-case-study"></div>
 
-    <h3 style="font-size:16px;font-weight:600;margin:20px 0 14px;">Normas generales obligatorias para todos los inputs</h3>
-    <div class="practices-list">
-      <div class="practice-item"><div class="practice-num">1</div><div><h4>Solo valores numéricos directos en los campos cuantitativos</h4><p>Sin texto, sin formato especial, sin fórmulas. Valores numéricos puros.</p></div></div>
-      <div class="practice-item"><div class="practice-num">2</div><div><h4>Escribir 0 cuando el campo aplica pero el valor es nulo</h4><p>Nunca dejar en blanco un campo que aplica a tu línea de negocio. Un blanco puede romper cálculos encadenados silenciosamente.</p></div></div>
-      <div class="practice-item"><div class="practice-num">3</div><div><h4>No añadir columnas ni insertar filas fuera de las habilitadas</h4><p>La estructura es fija. Alterarla rompe los vínculos internos del motor de cálculo.</p></div></div>
-      <div class="practice-item"><div class="practice-num">4</div><div><h4>Cada línea de negocio rellena solo sus campos</h4><p>No cumplimentar campos de otras líneas. Coordinar si varias personas acceden en paralelo.</p></div></div>
-      <div class="practice-item"><div class="practice-num">5</div><div><h4>Todos los datos deben corresponder al mismo ejercicio de referencia</h4><p>No mezclar datos de ejercicios distintos en la misma carga del modelo.</p></div></div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════ BLOQUE 6 ═══════════════════════════════ -->
-  <section id="bloque6">
-    <div class="section-eyebrow">⚙️ Bloque 06</div>
-    <h2 class="section-title">Transformaciones de información en las pestañas de Datos</h2>
-    <p class="section-subtitle">Las hojas de Datos (protegidas) transforman los inputs brutos en variables listas para el motor I-O. No interviene el usuario, pero es importante entender qué ocurre en cada una.</p>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>👥 Datos de Empleo — ¿Qué transformaciones se realizan?</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:10px;">A partir de los inputs individuales de empleados, se derivan variables normalizadas y se cruzan con parámetros externos:</p>
-          <ul>
-            <li><strong>División NFQ:</strong> Asigna a cada empleado la línea de negocio del perímetro empresarial definido.</li>
-            <li><strong>Género NFQ:</strong> Normaliza los códigos originales a las categorías <em>Hombre</em> y <em>Mujer</em>.</li>
-            <li><strong>FTE NFQ:</strong> Convierte el valor de FTE a formato porcentual para el modelo.</li>
-            <li><strong>Comunidad NFQ:</strong> Normaliza la denominación territorial a las 17 CC.AA. y Ceuta/Melilla (nomenclatura INE).</li>
-            <li><strong>Discapacidad NFQ:</strong> Normaliza a Sí / No.</li>
-            <li><strong>Colectivo vulnerable NFQ:</strong> Recodifica a Sí / No agrupando todas las tipologías de vulnerabilidad.</li>
-            <li><strong>Brecha de salario digno:</strong> Cruce individual con el umbral de salario digno regional asignado.</li>
-            <li><strong>Indicador de superación del umbral:</strong> Variable binaria (1/0) para cada empleado.</li>
-            <li><strong>Producto:</strong> Variable de clasificación sectorial para el cruce con la matriz I-O.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🛒 Datos de Compras — ¿Qué transformaciones se realizan?</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <ul>
-            <li><strong>Clasificación CNAE acreedor:</strong> Verifica y asigna el código CNAE del proveedor para el cruce sectorial con la matriz I-O.</li>
-            <li><strong>Segmentación doméstico/importación:</strong> Separa compras a proveedores nacionales (aplican multiplicadores I-O nacionales) de importaciones (no aplican).</li>
-            <li><strong>Tratamiento intragrupo:</strong> Identifica y etiqueta las compras entre entidades del Grupo para evitar doble contabilización en el consolidado.</li>
-            <li><strong>Deflactación a precios base 2022:</strong> Convierte los importes en precios corrientes a precios constantes del año base de las matrices I-O.</li>
-            <li><strong>Asignación de producto:</strong> Mapea el CNAE a la nomenclatura de productos de la matriz I-O del INE.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🏛️ Datos Fiscales — ¿Qué transformaciones se realizan?</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <ul>
-            <li><strong>Asignación de CNAE:</strong> Vincula cada registro fiscal al código de actividad económica correspondiente.</li>
-            <li><strong>Clasificación de producto:</strong> Habilita la correspondencia sectorial requerida por el modelo para los impactos fiscales indirectos.</li>
-            <li><strong>Cálculo de ratios fiscales:</strong> Aplica el tipo medio efectivo de IRPF, el porcentaje de SS y la cuña fiscal total sobre las magnitudes salariales.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🌿 Datos Medioambientales — ¿Qué transformaciones se realizan?</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <ul>
-            <li><strong>Conversión kWh → tCO₂eq:</strong> Aplica el factor del mix eléctrico español sobre el consumo de electricidad para calcular emisiones de Alcance 2.</li>
-            <li><strong>Monetización de emisiones:</strong> Multiplica las toneladas de CO₂ evitadas por el Coste Social del Carbono de referencia.</li>
-            <li><strong>Monetización hídrica:</strong> Aplica el precio medio del agua (€/m³) sobre el volumen de ahorro hídrico.</li>
-            <li><strong>Asignación de CNAE y Producto:</strong> Para el cruce sectorial en el modelo I-O.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>📐 Ajuste temporal: deflactación y actualización de precios</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <p style="margin-bottom:10px;">Las matrices I-O del INE están referenciadas a un año base fijo (2022). Los datos del Grupo están en precios corrientes del ejercicio analizado. El modelo aplica dos ajustes automáticos:</p>
-          <ul>
-            <li><strong>Deflactor implícito del PIB:</strong> Convierte magnitudes nominales a reales con base 2020 = 100.</li>
-            <li><strong>Factor de actualización 2022 → ejercicio analizado:</strong> Expresa los resultados finales en precios corrientes del año analizado.</li>
-            <li><strong>Factor de actualización 2024 → 2022:</strong> Para la aplicación de los coeficientes técnicos de las matrices.</li>
-            <li>Todos estos parámetros están en la hoja <strong>Datos Fuentes Externas</strong> (protegida). El equipo metodológico los actualiza anualmente.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ═══════════════════════════════ BLOQUE 7 ═══════════════════════════════ -->
   <section id="bloque7">
     <div class="section-eyebrow">📈 Bloque 07</div>
     <h2 class="section-title">Resultados: presentación e interpretación de valores</h2>
-    <p class="section-subtitle">La hoja de Resultados presenta los KPIs consolidados por categoría, tipo de impacto, colectivo, línea de negocio y periodo. Saber qué se puede afirmar —y qué no— es tan importante como saber calcularlo.</p>
+    <p class="section-subtitle">Este bloque establece cómo interpretar los resultados del modelo con rigor: qué parte corresponde a dato observado, qué parte es estimación metodológica y qué límites deben explicitarse en cualquier lectura o comunicación del impacto.</p>
 
     <div class="alert-box good">
       <span class="alert-icon">🟢</span>
-      <div class="alert-content"><h4>El impacto directo es 100% verificable</h4><p>Se basa en datos reales: nóminas, declaraciones AEAT, estados contables. Es la base objetiva del modelo y el único nivel con datos fuente directos auditables.</p></div>
+      <div class="alert-content"><h4>El impacto directo se apoya en datos observados y verificables</h4><p>Se estima a partir de información interna reportada por ILUNION para el ejercicio analizado (nóminas, registros de empleo, declaraciones fiscales y estados contables), sujeta a controles de coherencia, periodificación y trazabilidad documental. En términos relativos, ofrece una base de lectura más directa que el impacto indirecto e inducido, aunque su interpretación también depende del perímetro, la cobertura y los criterios metodológicos aplicados en cada ejercicio.</p></div>
     </div>
     <div class="alert-box caution">
       <span class="alert-icon">🟡</span>
       <div class="alert-content"><h4>Los efectos indirecto e inducido son estimaciones metodológicas</h4><p>Se basan en multiplicadores económicos derivados de las tablas I-O del INE. Son sólidos metodológicamente y ampliamente usados a nivel internacional, pero no son cifras contables verificables individualmente.</p></div>
-    </div>
-    <div class="alert-box critical">
-      <span class="alert-icon">🔴</span>
-      <div class="alert-content"><h4>El modelo es una fotografía estática del ejercicio reportado</h4><p>No proyecta impacto futuro ni incorpora tendencias dinámicas. Los resultados no son comparables entre ejercicios sin verificar que usan el mismo año base de deflactores.</p></div>
     </div>
 
     <h3 style="font-size:16px;font-weight:600;margin:24px 0 14px;">Interpretaciones correctas vs. incorrectas</h3>
@@ -1359,75 +1429,97 @@
 
   <!-- ═══════════════════════════════ BLOQUE 8 ═══════════════════════════════ -->
   <section id="bloque8">
-    <div class="section-eyebrow">✅ Bloque 08</div>
-    <h2 class="section-title">Validación y checklist de uso</h2>
-    <p class="section-subtitle">Antes de leer los resultados tras una actualización, verifica que no existen alertas de inconsistencia activas y que todos los campos obligatorios han sido cumplimentados. El modelo no corrige errores de entrada automáticamente.</p>
+    <div class="section-eyebrow">📐 Bloque 08</div>
+    <h2 class="section-title">Criterios, supuestos y reglas de interpretación del modelo</h2>
+    <p class="section-subtitle">Este bloque sintetiza el Anexo C del documento metodológico. Los supuestos aquí recogidos delimitan qué mide el modelo, cómo lo estima y bajo qué criterios deben interpretarse los resultados.</p>
 
-    <h3 style="font-size:16px;font-weight:600;margin-bottom:14px;">🚨 Errores críticos — Nunca deben ocurrir</h3>
-    <div class="errors-grid">
-      <div class="error-card danger">
-        <span class="error-icon">🚫</span>
-        <div><h4>Modificar hojas protegidas</h4><p>No desproteger ni editar Matrices I-O, AUX ni Datos de Fuentes Externas. Invalidaría todos los cálculos del modelo.</p></div>
-      </div>
-      <div class="error-card danger">
-        <span class="error-icon">🚫</span>
-        <div><h4>Introducir texto o fórmulas en celdas de input</h4><p>Solo valores numéricos directos. Ni fórmulas Excel, ni texto, ni caracteres especiales.</p></div>
-      </div>
-      <div class="error-card danger">
-        <span class="error-icon">🚫</span>
-        <div><h4>Dejar celdas obligatorias en blanco</h4><p>Si un campo aplica pero el valor es cero, escribe 0. Un blanco puede romper cálculos encadenados sin avisar.</p></div>
-      </div>
-      <div class="error-card danger">
-        <span class="error-icon">🚫</span>
-        <div><h4>Alterar la estructura del modelo</h4><p>No eliminar filas, no añadir columnas, no reordenar hojas. La estructura habilita los vínculos entre hojas.</p></div>
-      </div>
+    <div class="validation-grid" style="margin-bottom:18px;">
+      <div class="val-card check"><h4>Perímetro de cálculo</h4><p>El impacto indirecto se estima sobre compras domésticas trazables y clasificadas sectorialmente.</p></div>
+      <div class="val-card warn"><h4>Ajuste de precios</h4><p>Las magnitudes se convierten al año base de la matriz I-O y luego se reexpresan al año de análisis.</p></div>
+      <div class="val-card check"><h4>Control de doble contabilización</h4><p>Las compras intragrupo se excluyen en consolidado para evitar sobreestimación de impactos.</p></div>
+      <div class="val-card warn"><h4>Interpretación de resultados</h4><p>Debe diferenciarse entre dato observado, imputación territorial y estimación modelizada.</p></div>
     </div>
 
-    <h3 style="font-size:16px;font-weight:600;margin-bottom:14px;">⚠️ Errores frecuentes de datos</h3>
-    <div class="errors-grid">
-      <div class="error-card warning">
-        <span class="error-icon">⚠️</span>
-        <div><h4>Confundir empleados con FTE</h4><p>Un empleado a media jornada es 0,5 FTE, no 1. Introducir el número de contratos sobreestima el empleo.</p></div>
-      </div>
-      <div class="error-card warning">
-        <span class="error-icon">⚠️</span>
-        <div><h4>Sumar colectivos al total de FTE</h4><p>Las personas con discapacidad ya están en el FTE total. No las añadas por separado: doble conteo.</p></div>
-      </div>
-      <div class="error-card warning">
-        <span class="error-icon">⚠️</span>
-        <div><h4>CNAE desactualizado en compras</h4><p>Si un proveedor cambió de actividad o hay nuevos proveedores sin clasificar, el multiplicador será incorrecto. Revisar anualmente.</p></div>
-      </div>
-      <div class="error-card warning">
-        <span class="error-icon">⚠️</span>
-        <div><h4>Mezclar datos de ejercicios distintos</h4><p>Todos los inputs deben corresponder al mismo período de referencia. No mezclar 2023 con 2024 en la misma carga.</p></div>
-      </div>
-    </div>
+    <table class="data-table" style="margin-bottom:18px;">
+      <thead>
+        <tr>
+          <th>Ámbito</th>
+          <th>Supuesto clave</th>
+          <th>Implicación práctica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Compras</td><td>Solo compras domésticas trazables y clasificadas alimentan el impacto indirecto.</td><td>La cobertura y calidad de Achilles-GoSupply condicionan el resultado.</td></tr>
+        <tr><td>Temporal</td><td>Se usa la matriz I-O más reciente disponible como base.</td><td>La comparabilidad interanual exige mantener trazabilidad del año base.</td></tr>
+        <tr><td>Ajuste de precios</td><td>Se aplica homogeneización monetaria entre año base de matriz y año analizado.</td><td>Evita sesgos al aplicar multiplicadores sobre magnitudes no comparables.</td></tr>
+        <tr><td>Territorial</td><td>Cuando no hay dato regional observado, se territorializa por peso FTE.</td><td>El resultado regional es imputado, no liquidación efectiva territorial.</td></tr>
+        <tr><td>Interpretación</td><td>Se distinguen datos observados, resultados imputados y resultados modelizados.</td><td>Evita confundir evidencia directa con estimaciones económicas.</td></tr>
+      </tbody>
+    </table>
 
-    <h3 style="font-size:16px;font-weight:600;margin-bottom:14px;">Puntos de validación tras la carga de datos</h3>
-    <div class="validation-grid">
-      <div class="val-card check">
-        <h4>✓ Consistencia interanual</h4>
-        <p>Verificar y revisar la consistencia de los datos respecto al ejercicio anterior antes de confirmar la carga.</p>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>C.1 Alcance de compras para impacto indirecto</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="validation-grid" style="margin-bottom:0;"><div class="val-card check"><h4>Alcance aplicado</h4><p>El impacto indirecto se calcula sobre compras registradas y clasificadas en Achilles-GoSupply con información mínima de CNAE/rama y geografía.</p></div><div class="val-card warn"><h4>Implicación operativa</h4><p>Las compras no trazables o sin clasificación suficiente quedan fuera del shock Input-Output.</p></div><div class="val-card check"><h4>Criterio metodológico</h4><p>Solo compras domésticas trazables y sectorizadas.</p></div><div class="val-card warn"><h4>Escalado recomendado</h4><p>Aumentar cobertura de proveedores, CNAE y geografía para ampliar representatividad.</p></div></div></div>
       </div>
-      <div class="val-card check">
-        <h4>✓ Correspondencia con registros internos</h4>
-        <p>Contrastar los totales de empleo y fiscalidad del modelo con RRHH y contabilidad para detectar desviaciones.</p>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>C.2 Clasificación sectorial de proveedores</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="validation-grid" style="margin-bottom:0;"><div class="val-card check"><h4>Regla de clasificación</h4><p>Cada compra se asigna a rama sectorial Input-Output mediante CNAE o equivalencia metodológica.</p></div><div class="val-card check"><h4>Criterio de prioridad</h4><p>En proveedores diversificados, prevalece la actividad efectivamente contratada frente al CNAE societario genérico.</p></div><div class="val-card warn"><h4>Exclusiones metodológicas</h4><p>Los proveedores que no puedan clasificarse con fiabilidad por CNAE y geografía quedan excluidos del cálculo de impacto indirecto hasta su correcta trazabilidad.</p></div><div class="val-card warn"><h4>Control recomendado</h4><p>Tabla de correspondencia documentada y revisión periódica de proveedores de alto volumen.</p></div></div></div>
       </div>
-      <div class="val-card check">
-        <h4>✓ Ausencia de alertas activas</h4>
-        <p>El modelo incorpora validaciones que alertan ante inconsistencias. Revisar que no hay ninguna activa antes de leer resultados.</p>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>C.3 Compras domésticas e importaciones</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><table class="data-table" style="margin-bottom:0;"><thead><tr><th>Elemento</th><th>Tratamiento</th><th>Lectura correcta</th></tr></thead><tbody><tr><td><strong>Compras domésticas</strong></td><td>Se incorporan al shock Input-Output nacional.</td><td>Activan producción interior e impacto indirecto nacional.</td></tr><tr><td><strong>Importaciones</strong></td><td>Se reportan aparte como variable de contexto.</td><td>No generan impacto indirecto nacional bajo la matriz interior.</td></tr></tbody></table></div>
       </div>
-      <div class="val-card check">
-        <h4>✓ Cobertura de líneas de negocio</h4>
-        <p>Verificar que todas las líneas de negocio incluidas en el perímetro han aportado sus datos de inputs.</p>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>C.4 Tratamiento de compras intragrupo</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><table class="data-table" style="margin-bottom:0;"><thead><tr><th>Nivel de análisis</th><th>Tratamiento intragrupo</th><th>Justificación</th></tr></thead><tbody><tr><td><strong>Línea de negocio</strong></td><td>Puede incluirse como aprovisionamiento efectivo.</td><td>Permite reflejar la operativa interna de la línea analizada.</td></tr><tr><td><strong>Consolidado Grupo</strong></td><td>Se excluye del shock indirecto.</td><td>Evita doble contabilización entre impacto directo e indirecto interno.</td></tr></tbody></table><p style="margin-top:10px;font-size:12px;color:var(--ink-muted);">Control: registrar entidad compradora/proveedora, importe y tratamiento aplicado en cada ejercicio.</p></div>
       </div>
-      <div class="val-card warn">
-        <h4>⚠ Datos estimados documentados</h4>
-        <p>Si algún dato es provisional, documentar fuente, método de estimación y fecha de revisión prevista en el registro de versiones.</p>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>C.5 Territorialización de resultados</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="formula-box territorial-flow" style="margin-bottom:14px;"><div class="f-eq"><strong>Factor territorial</strong> = FTE territorio / FTE total</div><div class="f-note">Se aplica cuando no existe desglose económico regional observado.</div></div><table class="data-table" style="margin-bottom:0;"><thead><tr><th>Aspecto</th><th>Interpretación metodológica</th></tr></thead><tbody><tr><td><strong>Uso</strong></td><td>Permite lectura regional cuando no hay dato económico territorial detallado.</td></tr><tr><td><strong>Límite</strong></td><td>Es una aproximación metodológica y no equivale a liquidación fiscal o producción observada en territorio.</td></tr></tbody></table></div>
       </div>
-      <div class="val-card warn">
-        <h4>⚠ CNAE de proveedores revisado</h4>
-        <p>Confirmar que la clasificación sectorial de proveedores es la actualizada para el ejercicio reportado, especialmente en nuevos proveedores.</p>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>C.6 Umbral de salario digno</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><table class="data-table" style="margin-bottom:0;"><thead><tr><th>Aspecto</th><th>Aplicación metodológica</th></tr></thead><tbody><tr><td><strong>Base de cálculo</strong></td><td>Solo empleo directo, con umbral territorial por comunidad y comparación en base homogénea (salario bruto anual comparable y FTE).</td></tr><tr><td><strong>Criterio</strong></td><td>No se aplica salario digno a empleo indirecto o inducido por falta de microdato salarial.</td></tr><tr><td><strong>Regla de brecha</strong></td><td>La brecha considera únicamente diferencias positivas respecto al umbral aplicable.</td></tr></tbody></table></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>C.7 Ajuste temporal y matrices Input-Output</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="formula-box temporal-flow" style="margin-bottom:14px;"><div class="f-eq">Entrada monetaria año de reporte → Conversión al año base IO → Cálculo del impacto → Reexpresión a euros corrientes del ejercicio analizado</div></div><div class="validation-grid" style="margin-bottom:0;"><div class="val-card check"><h4>Supuesto</h4><p>Estabilidad relativa de la estructura intersectorial en el corto plazo.</p></div><div class="val-card warn"><h4>Control</h4><p>Actualizar anualmente deflactores y documentar todos los factores de conversión.</p></div></div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>C.8 Fuentes externas y actualización de parámetros</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><table class="data-table" style="margin-bottom:14px;"><thead><tr><th>Parámetros externos</th><th>Requisito</th></tr></thead><tbody><tr><td>Deflactores, matrices IO, PMC y distribución de consumo</td><td>Actualizar periódicamente y registrar trazabilidad.</td></tr><tr><td>Salario digno, coste social del carbono, factor mix eléctrico, precio del agua</td><td>Mantener coherencia temporal y documental entre ejercicios.</td></tr></tbody></table><div class="validation-grid" style="margin-bottom:0;"><div class="val-card check"><h4>Trazabilidad mínima</h4><p>Fuente, año de referencia, fecha de actualización y criterio de uso.</p></div><div class="val-card warn"><h4>Riesgo</h4><p>Cambios no documentados rompen la comparabilidad interanual.</p></div></div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>C.9 Interpretación de resultados modelizados</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><p>La lectura de resultados debe diferenciar entre dato observado, estimación modelizada e indicador monetizado.</p><table class="data-table" style="margin-bottom:0;"><thead><tr><th>Tipo de resultado</th><th>Interpretación</th></tr></thead><tbody><tr><td><strong>Dato directo observado</strong></td><td>Información interna reportada por ILUNION.</td></tr><tr><td><strong>Dato territorializado</strong></td><td>Resultado imputado por criterio de reparto (habitualmente FTE).</td></tr><tr><td><strong>Impacto indirecto</strong></td><td>Estimación Input-Output basada en compras domésticas sectorizadas.</td></tr><tr><td><strong>Impacto inducido</strong></td><td>Estimación Input-Output basada en consumo salarial directo e indirecto.</td></tr><tr><td><strong>Coste evitado</strong></td><td>Monetización de escenario contrafactual o variación observada.</td></tr><tr><td><strong>Impacto ambiental monetizado</strong></td><td>Valoración económica de una reducción o variación ambiental.</td></tr></tbody></table></div>
       </div>
     </div>
 
@@ -1441,30 +1533,30 @@
     <div class="key-messages">
       <div class="key-msg">
         <div class="km-num">01</div>
-        <h4>El modelo es evidencia, no marketing</h4>
-        <p>Cuantifica con rigor metodológico lo que ILUNION ya hace: generar empleo inclusivo, sostener economías locales y contribuir a las finanzas públicas. Su credibilidad depende de la calidad de los datos que introducimos.</p>
+        <h4>Primero se define bien el perímetro de cálculo</h4>
+        <p>Antes de interpretar cualquier cifra, hay que fijar con claridad empresa, periodo, territorio y alcance de compras. Un perímetro mal definido genera resultados técnicamente correctos, pero metodológicamente incomparables.</p>
       </div>
       <div class="key-msg">
         <div class="km-num">02</div>
-        <h4>Directo, indirecto e inducido: los tres siempre van juntos</h4>
-        <p>El impacto total de ILUNION va mucho más allá de su plantilla propia. Cada euro que gasta activa cadenas de suministro y consumo que sostienen miles de empleos adicionales en la economía española.</p>
+        <h4>El impacto total se interpreta por componentes</h4>
+        <p>Directo, indirecto e inducido no significan lo mismo ni tienen el mismo nivel de observación. La lectura rigurosa exige mostrar cada componente por separado y después su agregación en impacto total.</p>
       </div>
       <div class="key-msg">
         <div class="km-num">03</div>
-        <h4>El dato de entrada es tu responsabilidad</h4>
-        <p>El modelo no corrige inconsistencias automáticamente. La calidad del resultado es directamente proporcional a la calidad del input. Un CNAE mal asignado o un FTE mal convertido distorsiona el resultado sin que el sistema avise.</p>
+        <h4>La calidad del dato de entrada determina el resultado</h4>
+        <p>Compras mal clasificadas, FTE inconsistentes o variables fiscales incompletas distorsionan el cálculo. La validación previa de inputs es el principal control para asegurar resultados fiables y trazables.</p>
       </div>
       <div class="key-msg">
         <div class="km-num">04</div>
-        <h4>Sostenibilidad e impacto socioeconómico son la misma historia</h4>
-        <p>El modelo conecta dimensiones medioambientales (emisiones, agua), sociales (empleo inclusivo, brecha salarial) y económicas (VAB, fiscalidad) en un único marco comparable. Esta integración es el diferencial estratégico de ILUNION.</p>
+        <h4>Los resultados se comunican con límites y contexto</h4>
+        <p>El impacto directo se apoya en datos observados, mientras que el indirecto e inducido son estimaciones modelizadas. Comunicar esta diferencia de forma explícita protege la credibilidad técnica del análisis.</p>
       </div>
     </div>
     <div class="closing-banner">
       <span class="cb-icon">🚀</span>
       <div>
-        <h3>Ya tienes todo lo que necesitas para usar el modelo con autonomía</h3>
-        <p>Conoces la arquitectura del Excel, sabes qué hojas tocar y cuáles no, entiendes los tres niveles de impacto, los 6 grupos de KPIs y cómo interpretar los resultados con criterio. Para cualquier duda metodológica, consulta el informe de referencia o al responsable metodológico.</p>
+        <h3>Cierre: de la metodología al uso consistente del modelo</h3>
+        <p>El objetivo no es solo calcular resultados, sino asegurar que sean comparables, trazables y defendibles en el tiempo. Si mantienes calidad en los datos de entrada, coherencia en los supuestos y rigor en la interpretación de impactos directos, indirectos e inducidos, el modelo se convierte en una herramienta sólida para la toma de decisiones y la comunicación del impacto socioeconómico de ILUNION.</p>
       </div>
     </div>
   </section>
@@ -1478,6 +1570,7 @@
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('#sidebar a');
   function setActiveNav() {
+    if (document.body.classList.contains('paged-blocks')) return;
     let current = '';
     sections.forEach(s => {
       if (window.scrollY >= s.offsetTop - 120) current = s.id;
@@ -1511,6 +1604,763 @@
   navLinks.forEach(a => a.addEventListener('click', () => {
     document.getElementById('sidebar').classList.remove('open');
   }));
+
+  function getPageSections() {
+    return Array.from(document.querySelectorAll('main > section')).filter((s) => ['hero', 'agenda', 'cierre'].includes(s.id) || s.id.startsWith('bloque'));
+  }
+
+  function showBlockPage(blockId) {
+    const pages = getPageSections();
+    pages.forEach((p) => p.classList.toggle('active-block-page', p.id === blockId));
+    navLinks.forEach((a) => {
+      const href = a.getAttribute('href');
+      a.classList.toggle('active', href === `#${blockId}`);
+    });
+    const activeLink = document.querySelector(`#sidebar a[href="#${blockId}"]`);
+    if (activeLink) activeLink.scrollIntoView({ block: 'nearest' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  function enableBlockPaginationMode() {
+    document.body.classList.add('paged-blocks');
+    const pages = getPageSections();
+    pages.forEach((p) => p.classList.add('page-item'));
+
+    const pageLinks = Array.from(document.querySelectorAll('#sidebar a[href^="#"]')).filter((a) => {
+      const id = a.getAttribute('href').slice(1);
+      return pages.some((p) => p.id === id);
+    });
+    const firstPageId = pages[0]?.id;
+    if (firstPageId) showBlockPage(firstPageId);
+
+    pageLinks.forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        showBlockPage(id);
+        document.getElementById('sidebar').classList.remove('open');
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      const id = a.getAttribute('href').slice(1);
+      if (!pages.some((p) => p.id === id)) return;
+      if (a.closest('#sidebar')) return;
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        showBlockPage(id);
+      });
+    });
+  }
+
+  function injectNextBlockArrows() {
+    const pages = getPageSections();
+    pages.forEach((page, idx) => {
+      if (page.id === 'hero') return;
+      const next = pages[idx + 1];
+      const existing = page.querySelector('.next-block-nav');
+      if (existing) existing.remove();
+      if (!next) return;
+      const nav = document.createElement('div');
+      nav.className = 'next-block-nav';
+      nav.innerHTML = `<button class="next-block-link" type="button" data-next-block="${next.id}" aria-label="Ir al siguiente bloque" title="Siguiente bloque">↓</button>`;
+      page.appendChild(nav);
+    });
+    document.querySelectorAll('.next-block-link[data-next-block]').forEach((btn) => {
+      btn.addEventListener('click', () => showBlockPage(btn.getAttribute('data-next-block')));
+    });
+  }
+
+  enableBlockPaginationMode();
+  injectNextBlockArrows();
+
+  const formatters = {
+    eur: new Intl.NumberFormat('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+    fte0: new Intl.NumberFormat('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
+    fte1: new Intl.NumberFormat('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+    fte2: new Intl.NumberFormat('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+    pct1: new Intl.NumberFormat('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+    num2: new Intl.NumberFormat('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+  };
+  function fmtEur(value) { return formatters.eur.format(value) + ' €'; }
+  function fmtFte0(value) { return formatters.fte0.format(value) + ' FTE'; }
+  function fmtFte(value, decimals = 1) {
+    return (decimals === 2 ? formatters.fte2 : formatters.fte1).format(value) + ' FTE';
+  }
+  function fmtPct(value) { return formatters.pct1.format(value) + '%'; }
+  function nearlyEqual(a, b, tolerance = 1e-6) { return Math.abs(a - b) <= tolerance; }
+
+  const ilunionCaseFixture = {
+    directEmployment: {
+      line: 'Grupo ILUNION',
+      year: 2025,
+      territory: 'España',
+      totalFte: 43500,
+      withDisabilityFte: 16965,
+      withoutDisabilityFte: 26535,
+      womenFte: 23925,
+      menFte: 19575,
+      vulnerableFte: 14355,
+      nonVulnerableFte: 29145,
+      crossGenderDisability: {
+        womenWithDisability: 9800,
+        menWithDisability: 7165,
+        womenWithoutDisability: 14125,
+        menWithoutDisability: 12410,
+      },
+    },
+    directVab: {
+      netTurnover: 3000000,
+      inventoryChange: 250000,
+      otherOperatingIncome: 900000,
+      supplies: 1000000,
+      otherOperatingExpenses: 800000,
+    },
+    livingWage: [
+      { territory: 'Andalucía', fte: 100, grossSalary: 17000, livingWage: 15259 },
+      { territory: 'Madrid', fte: 80, grossSalary: 18500, livingWage: 21000 },
+      { territory: 'Cataluña', fte: 70, grossSalary: 22000, livingWage: 20500 },
+    ],
+    directFiscal: {
+      ibi: 420000,
+      employerSocialSecurity: 9800000,
+      employeeIrpfWithholdings: 4500000,
+      activityTaxes: 1100000,
+      corporateTax: 3250000,
+      vatCharged: 12000000,
+      vatPaid: 7500000,
+      regionalAllocation: { totalFteSpain: 10000, madridFte: 2500 },
+    },
+    accidentCost: {
+      referenceSeverityIndex: 1.2,
+      currentSeverityIndex: 0.8,
+      workedHours: 2000000,
+      sickLeaveDayCost: 250,
+      territorialFactor: 1,
+    },
+    emissions: {
+      baseYearScope1: 380,
+      analysisYearScope1: 250,
+      socialCarbonCostUsd: 244,
+      exchangeRateEurUsd: 0.92,
+      renewableElectricityKwh: 1200000,
+      gridMixFactorTco2PerKwh: 0.00018,
+      baseWaterConsumptionM3: 820000,
+      analysisWaterConsumptionM3: 760000,
+      billedWaterAmountEur: 315000,
+      billedWaterVolumeM3: 450000,
+    },
+    indirect: {
+      domesticPurchases: 5000000,
+      indirectProduction: 8200000,
+      vabCoeff: 0.45,
+      grossSalaryCoeff: 0.28,
+      socialContribCoeff: 0.09,
+      otherTaxesCoeff: 0.015,
+      employmentCoeffPerMillion: 12,
+      disabilityEmploymentProxyPct: 0.06,
+    },
+    induced: {
+      directSalaries: 10000000,
+      indirectSalaries: 2296000,
+      pmc: 0.85,
+      inducedProduction: 13440000,
+      vabCoeff: 0.45,
+      employmentCoeffPerMillion: 12,
+      grossSalaryCoeff: 0.28,
+      socialContribCoeff: 0.09,
+      otherTaxesCoeff: 0.015,
+      disabilityEmploymentProxyPct: 0.06,
+      effectiveIrpfRate: 0,
+      employeeSocialSecurityRate: 0,
+    },
+    consolidated: {
+      production: { direct: 30000000, indirect: 8200000, induced: 13440000 },
+      vab: { direct: 18000000, indirect: 3690000, induced: 6048000 },
+      employment: { direct: 10000, indirect: 98.4, induced: 161.3 },
+      employmentDisability: { direct: 4500, indirect: 5.9, induced: 9.68 },
+      grossSalaries: { direct: 10000000, indirect: 2296000, induced: 3763200 },
+      socialContributions: { direct: 3000000, indirect: 738000, induced: 1209600 },
+      fiscalContribution: { direct: 5000000, indirect: 861000, induced: 1411200 },
+    },
+    expected: {
+      directEmployment: {
+        pctDisability: 39,
+        pctWomen: 55,
+        pctVulnerable: 33,
+      },
+      directVab: 2350000,
+      livingWage: {
+        aggregatedGap: 200000,
+        referenceMass: 4640900,
+        relativeGapPct: 4.309507638603072,
+        fteAboveThreshold: 170,
+      },
+      directFiscal: {
+        national: 23570000,
+        madridAllocated: 5892500,
+      },
+      accidentCost: { daysAvoided: 800, avoidedCost: 200000 },
+      emissions: {
+        avoidedSocialCost: 29182.4,
+        renewableAvoidedEmissions: 216,
+        renewableAvoidedSocialCost: 48487.68,
+        waterUnitPrice: 0.7,
+        waterAvoidedCost: 42000,
+      },
+      indirect: {
+        vab: 3690000,
+        grossSalaries: 2296000,
+        socialContrib: 738000,
+        otherTaxes: 123000,
+        fiscalContribution: 861000,
+        employment: 98.4,
+        employmentDisability: 5.904,
+      },
+      induced: {
+        salaryBase: 12296000,
+        inducedConsumption: 10451600,
+        vab: 6048000,
+        grossSalaries: 3763200,
+        socialContrib: 1209600,
+        otherTaxes: 201600,
+        fiscalContribution: 1411200,
+        employment: 161.28,
+        employmentDisability: 9.6768,
+      },
+      consolidated: {
+        production: 51640000,
+        vab: 27738000,
+        employment: 10259.7,
+        employmentDisability: 4515.58,
+        grossSalaries: 16059200,
+        socialContributions: 4947600,
+        fiscalContribution: 7272200,
+      },
+    },
+  };
+
+  function calcDirectEmployment(data) {
+    const total = data.totalFte;
+    const pct = (part) => (part / total) * 100;
+    const validations = [
+      { label: 'Mujeres totales', left: data.womenFte, right: data.crossGenderDisability.womenWithDisability + data.crossGenderDisability.womenWithoutDisability },
+      { label: 'Hombres totales', left: data.menFte, right: data.crossGenderDisability.menWithDisability + data.crossGenderDisability.menWithoutDisability },
+      { label: 'Personas con discapacidad', left: data.withDisabilityFte, right: data.crossGenderDisability.womenWithDisability + data.crossGenderDisability.menWithDisability },
+      { label: 'Personas sin discapacidad', left: data.withoutDisabilityFte, right: data.crossGenderDisability.womenWithoutDisability + data.crossGenderDisability.menWithoutDisability },
+    ];
+    return {
+      totalFte: total,
+      withDisabilityFte: data.withDisabilityFte,
+      withoutDisabilityFte: data.withoutDisabilityFte,
+      womenFte: data.womenFte,
+      menFte: data.menFte,
+      vulnerableFte: data.vulnerableFte,
+      nonVulnerableFte: data.nonVulnerableFte,
+      pctDisability: pct(data.withDisabilityFte),
+      pctWithoutDisability: pct(data.withoutDisabilityFte),
+      pctWomen: pct(data.womenFte),
+      pctMen: pct(data.menFte),
+      pctVulnerable: pct(data.vulnerableFte),
+      pctNonVulnerable: pct(data.nonVulnerableFte),
+      validations,
+    };
+  }
+
+  function calcDirectVab(data) {
+    const vab = data.netTurnover + data.inventoryChange + data.otherOperatingIncome - data.supplies - data.otherOperatingExpenses;
+    return { vabDirect: vab, gdpContributionViaVab: vab };
+  }
+
+  function calcLivingWage(rows) {
+    const detailed = rows.map((r) => {
+      const gap = Math.max(r.livingWage - r.grossSalary, 0);
+      return {
+        ...r,
+        individualGap: gap,
+        weightedGap: r.fte * gap,
+        weightedLivingWage: r.fte * r.livingWage,
+        isAboveThreshold: r.grossSalary >= r.livingWage,
+      };
+    });
+    const aggregatedGap = detailed.reduce((sum, r) => sum + r.weightedGap, 0);
+    const referenceMass = detailed.reduce((sum, r) => sum + r.weightedLivingWage, 0);
+    const totalFte = detailed.reduce((sum, r) => sum + r.fte, 0);
+    const fteAbove = detailed.filter((r) => r.isAboveThreshold).reduce((sum, r) => sum + r.fte, 0);
+    return {
+      detailed,
+      aggregatedGap,
+      referenceMass,
+      relativeGapPct: (aggregatedGap / referenceMass) * 100,
+      fteAboveThreshold: fteAbove,
+      pctFteAboveThreshold: (fteAbove / totalFte) * 100,
+    };
+  }
+
+  function calcDirectFiscal(data) {
+    const national = data.ibi + data.employerSocialSecurity + data.employeeIrpfWithholdings + data.activityTaxes + data.corporateTax + data.vatCharged - data.vatPaid;
+    const madridWeight = data.regionalAllocation.madridFte / data.regionalAllocation.totalFteSpain;
+    return {
+      national,
+      madridWeight,
+      madridAllocated: national * madridWeight,
+    };
+  }
+
+  function calcAccidentAvoidedCost(data) {
+    const days = (data.referenceSeverityIndex - data.currentSeverityIndex) * data.workedHours / 1000;
+    const cost = days * data.sickLeaveDayCost * data.territorialFactor;
+    return {
+      daysAvoided: days,
+      publicCostDelta: cost,
+      interpretation: cost >= 0 ? 'coste potencialmente evitado' : 'coste adicional estimado',
+    };
+  }
+
+  function calcEmissionsAvoidedCost(data) {
+    const emissionsReduction = data.baseYearScope1 - data.analysisYearScope1;
+    return {
+      emissionsReduction,
+      socialCostAvoided: emissionsReduction * data.socialCarbonCostUsd * data.exchangeRateEurUsd,
+    };
+  }
+
+  function calcRenewableElectricityAvoidedCost(data) {
+    const avoidedEmissions = data.renewableElectricityKwh * data.gridMixFactorTco2PerKwh;
+    return {
+      avoidedEmissions,
+      avoidedSocialCost: avoidedEmissions * data.socialCarbonCostUsd * data.exchangeRateEurUsd,
+    };
+  }
+
+  function calcWaterUnitPrice(data) {
+    if (!data.billedWaterVolumeM3) return 0;
+    return data.billedWaterAmountEur / data.billedWaterVolumeM3;
+  }
+
+  function calcWaterAvoidedCost(data) {
+    const unitPrice = calcWaterUnitPrice(data);
+    const avoidedConsumption = data.baseWaterConsumptionM3 - data.analysisWaterConsumptionM3;
+    return {
+      unitPrice,
+      avoidedConsumption,
+      avoidedCost: avoidedConsumption * unitPrice,
+    };
+  }
+
+  function calcIndirectImpact(data) {
+    const production = data.indirectProduction;
+    const socialContrib = production * data.socialContribCoeff;
+    const otherTaxes = production * data.otherTaxesCoeff;
+    const employment = (production / 1000000) * data.employmentCoeffPerMillion;
+    return {
+      production,
+      vab: production * data.vabCoeff,
+      grossSalaries: production * data.grossSalaryCoeff,
+      socialContributions: socialContrib,
+      otherTaxes,
+      fiscalContribution: socialContrib + otherTaxes,
+      employment,
+      employmentDisability: employment * data.disabilityEmploymentProxyPct,
+    };
+  }
+
+  function calcInducedImpact(data) {
+    const salaryBase = data.directSalaries + data.indirectSalaries;
+    const inducedConsumption = salaryBase * data.pmc;
+    const production = data.inducedProduction;
+    const socialContrib = production * data.socialContribCoeff;
+    const otherTaxes = production * data.otherTaxesCoeff;
+    const employment = (production / 1000000) * data.employmentCoeffPerMillion;
+    return {
+      salaryBase,
+      inducedConsumption,
+      production,
+      vab: production * data.vabCoeff,
+      grossSalaries: production * data.grossSalaryCoeff,
+      socialContributions: socialContrib,
+      otherTaxes,
+      fiscalContribution: socialContrib + otherTaxes,
+      employment,
+      employmentDisability: employment * data.disabilityEmploymentProxyPct,
+    };
+  }
+
+  function calcInducedNetSalaryBase(data) {
+    const netFactor = 1 - data.effectiveIrpfRate - data.employeeSocialSecurityRate;
+    return {
+      netDirectSalary: data.directSalaries * netFactor,
+      netIndirectSalary: data.indirectSalaries * netFactor,
+      netSalaryBase: (data.directSalaries + data.indirectSalaries) * netFactor,
+      netFactor,
+    };
+  }
+
+  function calcTotalConsolidated(data) {
+    const sum = (x) => x.direct + x.indirect + x.induced;
+    return {
+      production: sum(data.production),
+      vab: sum(data.vab),
+      employment: sum(data.employment),
+      employmentDisability: sum(data.employmentDisability),
+      grossSalaries: sum(data.grossSalaries),
+      socialContributions: sum(data.socialContributions),
+      fiscalContribution: sum(data.fiscalContribution),
+    };
+  }
+
+  function buildValidationRows(rows) {
+    return rows.map((r) => {
+      const ok = nearlyEqual(r.left, r.right);
+      return `<tr><td>${ok ? '✅' : '❌'} ${r.label}</td><td>${formatters.num2.format(r.left)}</td></tr>`;
+    }).join('');
+  }
+
+  function buildExpectedVsCalculatedRows(rows) {
+    return rows.map((r) => {
+      const ok = nearlyEqual(r.calculated, r.expected, r.tolerance || 1e-6);
+      return `<tr><td>${r.label}</td><td>${r.format(r.calculated)}</td></tr>`;
+    }).join('');
+  }
+
+  function renderIlunionCaseStudy() {
+    const root = document.getElementById('ilunion-case-study');
+    if (!root) return;
+
+    const de = calcDirectEmployment(ilunionCaseFixture.directEmployment);
+    const dv = calcDirectVab(ilunionCaseFixture.directVab);
+    const lw = calcLivingWage(ilunionCaseFixture.livingWage);
+    const df = calcDirectFiscal(ilunionCaseFixture.directFiscal);
+    const ac = calcAccidentAvoidedCost(ilunionCaseFixture.accidentCost);
+    const em = calcEmissionsAvoidedCost(ilunionCaseFixture.emissions);
+    const emRenew = calcRenewableElectricityAvoidedCost(ilunionCaseFixture.emissions);
+    const water = calcWaterAvoidedCost(ilunionCaseFixture.emissions);
+    const ind = calcIndirectImpact(ilunionCaseFixture.indirect);
+    const indc = calcInducedImpact(ilunionCaseFixture.induced);
+    const indcNet = calcInducedNetSalaryBase(ilunionCaseFixture.induced);
+    const tot = calcTotalConsolidated(ilunionCaseFixture.consolidated);
+
+    const html = `
+      <div class="accordion">
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.2.1 Empleo directo</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;"><strong>Tipo de dato:</strong> observado interno (empleo reportado).</p>
+            <table class="data-table"><thead><tr><th>Input</th><th>Valor</th></tr></thead><tbody>
+              <tr><td>Perímetro / ejercicio / territorio</td><td>${ilunionCaseFixture.directEmployment.line} · ${ilunionCaseFixture.directEmployment.year} · ${ilunionCaseFixture.directEmployment.territory}</td></tr>
+              <tr><td>Σ FTE reportados (base)</td><td>${fmtFte0(de.totalFte)}</td></tr>
+              <tr><td>FTE discapacidad / sin discapacidad</td><td>${fmtFte0(de.withDisabilityFte)} / ${fmtFte0(de.withoutDisabilityFte)}</td></tr>
+              <tr><td>FTE mujeres / hombres</td><td>${fmtFte0(de.womenFte)} / ${fmtFte0(de.menFte)}</td></tr>
+              <tr><td>FTE vulnerables / no vulnerables</td><td>${fmtFte0(de.vulnerableFte)} / ${fmtFte0(de.nonVulnerableFte)}</td></tr>
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Fórmula</th><th>Expresión</th></tr></thead><tbody>
+              <tr><td>Empleo directo total</td><td>Σ FTE reportados para línea/perímetro, ejercicio y territorio considerados</td></tr>
+              <tr><td>Empleo directo con discapacidad</td><td>Σ FTE con discapacidad reconocida</td></tr>
+              <tr><td>Empleo directo femenino</td><td>Σ FTE mujeres</td></tr>
+              <tr><td>Empleo directo colectivos vulnerables</td><td>Σ FTE colectivos vulnerables</td></tr>
+            </tbody></table>
+            <p style="margin:10px 0 0;"><strong>Secuencia del caso:</strong> 1) cálculo de empleo directo total, 2) desagregación por discapacidad, género y vulnerabilidad con su peso relativo, 3) cruce género-discapacidad cuando la base permite identificación simultánea.</p>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Empleo directo total', calculated: de.totalFte, expected: ilunionCaseFixture.directEmployment.totalFte, format: fmtFte0 },
+                { label: 'Empleo directo en personas con discapacidad', calculated: de.withDisabilityFte, expected: ilunionCaseFixture.directEmployment.withDisabilityFte, format: fmtFte0 },
+                { label: 'Empleo directo en personas sin discapacidad', calculated: de.withoutDisabilityFte, expected: ilunionCaseFixture.directEmployment.withoutDisabilityFte, format: fmtFte0 },
+                { label: 'Empleo directo femenino', calculated: de.womenFte, expected: ilunionCaseFixture.directEmployment.womenFte, format: fmtFte0 },
+                { label: 'Empleo directo masculino', calculated: de.menFte, expected: ilunionCaseFixture.directEmployment.menFte, format: fmtFte0 },
+                { label: 'Empleo directo en colectivos vulnerables', calculated: de.vulnerableFte, expected: ilunionCaseFixture.directEmployment.vulnerableFte, format: fmtFte0 },
+                { label: 'Empleo directo en colectivos no vulnerables', calculated: de.nonVulnerableFte, expected: ilunionCaseFixture.directEmployment.nonVulnerableFte, format: fmtFte0 },
+              ])}
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Porcentaje</th><th>Resultado calculado</th></tr></thead><tbody>
+              <tr><td>% FTE con discapacidad</td><td>${fmtPct(de.pctDisability)}</td></tr>
+              <tr><td>% FTE sin discapacidad</td><td>${fmtPct(de.pctWithoutDisability)}</td></tr>
+              <tr><td>% FTE mujeres</td><td>${fmtPct(de.pctWomen)}</td></tr>
+              <tr><td>% FTE hombres</td><td>${fmtPct(de.pctMen)}</td></tr>
+              <tr><td>% FTE colectivos vulnerables</td><td>${fmtPct(de.pctVulnerable)}</td></tr>
+              <tr><td>% FTE colectivos no vulnerables</td><td>${fmtPct(de.pctNonVulnerable)}</td></tr>
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Validación</th><th>Valor</th></tr></thead><tbody>${buildValidationRows(de.validations)}</tbody></table>
+            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);"><strong>Regla de negocio:</strong> cuando hay registros individualizados, las desagregaciones se calculan por suma directa de FTE por condición; no por aplicación de porcentajes agregados.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.2.2 VAB directo y PIB vía VAB</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;"><strong>Tipo de dato:</strong> observado interno (fiscal-contable).</p>
+            <table class="data-table"><thead><tr><th>Input</th><th>Valor</th></tr></thead><tbody>
+              <tr><td>Importe neto cifra de negocios</td><td>${fmtEur(ilunionCaseFixture.directVab.netTurnover)}</td></tr>
+              <tr><td>Variación de existencias</td><td>${fmtEur(ilunionCaseFixture.directVab.inventoryChange)}</td></tr>
+              <tr><td>Otros ingresos de explotación</td><td>${fmtEur(ilunionCaseFixture.directVab.otherOperatingIncome)}</td></tr>
+              <tr><td>Aprovisionamientos</td><td>${fmtEur(ilunionCaseFixture.directVab.supplies)}</td></tr>
+              <tr><td>Otros gastos de explotación</td><td>${fmtEur(ilunionCaseFixture.directVab.otherOperatingExpenses)}</td></tr>
+            </tbody></table>
+            <p style="margin:10px 0 8px;"><strong>Fórmula:</strong> VAB = cifra de negocios + variación de existencias + otros ingresos - aprovisionamientos - otros gastos.</p>
+            <table class="data-table"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'VAB directo', calculated: dv.vabDirect, expected: ilunionCaseFixture.expected.directVab, format: fmtEur },
+                { label: 'Contribución directa al PIB (mediante VAB)', calculated: dv.gdpContributionViaVab, expected: ilunionCaseFixture.expected.directVab, format: fmtEur },
+              ])}
+            </tbody></table>
+            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);">Regla metodológica: la contribución al PIB no se suma al VAB; es la misma magnitud aproximada vía VAB.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.2.3 Salario digno y brecha de salario digno</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;"><strong>Tipo de dato:</strong> observado + umbral externo territorial (proxy).</p>
+            <table class="data-table"><thead><tr><th>Territorio</th><th>FTE</th><th>Salario bruto anual comparable</th><th>Salario digno territorial</th></tr></thead><tbody>
+              ${ilunionCaseFixture.livingWage.map((r) => `<tr><td>${r.territory}</td><td>${fmtFte(r.fte, 1)}</td><td>${fmtEur(r.grossSalary)}</td><td>${fmtEur(r.livingWage)}</td></tr>`).join('')}
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Fórmula</th><th>Expresión</th></tr></thead><tbody>
+              <tr><td>Brecha individual</td><td>MAX(Salario digno territorial - salario bruto anual comparable, 0)</td></tr>
+              <tr><td>Brecha ponderada</td><td>FTE × Brecha individual</td></tr>
+              <tr><td>Masa salarial digna referencia</td><td>Σ(FTE × salario digno territorial)</td></tr>
+              <tr><td>Brecha relativa</td><td>Brecha agregada / masa salarial digna referencia</td></tr>
+            </tbody></table>
+            <table class="data-table"><thead><tr><th>Territorio</th><th>Brecha individual</th><th>Brecha ponderada</th><th>Salario digno ponderado</th></tr></thead><tbody>
+              ${lw.detailed.map((r) => `<tr><td>${r.territory}</td><td>${fmtEur(r.individualGap)}</td><td>${fmtEur(r.weightedGap)}</td><td>${fmtEur(r.weightedLivingWage)}</td></tr>`).join('')}
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Brecha agregada', calculated: lw.aggregatedGap, expected: ilunionCaseFixture.expected.livingWage.aggregatedGap, format: fmtEur },
+                { label: 'Masa salarial digna de referencia', calculated: lw.referenceMass, expected: ilunionCaseFixture.expected.livingWage.referenceMass, format: fmtEur },
+                { label: 'Brecha relativa', calculated: lw.relativeGapPct, expected: ilunionCaseFixture.expected.livingWage.relativeGapPct, format: fmtPct, tolerance: 1e-4 },
+                { label: 'FTE que superan salario digno', calculated: lw.fteAboveThreshold, expected: ilunionCaseFixture.expected.livingWage.fteAboveThreshold, format: (v) => fmtFte(v, 1) },
+                { label: '% FTE que superan salario digno', calculated: lw.pctFteAboveThreshold, expected: 68, format: fmtPct, tolerance: 1e-4 },
+              ])}
+            </tbody></table>
+            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);">Regla de negocio: este KPI no mide brecha salarial entre colectivos; mide distancia frente al umbral territorial de salario digno.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.2.4 Contribución fiscal directa</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;"><strong>Tipo de dato:</strong> observado interno + imputación territorial metodológica.</p>
+            <table class="data-table"><thead><tr><th>Componente fiscal</th><th>Valor</th></tr></thead><tbody>
+              <tr><td>IBI</td><td>${fmtEur(ilunionCaseFixture.directFiscal.ibi)}</td></tr>
+              <tr><td>Seguridad Social empresa</td><td>${fmtEur(ilunionCaseFixture.directFiscal.employerSocialSecurity)}</td></tr>
+              <tr><td>Retenciones IRPF empleados</td><td>${fmtEur(ilunionCaseFixture.directFiscal.employeeIrpfWithholdings)}</td></tr>
+              <tr><td>Impuestos y tasas actividad</td><td>${fmtEur(ilunionCaseFixture.directFiscal.activityTaxes)}</td></tr>
+              <tr><td>Impuesto sobre Sociedades</td><td>${fmtEur(ilunionCaseFixture.directFiscal.corporateTax)}</td></tr>
+              <tr><td>IVA repercutido</td><td>${fmtEur(ilunionCaseFixture.directFiscal.vatCharged)}</td></tr>
+              <tr><td>IVA soportado</td><td>${fmtEur(ilunionCaseFixture.directFiscal.vatPaid)}</td></tr>
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Fórmula</th><th>Expresión</th></tr></thead><tbody>
+              <tr><td>Nacional</td><td>IBI + SS empresa + IRPF + tasas + Sociedades + IVA repercutido - IVA soportado</td></tr>
+              <tr><td>Peso territorial (Madrid)</td><td>FTE Madrid / FTE total España = ${fmtPct(df.madridWeight * 100)}</td></tr>
+              <tr><td>Imputación territorial</td><td>Contribución fiscal nacional × peso FTE territorial</td></tr>
+            </tbody></table>
+            <table class="data-table"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Contribución fiscal directa nacional', calculated: df.national, expected: ilunionCaseFixture.expected.directFiscal.national, format: fmtEur },
+                { label: 'Contribución fiscal directa imputada Madrid', calculated: df.madridAllocated, expected: ilunionCaseFixture.expected.directFiscal.madridAllocated, format: fmtEur },
+              ])}
+            </tbody></table>
+            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);">Regla de negocio: Sociedades, SS, IRPF e IVA neto son componentes de la contribución fiscal directa; no deben sumarse de nuevo al total fiscal.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.2.5 Coste público evitado por reducción de accidentes laborales</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;"><strong>Tipo de dato:</strong> observado + parámetro externo (coste día de baja).</p>
+            <p style="margin-bottom:8px;"><strong>Objetivo funcional:</strong> monetizar la variación del índice de gravedad para estimar coste público potencialmente evitado (o coste adicional estimado si el signo es negativo).</p>
+            <table class="data-table" style="margin-bottom:10px;"><thead><tr><th>Racional metodológico</th><th>Aplicación en el caso</th></tr></thead><tbody>
+              <tr><td>El índice de gravedad se transforma en días de baja equivalentes usando horas trabajadas.</td><td>Permite comparar ejercicios con distinta escala operativa.</td></tr>
+              <tr><td>Los días equivalentes se monetizan con un coste unitario externo.</td><td>Convierte una variación operativa en impacto socioeconómico (€).</td></tr>
+              <tr><td>Se aplica factor territorial cuando hay imputación regional.</td><td>En este caso: factor 1 (sin ajuste adicional).</td></tr>
+            </tbody></table>
+            <table class="data-table"><thead><tr><th>Input</th><th>Valor</th></tr></thead><tbody>
+              <tr><td>Índice gravedad referencia</td><td>${formatters.num2.format(ilunionCaseFixture.accidentCost.referenceSeverityIndex)}</td></tr>
+              <tr><td>Índice gravedad actual</td><td>${formatters.num2.format(ilunionCaseFixture.accidentCost.currentSeverityIndex)}</td></tr>
+              <tr><td>Horas trabajadas</td><td>${formatters.num2.format(ilunionCaseFixture.accidentCost.workedHours)}</td></tr>
+              <tr><td>Coste unitario día de baja</td><td>${fmtEur(ilunionCaseFixture.accidentCost.sickLeaveDayCost)}</td></tr>
+              <tr><td>Factor territorial</td><td>${formatters.num2.format(ilunionCaseFixture.accidentCost.territorialFactor)}</td></tr>
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Fórmula</th><th>Expresión</th></tr></thead><tbody>
+              <tr><td>Días de baja evitados</td><td>(Índice referencia - índice actual) × horas / 1.000</td></tr>
+              <tr><td>Coste público evitado</td><td>Días evitados × coste unitario × factor territorial</td></tr>
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Paso de cálculo</th><th>Operación aplicada</th><th>Resultado</th></tr></thead><tbody>
+              <tr><td>1. Diferencia de índice</td><td>${formatters.num2.format(ilunionCaseFixture.accidentCost.referenceSeverityIndex)} - ${formatters.num2.format(ilunionCaseFixture.accidentCost.currentSeverityIndex)}</td><td>${formatters.num2.format(ilunionCaseFixture.accidentCost.referenceSeverityIndex - ilunionCaseFixture.accidentCost.currentSeverityIndex)}</td></tr>
+              <tr><td>2. Días evitados</td><td>${formatters.num2.format(ilunionCaseFixture.accidentCost.referenceSeverityIndex - ilunionCaseFixture.accidentCost.currentSeverityIndex)} × ${formatters.num2.format(ilunionCaseFixture.accidentCost.workedHours)} / 1.000</td><td>${formatters.num2.format(ac.daysAvoided)} días</td></tr>
+              <tr><td>3. Monetización</td><td>${formatters.num2.format(ac.daysAvoided)} × ${fmtEur(ilunionCaseFixture.accidentCost.sickLeaveDayCost)} × ${formatters.num2.format(ilunionCaseFixture.accidentCost.territorialFactor)}</td><td>${fmtEur(ac.publicCostDelta)}</td></tr>
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Indicador</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Días de baja evitados', calculated: ac.daysAvoided, expected: ilunionCaseFixture.expected.accidentCost.daysAvoided, format: (v) => formatters.num2.format(v) + ' días' },
+                { label: 'Coste público (signado)', calculated: ac.publicCostDelta, expected: ilunionCaseFixture.expected.accidentCost.avoidedCost, format: fmtEur },
+              ])}
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Validación de coherencia</th><th>Estado</th></tr></thead><tbody>
+              <tr><td>Si (índice referencia - índice actual) > 0, se reporta coste evitado</td><td>${(ilunionCaseFixture.accidentCost.referenceSeverityIndex - ilunionCaseFixture.accidentCost.currentSeverityIndex) > 0 ? '✅' : '❌'}</td></tr>
+              <tr><td>Si (índice referencia - índice actual) < 0, debe reportarse coste adicional estimado</td><td>Regla activa en función de cálculo (signo preservado)</td></tr>
+            </tbody></table>
+            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);"><strong>Interpretación actual:</strong> ${ac.interpretation}. El aplicativo mantiene el signo del resultado y evita etiquetar como ahorro un resultado negativo.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.2.6 Coste social evitado por reducción de emisiones</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;"><strong>Tipo de dato:</strong> observado ambiental + proxies externas (CSC, tipo de cambio, factor mix y precio unitario del agua).</p>
+
+            <h4 style="font-size:14px;margin:8px 0;">Ejemplo A · Emisiones (alcance 1)</h4>
+            <table class="data-table"><thead><tr><th>Input</th><th>Valor</th></tr></thead><tbody>
+              <tr><td>Emisiones alcance 1 (año base)</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.baseYearScope1)} tCO₂e</td></tr>
+              <tr><td>Emisiones alcance 1 (año análisis)</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.analysisYearScope1)} tCO₂e</td></tr>
+              <tr><td>Coste social del carbono</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.socialCarbonCostUsd)} $/tCO₂e</td></tr>
+              <tr><td>Tipo de cambio</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.exchangeRateEurUsd)} €/$</td></tr>
+            </tbody></table>
+            <p style="margin:8px 0;"><strong>Fórmula:</strong> Coste social evitado = (Emisiones base - emisiones análisis) × CSC × tipo de cambio</p>
+            <table class="data-table"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Coste social evitado por reducción emisiones alcance 1', calculated: em.socialCostAvoided, expected: ilunionCaseFixture.expected.emissions.avoidedSocialCost, format: fmtEur },
+              ])}
+            </tbody></table>
+
+            <h4 style="font-size:14px;margin:14px 0 8px;">Ejemplo B · Electricidad renovable y emisiones evitadas</h4>
+            <table class="data-table"><thead><tr><th>Input</th><th>Valor</th></tr></thead><tbody>
+              <tr><td>Consumo eléctrico renovable</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.renewableElectricityKwh)} kWh</td></tr>
+              <tr><td>Factor mix eléctrico</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.gridMixFactorTco2PerKwh)} tCO₂e/kWh</td></tr>
+              <tr><td>Coste social del carbono</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.socialCarbonCostUsd)} $/tCO₂e</td></tr>
+              <tr><td>Tipo de cambio</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.exchangeRateEurUsd)} €/$</td></tr>
+            </tbody></table>
+            <p style="margin:8px 0;"><strong>Fórmulas:</strong> Emisiones evitadas = consumo renovable × factor mix. Coste social evitado = emisiones evitadas × CSC × tipo de cambio.</p>
+            <table class="data-table"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Emisiones evitadas por electricidad renovable', calculated: emRenew.avoidedEmissions, expected: ilunionCaseFixture.expected.emissions.renewableAvoidedEmissions, format: (v) => formatters.num2.format(v) + ' tCO₂e' },
+                { label: 'Coste social evitado por electricidad renovable', calculated: emRenew.avoidedSocialCost, expected: ilunionCaseFixture.expected.emissions.renewableAvoidedSocialCost, format: fmtEur },
+              ])}
+            </tbody></table>
+
+            <h4 style="font-size:14px;margin:14px 0 8px;">Ejemplo C · Agua y monetización del consumo evitado</h4>
+            <table class="data-table"><thead><tr><th>Input</th><th>Valor</th></tr></thead><tbody>
+              <tr><td>Consumo hídrico año base</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.baseWaterConsumptionM3)} m³</td></tr>
+              <tr><td>Consumo hídrico año análisis</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.analysisWaterConsumptionM3)} m³</td></tr>
+              <tr><td>Importe facturado agua suministrada</td><td>${fmtEur(ilunionCaseFixture.emissions.billedWaterAmountEur)}</td></tr>
+              <tr><td>Volumen agua suministrada</td><td>${formatters.num2.format(ilunionCaseFixture.emissions.billedWaterVolumeM3)} m³</td></tr>
+            </tbody></table>
+            <p style="margin:8px 0;"><strong>Fórmulas:</strong> Precio unitario agua = importe facturado / volumen. Coste evitado hídrico = (consumo base - consumo análisis) × precio unitario.</p>
+            <table class="data-table"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Precio unitario del agua', calculated: water.unitPrice, expected: ilunionCaseFixture.expected.emissions.waterUnitPrice, format: (v) => fmtEur(v) + '/m³' },
+                { label: 'Coste evitado por reducción del consumo hídrico', calculated: water.avoidedCost, expected: ilunionCaseFixture.expected.emissions.waterAvoidedCost, format: fmtEur },
+              ])}
+            </tbody></table>
+            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);">Regla de negocio: los indicadores de alcance 1, 2 y 3 son desgloses del total de emisiones; no deben sumarse adicionalmente al total.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.3 Impacto indirecto (estimación modelizada)</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;"><strong>Tipo de dato:</strong> estimación modelizada I-O + proxy externa para desgloses sin microdato.</p>
+            <table class="data-table"><thead><tr><th>Input / coeficiente</th><th>Valor</th><th>Qué se calcula</th></tr></thead><tbody>
+              <tr><td>Compras domésticas sectorizadas</td><td>${fmtEur(ilunionCaseFixture.indirect.domesticPurchases)}</td><td>Shock inicial en el sistema productivo nacional.</td></tr>
+              <tr><td>Producción indirecta (Leontief)</td><td>${fmtEur(ilunionCaseFixture.indirect.indirectProduction)}</td><td>Producción activada en cadena de suministro.</td></tr>
+              <tr><td>Coeficiente VAB</td><td>${formatters.num2.format(ilunionCaseFixture.indirect.vabCoeff)} €/€</td><td>VAB indirecto asociado a la producción.</td></tr>
+              <tr><td>Coeficiente salarios brutos</td><td>${formatters.num2.format(ilunionCaseFixture.indirect.grossSalaryCoeff)} €/€</td><td>Sueldos y salarios indirectos.</td></tr>
+              <tr><td>Coeficiente cotizaciones</td><td>${formatters.num2.format(ilunionCaseFixture.indirect.socialContribCoeff)} €/€</td><td>Cotizaciones sociales indirectas.</td></tr>
+              <tr><td>Coeficiente otros impuestos netos</td><td>${formatters.num2.format(ilunionCaseFixture.indirect.otherTaxesCoeff)} €/€</td><td>Fiscalidad indirecta no observada.</td></tr>
+              <tr><td>Coeficiente empleo</td><td>${formatters.num2.format(ilunionCaseFixture.indirect.employmentCoeffPerMillion)} FTE/M€</td><td>Empleo indirecto total.</td></tr>
+              <tr><td>Proxy empleo discapacidad</td><td>${fmtPct(ilunionCaseFixture.indirect.disabilityEmploymentProxyPct * 100)}</td><td>Desglose de empleo indirecto con discapacidad.</td></tr>
+            </tbody></table>
+            <p style="margin:10px 0 8px;"><strong>Fórmula estructural:</strong> Producción indirecta = L × vector de compras domésticas sectorizadas, con L = (I - A)<sup>-1</sup>. No se resta el vector de compras al resultado.</p>
+            <table class="data-table"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Producción indirecta', calculated: ind.production, expected: ilunionCaseFixture.indirect.indirectProduction, format: fmtEur },
+                { label: 'VAB indirecto', calculated: ind.vab, expected: ilunionCaseFixture.expected.indirect.vab, format: fmtEur },
+                { label: 'Sueldos y salarios brutos indirectos', calculated: ind.grossSalaries, expected: ilunionCaseFixture.expected.indirect.grossSalaries, format: fmtEur },
+                { label: 'Cotizaciones sociales indirectas', calculated: ind.socialContributions, expected: ilunionCaseFixture.expected.indirect.socialContrib, format: fmtEur },
+                { label: 'Otros impuestos netos sobre producción', calculated: ind.otherTaxes, expected: ilunionCaseFixture.expected.indirect.otherTaxes, format: fmtEur },
+                { label: 'Contribución fiscal indirecta', calculated: ind.fiscalContribution, expected: ilunionCaseFixture.expected.indirect.fiscalContribution, format: fmtEur },
+                { label: 'Empleo indirecto', calculated: ind.employment, expected: ilunionCaseFixture.expected.indirect.employment, format: (v) => fmtFte(v, 1), tolerance: 1e-4 },
+                { label: 'Empleo indirecto con discapacidad (proxy)', calculated: ind.employmentDisability, expected: ilunionCaseFixture.expected.indirect.employmentDisability, format: (v) => fmtFte(v, 2), tolerance: 1e-4 },
+              ])}
+            </tbody></table>
+            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);">Reglas de negocio: solo compras domésticas trazables; importaciones fuera del shock nacional; intragrupo fuera del consolidado; fiscalidad indirecta sin IVA/IRPF/Sociedades separados.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.4 Impacto inducido (estimación modelizada)</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;"><strong>Tipo de dato:</strong> estimación modelizada I-O + proxies externas (PMC y distribución sectorial consumo).</p>
+            <table class="data-table"><thead><tr><th>Input</th><th>Valor</th><th>Qué se calcula</th></tr></thead><tbody>
+              <tr><td>Salarios directos</td><td>${fmtEur(ilunionCaseFixture.induced.directSalaries)}</td><td>Base observada de renta salarial atribuible.</td></tr>
+              <tr><td>Salarios indirectos</td><td>${fmtEur(ilunionCaseFixture.induced.indirectSalaries)}</td><td>Renta salarial estimada procedente del impacto indirecto.</td></tr>
+              <tr><td>PMC</td><td>${fmtPct(ilunionCaseFixture.induced.pmc * 100)}</td><td>Conversión de renta salarial en consumo inducido.</td></tr>
+              <tr><td>Producción inducida (Leontief)</td><td>${fmtEur(ilunionCaseFixture.induced.inducedProduction)}</td><td>Producción total inducida por consumo de hogares.</td></tr>
+            </tbody></table>
+            <table class="data-table" style="margin-top:10px;"><thead><tr><th>Fórmula</th><th>Expresión</th></tr></thead><tbody>
+              <tr><td>Base salarial inducible</td><td>salarios directos + salarios indirectos</td></tr>
+              <tr><td>Consumo inducido total</td><td>base salarial inducible × PMC</td></tr>
+              <tr><td>Producción inducida</td><td>L × vector de consumo inducido sectorial</td></tr>
+            </tbody></table>
+            <p style="margin:10px 0 8px;"><strong>Versión robusta preparada:</strong> base salarial neta con renta disponible (IRPF efectivo y SS trabajador).</p>
+            <table class="data-table"><thead><tr><th>Cálculo robusto (si se parametriza)</th><th>Resultado con parámetros actuales</th></tr></thead><tbody>
+              <tr><td>Factor neto = 1 - tipo IRPF efectivo - tipo SS trabajador</td><td>${formatters.num2.format(indcNet.netFactor)}</td></tr>
+              <tr><td>Salario neto directo estimado</td><td>${fmtEur(indcNet.netDirectSalary)}</td></tr>
+              <tr><td>Salario neto indirecto estimado</td><td>${fmtEur(indcNet.netIndirectSalary)}</td></tr>
+              <tr><td>Base salarial inducible neta</td><td>${fmtEur(indcNet.netSalaryBase)}</td></tr>
+            </tbody></table>
+            <table class="data-table"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Base salarial inducible', calculated: indc.salaryBase, expected: ilunionCaseFixture.expected.induced.salaryBase, format: fmtEur },
+                { label: 'Consumo inducido total', calculated: indc.inducedConsumption, expected: ilunionCaseFixture.expected.induced.inducedConsumption, format: fmtEur },
+                { label: 'Producción inducida', calculated: indc.production, expected: ilunionCaseFixture.induced.inducedProduction, format: fmtEur },
+                { label: 'VAB inducido', calculated: indc.vab, expected: ilunionCaseFixture.expected.induced.vab, format: fmtEur },
+                { label: 'Sueldos y salarios brutos inducidos', calculated: indc.grossSalaries, expected: ilunionCaseFixture.expected.induced.grossSalaries, format: fmtEur },
+                { label: 'Cotizaciones sociales inducidas', calculated: indc.socialContributions, expected: ilunionCaseFixture.expected.induced.socialContrib, format: fmtEur },
+                { label: 'Otros impuestos netos sobre producción', calculated: indc.otherTaxes, expected: ilunionCaseFixture.expected.induced.otherTaxes, format: fmtEur },
+                { label: 'Contribución fiscal inducida', calculated: indc.fiscalContribution, expected: ilunionCaseFixture.expected.induced.fiscalContribution, format: fmtEur },
+                { label: 'Empleo inducido', calculated: indc.employment, expected: ilunionCaseFixture.expected.induced.employment, format: (v) => fmtFte(v, 1), tolerance: 1e-4 },
+                { label: 'Empleo inducido con discapacidad (proxy)', calculated: indc.employmentDisability, expected: ilunionCaseFixture.expected.induced.employmentDisability, format: (v) => fmtFte(v, 2), tolerance: 1e-4 },
+              ])}
+            </tbody></table>
+            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);">Reglas de negocio: no inducir de nuevo salarios del propio inducido; el salario indirecto entra como input, no como output observado; fiscalidad inducida sin IVA/IRPF/Sociedades separados.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.5 Impacto total consolidado</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;"><strong>Tipo de dato:</strong> consolidación de observado + modelizado (solo variables agregables).</p>
+            <table class="data-table"><thead><tr><th>Variable</th><th>Directo</th><th>Indirecto</th><th>Inducido</th></tr></thead><tbody>
+              <tr><td>Producción</td><td>${fmtEur(ilunionCaseFixture.consolidated.production.direct)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.production.indirect)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.production.induced)}</td></tr>
+              <tr><td>Contribución PIB vía VAB</td><td>${fmtEur(ilunionCaseFixture.consolidated.vab.direct)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.vab.indirect)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.vab.induced)}</td></tr>
+              <tr><td>Empleo</td><td>${fmtFte(ilunionCaseFixture.consolidated.employment.direct, 1)}</td><td>${fmtFte(ilunionCaseFixture.consolidated.employment.indirect, 1)}</td><td>${fmtFte(ilunionCaseFixture.consolidated.employment.induced, 1)}</td></tr>
+              <tr><td>Empleo con discapacidad</td><td>${fmtFte(ilunionCaseFixture.consolidated.employmentDisability.direct, 2)}</td><td>${fmtFte(ilunionCaseFixture.consolidated.employmentDisability.indirect, 2)}</td><td>${fmtFte(ilunionCaseFixture.consolidated.employmentDisability.induced, 2)}</td></tr>
+              <tr><td>Sueldos y salarios brutos</td><td>${fmtEur(ilunionCaseFixture.consolidated.grossSalaries.direct)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.grossSalaries.indirect)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.grossSalaries.induced)}</td></tr>
+              <tr><td>Cotizaciones sociales</td><td>${fmtEur(ilunionCaseFixture.consolidated.socialContributions.direct)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.socialContributions.indirect)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.socialContributions.induced)}</td></tr>
+              <tr><td>Contribución fiscal</td><td>${fmtEur(ilunionCaseFixture.consolidated.fiscalContribution.direct)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.fiscalContribution.indirect)}</td><td>${fmtEur(ilunionCaseFixture.consolidated.fiscalContribution.induced)}</td></tr>
+            </tbody></table>
+            <p style="margin:10px 0 8px;"><strong>Regla:</strong> total = directo + indirecto + inducido, solo para variables homogéneas (producción, VAB, empleo, salarios, cotizaciones y fiscalidad).</p>
+            <table class="data-table"><thead><tr><th>Output</th><th>Resultado calculado</th></tr></thead><tbody>
+              ${buildExpectedVsCalculatedRows([
+                { label: 'Producción total', calculated: tot.production, expected: ilunionCaseFixture.expected.consolidated.production, format: fmtEur },
+                { label: 'Contribución total al PIB (VAB)', calculated: tot.vab, expected: ilunionCaseFixture.expected.consolidated.vab, format: fmtEur },
+                { label: 'Empleo total', calculated: tot.employment, expected: ilunionCaseFixture.expected.consolidated.employment, format: (v) => fmtFte(v, 1), tolerance: 1e-4 },
+                { label: 'Empleo total con discapacidad (exacto)', calculated: tot.employmentDisability, expected: ilunionCaseFixture.expected.consolidated.employmentDisability, format: (v) => fmtFte(v, 2), tolerance: 1e-4 },
+                { label: 'Empleo total con discapacidad (display 1 decimal)', calculated: tot.employmentDisability, expected: ilunionCaseFixture.expected.consolidated.employmentDisability, format: (v) => fmtFte(v, 1), tolerance: 1e-4 },
+                { label: 'Sueldos y salarios brutos totales', calculated: tot.grossSalaries, expected: ilunionCaseFixture.expected.consolidated.grossSalaries, format: fmtEur },
+                { label: 'Cotizaciones sociales totales', calculated: tot.socialContributions, expected: ilunionCaseFixture.expected.consolidated.socialContributions, format: fmtEur },
+                { label: 'Contribución fiscal total', calculated: tot.fiscalContribution, expected: ilunionCaseFixture.expected.consolidated.fiscalContribution, format: fmtEur },
+              ])}
+            </tbody></table>
+            <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);">No agregables automáticos en impacto total: salario digno, brechas salariales, costes evitados e impactos ambientales monetizados. En consolidado de Grupo deben eliminarse compras intragrupo.</p>
+          </div>
+        </div>
+      </div>`;
+
+    root.innerHTML = html;
+  }
+
+  renderIlunionCaseStudy();
 </script>
 </body>
 </html>
