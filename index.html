@@ -62,9 +62,20 @@
   #sidebar a:hover .nav-icon, #sidebar a.active .nav-icon { opacity: 1; }
 
   /* MAIN */
-  main { margin-left: var(--nav-w); min-height: 100vh; }
+  main { margin-left: var(--nav-w); min-height: 100vh; display: flex; flex-direction: column; }
   section { padding: 68px 60px; border-bottom: 1px solid var(--surface-3); }
   section:last-child { border-bottom: none; }
+  #hero { order: 1; }
+  #agenda { order: 2; }
+  #bloque1 { order: 3; }
+  #bloque2 { order: 4; }
+  #bloque3 { order: 5; }
+  #bloque4 { order: 6; }
+  #bloque5 { order: 7; }
+  #bloque6 { order: 8; }
+  #bloque7 { order: 9; }
+  #bloque8 { order: 10; }
+  #cierre { order: 11; }
 
   /* HERO */
   #hero { background: var(--ink); padding: 80px 60px 72px; position: relative; overflow: hidden; }
@@ -114,7 +125,7 @@
   h2.section-title { font-family: var(--font-serif); font-size: clamp(22px, 3vw, 34px); color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
   .section-subtitle { font-size: 15px; color: var(--ink-muted); max-width: 680px; line-height: 1.65; margin-bottom: 36px; }
   #agenda .section-subtitle { max-width: none; width: 100%; }
-  #bloque2 .section-subtitle { max-width: 748px; }
+  #bloque3 .section-subtitle { max-width: 748px; }
   #bloque1 .section-subtitle {
     max-width: 748px;
     background: #c5dcf8;
@@ -137,6 +148,12 @@
   }
   #bloque1 .bloque1-card h3 { color: var(--accent-dark); }
   #bloque1 .two-col { grid-template-columns: 1fr; }
+  .bloque2-intro-card {
+    grid-column: 1 / -1;
+    background: #eaf2ff;
+    border: 1px solid #93b8e8;
+    border-left: 4px solid var(--accent-dark);
+  }
 
   /* AGENDA */
   .agenda-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
@@ -161,11 +178,23 @@
   .impact-cell.direct { background: #f0f4ff; }
   .impact-cell.indirect { background: #f0f8f4; }
   .impact-cell.induced { background: #fdf5f0; }
+  .impact-cell.total { background: #f2f4f8; grid-column: 1 / -1; }
   .impact-cell h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; line-height: 1.35; }
   .impact-cell.direct h3 { color: #1e40af; }
   .impact-cell.indirect h3 { color: #166534; }
   .impact-cell.induced h3 { color: #b45309; }
+  .impact-cell.total h3 { color: #374151; }
+  .impact-cell.total .example {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+    border-left: none;
+    background: transparent;
+  }
   .impact-cell p { font-size: 14px; color: var(--ink-light); line-height: 1.65; }
+  .impact-cell.indirect, .impact-cell.induced { display: flex; flex-direction: column; }
+  .impact-cell.indirect p, .impact-cell.induced p { display: flex; flex-direction: column; flex: 1; }
+  .impact-cell.indirect p em, .impact-cell.induced p em { margin-top: auto; display: block; }
   .impact-cell .example { margin-top: 12px; padding: 10px 12px; background: rgba(255,255,255,.7); border-radius: 8px; font-size: 12.5px; color: var(--ink-light); }
   .impact-cell.direct .example { border-left: 3px solid #3b5bdb; }
   .impact-cell.indirect .example { border-left: 3px solid #1a7a4a; }
@@ -193,6 +222,11 @@
   .kpi-card.vab { border-top: 3px solid #1a7a4a; background: #f5fbf8; }
   .kpi-card.cost { border-top: 3px solid #b45309; background: #fffbf0; }
   .kpi-card.env { border-top: 3px solid #0d7490; background: #f0fafb; }
+  .kpi-grid.troncales { margin-bottom: 30px; }
+  .kpi-card.troncal { text-align: center; padding: 18px; }
+  .kpi-card.troncal h4 { font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+  .kpi-card.troncal p { font-size: 12px; color: var(--ink-muted); line-height: 1.5; }
+  .kpi-card.troncal.tractor { grid-column: 1 / -1; text-align: center; }
 
   /* EXCEL */
   .excel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 28px; }
@@ -332,6 +366,23 @@
   .info-box { background: var(--accent-light); border: 1px solid #93b8e8; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 18px; }
   .info-box h4 { font-size: 13.5px; font-weight: 600; color: var(--accent-dark); margin-bottom: 5px; }
   .info-box p { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
+  .method-chip {
+    display: block;
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    border: 1px solid #93b8e8;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+  .method-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    background: var(--surface-2);
+    box-shadow: var(--shadow);
+  }
 
   /* DATA TABLE */
   .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 24px; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
@@ -446,11 +497,11 @@
   <a href="#agenda"><i class="nav-icon">📋</i>Agenda</a>
   <div class="nav-section-label">Bloques de formación</div>
   <a href="#bloque1"><i class="nav-icon">🎯</i>B1 · Impacto socioeconómico</a>
-  <a href="#bloque2"><i class="nav-icon">📗</i>B2 · Herramienta de medición</a>
-  <a href="#bloque3"><i class="nav-icon">📊</i>B3 · KPIs del modelo</a>
-  <a href="#bloque4"><i class="nav-icon">✏️</i>B4 · Datos a imputar</a>
-  <a href="#bloque5"><i class="nav-icon">⚙️</i>B5 · Transformaciones de datos</a>
-  <a href="#bloque6"><i class="nav-icon">🔢</i>B6 · Matrices I-O</a>
+  <a href="#bloque2"><i class="nav-icon">📊</i>B2 · KPIs del modelo</a>
+  <a href="#bloque3"><i class="nav-icon">🔢</i>B3 · Enfoque metodológico</a>
+  <a href="#bloque4"><i class="nav-icon">📗</i>B4 · Herramienta de medición</a>
+  <a href="#bloque5"><i class="nav-icon">✏️</i>B5 · Datos a imputar</a>
+  <a href="#bloque6"><i class="nav-icon">⚙️</i>B6 · Transformaciones de datos</a>
   <a href="#bloque7"><i class="nav-icon">📈</i>B7 · Resultados</a>
   <a href="#bloque8"><i class="nav-icon">✅</i>B8 · Validación y checklist</a>
   <div class="nav-section-label">Cierre</div>
@@ -502,28 +553,28 @@
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 02</div>
-        <h3>Herramienta de medición</h3>
-        <p>Arquitectura del Excel: pestañas y su tipología — inputs, datos, matrices I-O y resultados.</p>
-      </div>
-      <div class="agenda-card">
-        <div class="block-num">Bloque 03</div>
         <h3>KPIs del modelo</h3>
         <p>Los 6 grupos de indicadores y su desglose por género, plantilla con discapacidad y colectivos vulnerables.</p>
       </div>
       <div class="agenda-card">
+        <div class="block-num">Bloque 03</div>
+        <h3>Enfoque metodológico</h3>
+        <p>Concepto, funcionamiento y outputs del modelo Input-Output: inversa de Leontief y multiplicadores.</p>
+      </div>
+      <div class="agenda-card">
         <div class="block-num">Bloque 04</div>
+        <h3>Herramienta de medición</h3>
+        <p>Arquitectura del Excel: pestañas y su tipología — inputs, datos, matrices I-O y resultados.</p>
+      </div>
+      <div class="agenda-card">
+        <div class="block-num">Bloque 05</div>
         <h3>Datos a imputar</h3>
         <p>Qué información deben introducir las áreas en cada pestaña de Inputs para el correcto funcionamiento del motor.</p>
       </div>
       <div class="agenda-card">
-        <div class="block-num">Bloque 05</div>
+        <div class="block-num">Bloque 06</div>
         <h3>Transformaciones de datos</h3>
         <p>Qué ocurre en las pestañas de Datos: ajustes, normalizaciones y preparación para el motor I-O.</p>
-      </div>
-      <div class="agenda-card">
-        <div class="block-num">Bloque 06</div>
-        <h3>Matrices Input-Output</h3>
-        <p>Concepto, funcionamiento y outputs de la hoja Matrices I-O: la inversa de Leontief y los multiplicadores.</p>
       </div>
       <div class="agenda-card">
         <div class="block-num">Bloque 07</div>
@@ -546,12 +597,12 @@
 
     <div class="two-col" style="margin-bottom:28px;">
       <div class="bloque1-card">
-        <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">Alcance del modelo</h3>
-        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">El modelo estima el impacto socioeconómico del Grupo ILUNION en España, considerando tanto los efectos directos de su actividad como los generados en su cadena de suministro y el consumo asociado a las rentas salariales. El análisis se estructura en tres niveles —directo, indirecto e inducido— para capturar de forma ordenada su contribución al sistema productivo nacional.</p>
+        <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">Objetivo de la sesión</h3>
+        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">El objetivo de la formación es que las áreas del Grupo ILUNION comprendan el modelo de impacto socioeconómico de forma integral y puedan utilizar la herramienta con criterios homogéneos, garantizando la calidad de los datos de entrada, la correcta interpretación de los resultados y la consistencia metodológica entre ejercicios.</p>
       </div>
     </div>
 
-    <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Los diferentes tipos de impacto</h3>
+    <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Los diferentes vectores de impacto</h3>
     <div class="impact-flow">
       <div class="impact-cell direct">
         <h3>Impacto Directo</h3>
@@ -559,17 +610,22 @@
       </div>
       <div class="impact-cell indirect">
         <h3>Impacto Indirecto</h3>
-        <p>Efectos generados en la cadena de suministro como consecuencia de las compras de bienes y servicios realizadas por el Grupo ILUNION a sus proveedores.</p>
+        <p>Efectos generados en la cadena de suministro como consecuencia de las compras de bienes y servicios realizadas por el Grupo ILUNION a sus proveedores.<br><br><em style="color:var(--accent-dark);">Si ILUNION compra X euros a cada sector de la economía española, ¿cuánta producción se activa en el conjunto del sistema productivo nacional?</em></p>
       </div>
       <div class="impact-cell induced">
         <h3>Impacto Inducido</h3>
-        <p>Efectos derivados del consumo privado generado por los salarios percibidos por los empleados directos del Grupo ILUNION.</p>
+        <p>Efectos derivados del consumo privado generado por los salarios percibidos por los empleados directos del Grupo ILUNION.<br><br><em style="color:var(--accent-dark);">Si una parte de los salarios de los empleados de ILUNION y de sus proveedores se destina al consumo, ¿cuánta producción adicional se activa en la economía española?</em></p>
+      </div>
+      <div class="impact-cell total">
+        <h3>Impacto Total</h3>
+        <p>Resultado agregado de la suma de los efectos directos, indirectos e inducidos, que refleja la contribución socioeconómica completa atribuible a la actividad del Grupo ILUNION.</p>
+        <div class="example"><strong>Impacto total = Impacto directo + Impacto indirecto + Impacto inducido</strong></div>
       </div>
     </div>
 
     <div class="formula-box">
-      <div class="f-title">Enfoque metodológico</div>
-      <div class="f-note">Este enfoque permite estimar el efecto multiplicador de la actividad del Grupo ILUNION a partir de las interdependencias sectoriales recogidas en las Tablas Input-Output. Los impactos indirectos e inducidos se calculan mediante los encadenamientos generados por las compras a proveedores y el consumo asociado a las rentas salariales.<br><br>El modelo ofrece resultados a distintos niveles de agregación: consolidado del Grupo, por línea de negocio y a nivel territorial, según la disponibilidad de datos.</div>
+      <div class="f-title">Transición al enfoque metodológico</div>
+      <div class="f-note">Con la base conceptual definida, el siguiente bloque explica el funcionamiento técnico del modelo Input-Output, la lógica de la inversa de Leontief y la forma en que se obtienen los impactos directos, indirectos e inducidos a partir de datos de actividad, compras y salarios.</div>
     </div>
 
     <div class="info-box">
@@ -606,53 +662,89 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ BLOQUE 1.5 ═══════════════════════════════ -->
-  <section id="bloque1-5">
-    <div class="section-eyebrow">📘 Bloque 01.5</div>
-    <h2 class="section-title">Marco conceptual del impacto socioeconómico</h2>
-    <div class="info-box">
-      <h4>Definición de impacto socioeconómico</h4>
-      <p>El <strong>impacto socioeconómico</strong> se entiende como la contribución que una organización genera sobre la economía y la sociedad a través de su actividad productiva, considerando tanto los efectos directamente asociados a sus operaciones como aquellos que se transmiten a través de su cadena de suministro y del consumo derivado de las rentas salariales generadas.</p>
+  <!-- ═══════════════════════════════ BLOQUE 3 ═══════════════════════════════ -->
+  <section id="bloque3">
+    <div class="section-eyebrow">🔢 Bloque 03</div>
+    <h2 class="section-title">Enfoque metodológico: matrices Input-Output y lógica de cálculo</h2>
+    <p class="section-subtitle">El núcleo metodológico del modelo. Las matrices I-O del INE describen cómo se relacionan todos los sectores económicos en España. A partir de ellas se calculan los multiplicadores que transforman el gasto de ILUNION en impacto económico total.</p>
+
+    <div class="formula-box">
+      <div class="f-title">Enfoque metodológico</div>
+      <div class="f-note">Este enfoque permite estimar el efecto multiplicador de la actividad del Grupo ILUNION a partir de las interdependencias sectoriales recogidas en las Tablas Input-Output. Los impactos indirectos e inducidos se calculan mediante los encadenamientos generados por las compras a proveedores y el consumo asociado a las rentas salariales.<br><br>El modelo ofrece resultados a distintos niveles de agregación: consolidado del Grupo, por línea de negocio y a nivel territorial, según la disponibilidad de datos.</div>
     </div>
-    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">La actividad empresarial genera un efecto multiplicador: las compras a proveedores activan actividad económica adicional y los salarios impulsan el consumo, permitiendo estimar impactos directos, indirectos e inducidos.</p>
-    <p style="color:var(--ink-light);line-height:1.7;">En el caso del Grupo ILUNION, este impacto se mide mediante dimensiones económicas, fiscales, laborales, sociales y ambientales, integrando indicadores que ofrecen una visión completa de su contribución.</p>
-    <table class="data-table" style="margin-top:16px;margin-bottom:0;">
-      <thead>
-        <tr>
-          <th>Dimensiones consideradas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Producción generada.</td></tr>
-        <tr><td>Valor Añadido Bruto generado y contribución al PIB aproximada mediante VAB.</td></tr>
-        <tr><td>Empleo generado en equivalentes a tiempo completo.</td></tr>
-        <tr><td>Sueldos, salarios y remuneración del trabajo.</td></tr>
-        <tr><td>Contribución fiscal.</td></tr>
-        <tr><td>Efecto tractor o multiplicador económico asociado a la actividad.</td></tr>
-        <tr><td>Indicadores de empleo.</td></tr>
-        <tr><td>Indicadores de brecha salarial.</td></tr>
-        <tr><td>Indicadores de salario digno.</td></tr>
-        <tr><td>Indicadores de costes públicos evitados.</td></tr>
-        <tr><td>Indicadores de contribución socioambiental.</td></tr>
-      </tbody>
-    </table>
-    <p style="color:var(--ink-light);line-height:1.7;margin-top:14px;">En el caso del Grupo ILUNION, el modelo incorpora una dimensión social adicional vinculada a su papel en la inclusión laboral de colectivos vulnerables. Por ello, algunos indicadores se desagregan por género, discapacidad y otros colectivos, permitiendo reflejar no solo el impacto económico, sino también su contribución en términos de inclusión y valor social.</p>
-    <h3 style="font-size:17px;font-weight:600;margin:22px 0 14px;">Tipologías de impacto consideradas</h3>
-    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">El modelo distingue entre tres niveles de impacto —directo, indirecto e inducido— con el objetivo de identificar los principales canales a través de los cuales la actividad del Grupo ILUNION genera efectos económicos y sociales.</p>
-    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;background:#eef4ff;border:1px solid #93b8e8;border-left:4px solid #0055a5;border-radius:8px;padding:12px 14px;">El <strong>impacto directo</strong> recoge los efectos atribuibles a la actividad propia del Grupo ILUNION en el ejercicio analizado, incluyendo la producción, el empleo, los salarios, la contribución fiscal directa y el Valor Añadido Bruto generado por sus operaciones.</p>
-    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;background:#edf8f1;border:1px solid #9fd8b6;border-left:4px solid #1a7a4a;border-radius:8px;padding:12px 14px;">El <strong>impacto indirecto</strong> recoge los efectos generados en la cadena de suministro como consecuencia de las compras de bienes y servicios realizadas por el Grupo ILUNION a sus proveedores. Este impacto refleja la actividad económica activada en otros sectores productivos por la demanda intermedia del Grupo.</p>
-    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;background:#fff7ea;border:1px solid #f3c97a;border-left:4px solid #b45309;border-radius:8px;padding:12px 14px;">El <strong>impacto inducido</strong> recoge los efectos derivados del consumo privado asociado a las rentas salariales generadas directamente por la actividad del Grupo ILUNION. Este impacto refleja la actividad económica activada cuando dichas rentas se destinan al consumo de bienes y servicios en el conjunto de la economía.</p>
-    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:10px;">Para cada variable analizada, el impacto total se obtiene como la agregación de los tres niveles de impacto:</p>
-    <div class="info-box" style="margin-bottom:14px;">
-      <p style="margin:0;text-align:center;font-size:16px;"><strong>Impacto total = Impacto directo + Impacto indirecto + Impacto inducido</strong></p>
+
+    <div class="two-col" style="margin-bottom:28px;">
+      <div class="method-card">
+        <h3 class="method-chip" style="font-size:16px;font-weight:700;">¿Qué son las Tablas I-O del INE?</h3>
+        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:12px;">Las Tablas Input-Output publicadas por el INE describen qué compra cada sector económico a los demás. Son la fotografía estadística de las relaciones de interdependencia productiva de la economía española.</p>
+        <p style="color:var(--ink-light);line-height:1.7;">El modelo usa las tablas de <strong>2022</strong> como año base. Para ejercicios más recientes, se aplican deflactores para actualizar los coeficientes técnicos.</p>
+      </div>
+      <div class="method-card">
+        <h3 class="method-chip" style="font-size:16px;font-weight:700;">¿Qué es la Inversa de Leontief?</h3>
+        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:12px;">Es la operación matemática central del modelo. A partir de la matriz de coeficientes técnicos, la inversión de Leontief permite calcular cuánta producción total se requiere en cada sector para satisfacer una unidad adicional de demanda final.</p>
+        <p style="color:var(--ink-light);line-height:1.7;">La hoja <strong>Matrices I-O</strong> está protegida. Nunca modificar: alberga la inversa de Leontief y los vectores de multiplicadores sectoriales.</p>
+      </div>
     </div>
-    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">Adicionalmente, el modelo calcula indicadores de efecto tractor, entendidos como ratios de relación entre el impacto total estimado y cada uno de los componentes de impacto considerados. Estos indicadores permiten comparar la magnitud del impacto total respecto al impacto directo, indirecto o inducido, facilitando la interpretación relativa del peso de cada dimensión dentro del resultado agregado.</p>
-    <p style="color:var(--ink-light);line-height:1.7;">Estas razones deben interpretarse como indicadores complementarios de lectura relativa y no como impactos adicionales. Su finalidad es facilitar la comparación entre dimensiones —producción, empleo, Valor Añadido Bruto, salarios y contribución fiscal— y aportar una referencia sintética sobre la relación entre el impacto total y cada componente del modelo.</p>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🔢 Multiplicadores Tipo I — Efecto indirecto en la cadena de suministro</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Qué captura:</strong> Los encadenamientos productivos en la cadena de suministro (efectos indirectos).</li>
+            <li><strong>Cómo se calcula:</strong> Compras sectoriales del Grupo ILUNION × coeficiente técnico del sector CNAE del proveedor (derivado de la inversa de Leontief).</li>
+            <li><strong>Resultado:</strong> Empleo, VAB, contribución fiscal y producción activados en los sectores proveedores.</li>
+            <li><strong>Aplicación práctica:</strong> Si ILUNION compra €10M en servicios de transporte (CNAE H), el multiplicador Tipo I del sector H determina cuántos FTE, VAB y tributos genera ese gasto en toda la cadena logística española.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>🔢 Multiplicadores Tipo II — Efecto inducido por el consumo salarial</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Qué captura:</strong> El circuito de retroalimentación del consumo privado (efectos inducidos).</li>
+            <li><strong>Cómo se calcula:</strong> Masa salarial de empleados propios de ILUNION × propensión marginal al consumo (PMC) → distribución sectorial del consumo → multiplicadores sobre esa demanda.</li>
+            <li><strong>Resultado:</strong> Empleo, VAB y tributos activados por el gasto asociado a salarios de empleados propios de ILUNION en la economía.</li>
+            <li><strong>Importante:</strong> El Tipo II incorpora el efecto del consumo de los hogares sobre la demanda agregada. Captura un dinamismo económico que el Tipo I no recoge.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <h4>📊 ¿Qué outputs genera la hoja Matrices I-O?</h4>
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Producción total activada (directa + indirecta + inducida):</strong> En euros, desagregada por sector económico.</li>
+            <li><strong>Producción inducida neta:</strong> Producción total inducida menos el patrón de consumo inducido, para evitar doble contabilización.</li>
+            <li><strong>Empleo indirecto e inducido:</strong> FTE generados en cada sector por efecto de las compras y del consumo salarial de empleados propios de ILUNION.</li>
+            <li><strong>VAB indirecto e inducido:</strong> Valor añadido generado en la cadena de suministro y por el consumo.</li>
+            <li><strong>Contribución fiscal indirecta e inducida:</strong> Aplicando coeficientes fiscales sectoriales sobre la producción activada.</li>
+            <li><strong>La hoja AUX</strong> recoge los cálculos intermedios y la relación entre CNAE y productos I-O antes de la consolidación en Resultados.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-box">
+      <div class="f-title">Lógica de cálculo — Ejemplo impacto indirecto VAB</div>
+      <div class="f-eq">Compras sectoriales (€) × Coeficiente VAB sector (inversa Leontief) = VAB indirecto (€)</div>
+      <div class="f-title" style="margin-top:4px;">Lógica de cálculo — Ejemplo impacto inducido fiscal</div>
+      <div class="f-eq">Producción inducida estimada (€) × Coeficiente fiscal sectorial = Contribución fiscal inducida estimada (€)</div>
+      <div class="f-note">Estos cálculos son completamente automáticos. El usuario solo necesita asegurarse de que las compras están bien clasificadas por CNAE en Inputs Compras.</div>
+    </div>
   </section>
 
-  <!-- ═══════════════════════════════ BLOQUE 2 ═══════════════════════════════ -->
-  <section id="bloque2">
-    <div class="section-eyebrow">📗 Bloque 02</div>
+  <!-- ═══════════════════════════════ BLOQUE 4 ═══════════════════════════════ -->
+  <section id="bloque4">
+    <div class="section-eyebrow">📗 Bloque 04</div>
     <h2 class="section-title">Herramienta de medición: pestañas y tipología</h2>
     <p class="section-subtitle">El modelo Excel tiene tres bloques funcionales interconectados. Saber cuáles hojas tocar es la competencia más importante para el usuario.</p>
 
@@ -732,12 +824,24 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ BLOQUE 3 ═══════════════════════════════ -->
-  <section id="bloque3">
-    <div class="section-eyebrow">📊 Bloque 03</div>
+  <!-- ═══════════════════════════════ BLOQUE 2 ═══════════════════════════════ -->
+  <section id="bloque2">
+    <div class="section-eyebrow">📊 Bloque 02</div>
     <h2 class="section-title">KPIs del modelo y su desglose</h2>
     <p class="section-subtitle">El modelo genera indicadores organizados en 6 categorías temáticas. Todos los desagregables incluyen un total agregado para garantizar la coherencia y evitar la doble contabilización.</p>
 
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:10px;">KPIs troncales del modelo de cálculo de impacto socioeconómico</h3>
+    <div class="kpi-grid troncales">
+      <div class="kpi-card troncal brecha tractor"><span class="kpi-icon">🔁</span><h4>Efecto tractor</h4><p>El efecto tractor mide cuánto impacto adicional se genera en la economía por cada unidad de impacto directo de ILUNION.<br><br>Por ejemplo, si ILUNION genera empleo directo, ese empleo también puede generar más empleo en proveedores, en empresas que suministran a esos proveedores y en sectores donde los trabajadores gastan parte de sus salarios.</p></div>
+      <div class="kpi-card troncal vab"><span class="kpi-icon">🏗️</span><h4>Contribución al PIB mediante VAB</h4><p>Aproximación al PIB a través del Valor Añadido Bruto generado</p></div>
+      <div class="kpi-card troncal emp"><span class="kpi-icon">🧮</span><h4>Empleo generado en FTE</h4><p>Empleo total expresado en equivalentes a tiempo completo</p></div>
+      <div class="kpi-card troncal brecha"><span class="kpi-icon">💼</span><h4>Remuneración total del trabajo</h4><p>Compensación laboral agregada vinculada a la actividad</p></div>
+      <div class="kpi-card troncal fisc"><span class="kpi-icon">💵</span><h4>Sueldos y salarios brutos</h4><p>Retribuciones brutas salariales asociadas al empleo generado</p></div>
+      <div class="kpi-card troncal cost"><span class="kpi-icon">🛡️</span><h4>Cotizaciones sociales</h4><p>Aportaciones a la Seguridad Social derivadas de la actividad</p></div>
+      <div class="kpi-card troncal env"><span class="kpi-icon">🧾</span><h4>Contribución fiscal e impuestos netos</h4><p>Fiscalidad total y otros impuestos netos sobre la producción</p></div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:600;margin-bottom:10px;">Categorías específicas de KPIs</h3>
     <div class="kpi-grid">
       <div class="kpi-card emp"><span class="kpi-icon">👥</span><h4>Empleo</h4><p>Volumen, calidad e inclusividad del empleo generado</p></div>
       <div class="kpi-card brecha"><span class="kpi-icon">⚖️</span><h4>Brecha</h4><p>Reducción de brechas salariales en colectivos clave</p></div>
@@ -873,9 +977,9 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ BLOQUE 4 ═══════════════════════════════ -->
-  <section id="bloque4">
-    <div class="section-eyebrow">✏️ Bloque 04</div>
+  <!-- ═══════════════════════════════ BLOQUE 5 ═══════════════════════════════ -->
+  <section id="bloque5">
+    <div class="section-eyebrow">✏️ Bloque 05</div>
     <h2 class="section-title">Datos a imputar por las áreas en los Inputs</h2>
     <p class="section-subtitle">La calidad de los resultados depende directamente de la calidad de los datos introducidos. El modelo aplica criterios metodológicos predefinidos, pero no corrige inconsistencias automáticamente.</p>
 
@@ -977,9 +1081,9 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ BLOQUE 5 ═══════════════════════════════ -->
-  <section id="bloque5">
-    <div class="section-eyebrow">⚙️ Bloque 05</div>
+  <!-- ═══════════════════════════════ BLOQUE 6 ═══════════════════════════════ -->
+  <section id="bloque6">
+    <div class="section-eyebrow">⚙️ Bloque 06</div>
     <h2 class="section-title">Transformaciones de información en las pestañas de Datos</h2>
     <p class="section-subtitle">Las hojas de Datos (protegidas) transforman los inputs brutos en variables listas para el motor I-O. No interviene el usuario, pero es importante entender qué ocurre en cada una.</p>
 
@@ -1061,81 +1165,6 @@
           </ul>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════ BLOQUE 6 ═══════════════════════════════ -->
-  <section id="bloque6">
-    <div class="section-eyebrow">🔢 Bloque 06</div>
-    <h2 class="section-title">Matrices Input-Output: concepto, funcionamiento y outputs</h2>
-    <p class="section-subtitle">El núcleo metodológico del modelo. Las matrices I-O del INE describen cómo se relacionan todos los sectores económicos en España. A partir de ellas se calculan los multiplicadores que transforman el gasto de ILUNION en impacto económico total.</p>
-
-    <div class="two-col" style="margin-bottom:28px;">
-      <div>
-        <h3 style="font-size:16px;font-weight:600;margin-bottom:10px;">¿Qué son las Tablas I-O del INE?</h3>
-        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:12px;">Las Tablas Input-Output publicadas por el INE describen qué compra cada sector económico a los demás. Son la fotografía estadística de las relaciones de interdependencia productiva de la economía española.</p>
-        <p style="color:var(--ink-light);line-height:1.7;">El modelo usa las tablas de <strong>2022</strong> como año base. Para ejercicios más recientes, se aplican deflactores para actualizar los coeficientes técnicos.</p>
-      </div>
-      <div>
-        <h3 style="font-size:16px;font-weight:600;margin-bottom:10px;">¿Qué es la Inversa de Leontief?</h3>
-        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:12px;">Es la operación matemática central del modelo. A partir de la matriz de coeficientes técnicos, la inversión de Leontief permite calcular cuánta producción total se requiere en cada sector para satisfacer una unidad adicional de demanda final.</p>
-        <p style="color:var(--ink-light);line-height:1.7;">La hoja <strong>Matrices I-O</strong> está protegida. Nunca modificar: alberga la inversa de Leontief y los vectores de multiplicadores sectoriales.</p>
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🔢 Multiplicadores Tipo I — Efecto indirecto en la cadena de suministro</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <ul>
-            <li><strong>Qué captura:</strong> Los encadenamientos productivos en la cadena de suministro (efectos indirectos).</li>
-            <li><strong>Cómo se calcula:</strong> Compras sectoriales del Grupo ILUNION × coeficiente técnico del sector CNAE del proveedor (derivado de la inversa de Leontief).</li>
-            <li><strong>Resultado:</strong> Empleo, VAB, contribución fiscal y producción activados en los sectores proveedores.</li>
-            <li><strong>Aplicación práctica:</strong> Si ILUNION compra €10M en servicios de transporte (CNAE H), el multiplicador Tipo I del sector H determina cuántos FTE, VAB y tributos genera ese gasto en toda la cadena logística española.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>🔢 Multiplicadores Tipo II — Efecto inducido por el consumo salarial</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <ul>
-            <li><strong>Qué captura:</strong> El circuito de retroalimentación del consumo privado (efectos inducidos).</li>
-            <li><strong>Cómo se calcula:</strong> Masa salarial de empleados propios de ILUNION × propensión marginal al consumo (PMC) → distribución sectorial del consumo → multiplicadores sobre esa demanda.</li>
-            <li><strong>Resultado:</strong> Empleo, VAB y tributos activados por el gasto asociado a salarios de empleados propios de ILUNION en la economía.</li>
-            <li><strong>Importante:</strong> El Tipo II incorpora el efecto del consumo de los hogares sobre la demanda agregada. Captura un dinamismo económico que el Tipo I no recoge.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>📊 ¿Qué outputs genera la hoja Matrices I-O?</h4>
-          <span class="accordion-arrow">▼</span>
-        </div>
-        <div class="accordion-body">
-          <ul>
-            <li><strong>Producción total activada (directa + indirecta + inducida):</strong> En euros, desagregada por sector económico.</li>
-            <li><strong>Producción inducida neta:</strong> Producción total inducida menos el patrón de consumo inducido, para evitar doble contabilización.</li>
-            <li><strong>Empleo indirecto e inducido:</strong> FTE generados en cada sector por efecto de las compras y del consumo salarial de empleados propios de ILUNION.</li>
-            <li><strong>VAB indirecto e inducido:</strong> Valor añadido generado en la cadena de suministro y por el consumo.</li>
-            <li><strong>Contribución fiscal indirecta e inducida:</strong> Aplicando coeficientes fiscales sectoriales sobre la producción activada.</li>
-            <li><strong>La hoja AUX</strong> recoge los cálculos intermedios y la relación entre CNAE y productos I-O antes de la consolidación en Resultados.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="formula-box">
-      <div class="f-title">Lógica de cálculo — Ejemplo impacto indirecto VAB</div>
-      <div class="f-eq">Compras sectoriales (€) × Coeficiente VAB sector (inversa Leontief) = VAB indirecto (€)</div>
-      <div class="f-title" style="margin-top:4px;">Lógica de cálculo — Ejemplo impacto inducido fiscal</div>
-      <div class="f-eq">Producción inducida estimada (€) × Coeficiente fiscal sectorial = Contribución fiscal inducida estimada (€)</div>
-      <div class="f-note">Estos cálculos son completamente automáticos. El usuario solo necesita asegurarse de que las compras están bien clasificadas por CNAE en Inputs Compras.</div>
     </div>
   </section>
 
