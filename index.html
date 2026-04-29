@@ -173,12 +173,12 @@
 
   /* FORMULA */
   .formula-box {
-    background: var(--ink); color: #fff; border-radius: var(--radius-lg);
+    background: #0b4f93; color: #fff; border-radius: var(--radius-lg);
     padding: 26px 30px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 12px;
   }
-  .formula-box .f-title { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .formula-box .f-title { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #fff; }
   .formula-box .f-eq { font-family: var(--font-sans); font-size: 14px; font-weight: 600; color: #93b8e8; background: rgba(255,255,255,.06); padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,.1); }
-  .formula-box .f-note { font-size: 13px; color: rgba(255,255,255,.55); }
+  .formula-box .f-note { font-size: 13px; color: #fff; }
 
   /* KPI GRID */
   .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin-bottom: 36px; }
@@ -541,46 +541,35 @@
   <!-- ═══════════════════════════════ BLOQUE 1 ═══════════════════════════════ -->
   <section id="bloque1">
     <div class="section-eyebrow">🎯 Bloque 01</div>
-    <h2 class="section-title">Impacto socioeconómico: definición y desglose</h2>
-    <p class="section-subtitle">El <span class="impacto-destacado">impacto socioeconómico</span> se entiende como la contribución que una organización genera sobre la economía y la sociedad a través de su actividad productiva, considerando tanto los efectos directamente asociados a sus operaciones como aquellos que se transmiten a través de su cadena de suministro y del consumo derivado de las rentas salariales de los empleados propios de ILUNION.</p>
+    <h2 class="section-title">Introducción</h2>
+    <p class="section-subtitle">Esta formación presenta la metodología desarrollada por NFQ Advisory para cuantificar el impacto socioeconómico del Grupo ILUNION, basada en un modelo Input-Output y una herramienta propia de modelización económica. Su objetivo es proporcionar un marco técnico sólido que facilite la comprensión del modelo, su correcta aplicación y la consistencia en futuras actualizaciones.<br><br>La herramienta mide de forma estructurada la contribución del Grupo ILUNION a la economía española, estimando impactos directos, indirectos e inducidos. Para ello, combina datos internos (empleo, salarios, compras, impuestos) con información macroeconómica oficial, generando métricas homogéneas y comparables de impacto económico.</p>
 
     <div class="two-col" style="margin-bottom:28px;">
       <div class="bloque1-card">
-        <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">¿Cómo se transmite el impacto socioeconómico?</h3>
-        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">Desde una perspectiva económica, la actividad de una empresa no se limita a los resultados producidos dentro de su propio perímetro organizativo. La producción de bienes y servicios requiere la adquisición de inputs intermedios a proveedores de distintos sectores, lo que activa actividad económica adicional a lo largo de la cadena de valor.</p>
-        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">Asimismo, las remuneraciones percibidas por los trabajadores se destinan parcialmente al consumo de bienes y servicios, generando nuevos efectos sobre el sistema productivo.</p>
-        <p style="color:var(--ink-light);line-height:1.7;">Este mecanismo de propagación, conocido como <strong>efecto multiplicador</strong>, permite estimar de forma estructurada la contribución directa, indirecta e inducida.</p>
-      </div>
-      <div class="bloque1-card">
-        <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">¿Por qué es singular en ILUNION?</h3>
-        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">Para ILUNION, calcular el <strong>impacto socioeconómico</strong> no es un ejercicio reputacional: es <strong>crítico</strong> para demostrar que su modelo empresarial funciona. ILUNION no se presenta como una compañía convencional, sino como una empresa que quiere probar que la <strong>rentabilidad económica</strong> y la <strong>rentabilidad social</strong> son compatibles.</p>
-        <p style="color:var(--ink-light);line-height:1.7;">La medición del impacto socioeconómico permite a ILUNION demostrar, con <strong>evidencia cuantitativa</strong>, que su modelo de <strong>empresa inclusiva</strong> no solo es socialmente valioso, sino también económicamente productivo, fiscalmente contributivo y territorialmente relevante.</p>
+        <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">Alcance del modelo</h3>
+        <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">El modelo estima el impacto socioeconómico del Grupo ILUNION en España, considerando tanto los efectos directos de su actividad como los generados en su cadena de suministro y el consumo asociado a las rentas salariales. El análisis se estructura en tres niveles —directo, indirecto e inducido— para capturar de forma ordenada su contribución al sistema productivo nacional.</p>
       </div>
     </div>
 
+    <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Los diferentes tipos de impacto</h3>
     <div class="impact-flow">
       <div class="impact-cell direct">
         <h3>Impacto Directo</h3>
-        <p>Actividad económica generada directamente por el Grupo ILUNION: empleo propio, salarios, valor añadido bruto y contribución fiscal directa.</p>
+        <p>Actividad económica generada directamente por el Grupo ILUNION a través de su operación: empleo, salarios, valor añadido bruto y contribución fiscal.</p>
       </div>
       <div class="impact-cell indirect">
         <h3>Impacto Indirecto</h3>
-        <p>Efectos generados en la cadena de suministro: cada euro que ILUNION gasta en proveedores activa actividad adicional en esos sectores.</p>
+        <p>Efectos generados en la cadena de suministro como consecuencia de las compras de bienes y servicios realizadas por el Grupo ILUNION a sus proveedores.</p>
       </div>
       <div class="impact-cell induced">
         <h3>Impacto Inducido</h3>
-        <p>Efectos del consumo privado asociados a las rentas salariales de los empleados propios de ILUNION, que se destinan al consumo y activan nueva actividad económica.</p>
+        <p>Efectos derivados del consumo privado generado por los salarios percibidos por los empleados directos del Grupo ILUNION.</p>
       </div>
     </div>
 
     <div class="formula-box">
-      <div class="f-title">Fórmulas fundamentales del modelo</div>
-      <div class="f-eq">IMPACTO TOTAL = Impacto Directo + Impacto Indirecto + Impacto Inducido</div>
-      <div class="f-eq">EFECTO TRACTOR DIRECTO = Impacto Directo / Impacto Directo = 1</div>
-      <div class="f-eq">EFECTO TRACTOR INDIRECTO = Impacto Indirecto / Impacto Directo</div>
-      <div class="f-eq">EFECTO TRACTOR INDUCIDO = Impacto Inducido / Impacto Directo</div>
-      <div class="f-eq">EFECTO TRACTOR TOTAL = Impacto Total / Impacto Directo = Tractor Directo + Tractor Indirecto + Tractor Inducido</div>
-      <div class="f-note">En esta descomposición, el tractor directo es siempre 1 por definición. El tractor total expresa cuántas unidades de impacto total se generan por cada unidad de impacto directo.</div>
+      <div class="f-title">Enfoque metodológico</div>
+      <div class="f-note">Este enfoque permite estimar el efecto multiplicador de la actividad del Grupo ILUNION a partir de las interdependencias sectoriales recogidas en las Tablas Input-Output. Los impactos indirectos e inducidos se calculan mediante los encadenamientos generados por las compras a proveedores y el consumo asociado a las rentas salariales.<br><br>El modelo ofrece resultados a distintos niveles de agregación: consolidado del Grupo, por línea de negocio y a nivel territorial, según la disponibilidad de datos.</div>
     </div>
 
     <div class="info-box">
@@ -611,6 +600,54 @@
         </ul>
       </div>
     </div>
+    <div class="info-box" style="background:#dff3e7;border-color:#4dbb7c;border-left-color:#1a7a4a;">
+      <h4>🌍 Alcance geográfico del modelo</h4>
+      <p>El alcance geográfico se circunscribe a España, dado que las matrices Input-Output empleadas corresponden a la estructura productiva de la economía nacional, procedentes de las matrices del Instituto Nacional de Estadística (INE).</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ BLOQUE 1.5 ═══════════════════════════════ -->
+  <section id="bloque1-5">
+    <div class="section-eyebrow">📘 Bloque 01.5</div>
+    <h2 class="section-title">Marco conceptual del impacto socioeconómico</h2>
+    <div class="info-box">
+      <h4>Definición de impacto socioeconómico</h4>
+      <p>El <strong>impacto socioeconómico</strong> se entiende como la contribución que una organización genera sobre la economía y la sociedad a través de su actividad productiva, considerando tanto los efectos directamente asociados a sus operaciones como aquellos que se transmiten a través de su cadena de suministro y del consumo derivado de las rentas salariales generadas.</p>
+    </div>
+    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">La actividad empresarial genera un efecto multiplicador: las compras a proveedores activan actividad económica adicional y los salarios impulsan el consumo, permitiendo estimar impactos directos, indirectos e inducidos.</p>
+    <p style="color:var(--ink-light);line-height:1.7;">En el caso del Grupo ILUNION, este impacto se mide mediante dimensiones económicas, fiscales, laborales, sociales y ambientales, integrando indicadores que ofrecen una visión completa de su contribución.</p>
+    <table class="data-table" style="margin-top:16px;margin-bottom:0;">
+      <thead>
+        <tr>
+          <th>Dimensiones consideradas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Producción generada.</td></tr>
+        <tr><td>Valor Añadido Bruto generado y contribución al PIB aproximada mediante VAB.</td></tr>
+        <tr><td>Empleo generado en equivalentes a tiempo completo.</td></tr>
+        <tr><td>Sueldos, salarios y remuneración del trabajo.</td></tr>
+        <tr><td>Contribución fiscal.</td></tr>
+        <tr><td>Efecto tractor o multiplicador económico asociado a la actividad.</td></tr>
+        <tr><td>Indicadores de empleo.</td></tr>
+        <tr><td>Indicadores de brecha salarial.</td></tr>
+        <tr><td>Indicadores de salario digno.</td></tr>
+        <tr><td>Indicadores de costes públicos evitados.</td></tr>
+        <tr><td>Indicadores de contribución socioambiental.</td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--ink-light);line-height:1.7;margin-top:14px;">En el caso del Grupo ILUNION, el modelo incorpora una dimensión social adicional vinculada a su papel en la inclusión laboral de colectivos vulnerables. Por ello, algunos indicadores se desagregan por género, discapacidad y otros colectivos, permitiendo reflejar no solo el impacto económico, sino también su contribución en términos de inclusión y valor social.</p>
+    <h3 style="font-size:17px;font-weight:600;margin:22px 0 14px;">Tipologías de impacto consideradas</h3>
+    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">El modelo distingue entre tres niveles de impacto —directo, indirecto e inducido— con el objetivo de identificar los principales canales a través de los cuales la actividad del Grupo ILUNION genera efectos económicos y sociales.</p>
+    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;background:#eef4ff;border:1px solid #93b8e8;border-left:4px solid #0055a5;border-radius:8px;padding:12px 14px;">El <strong>impacto directo</strong> recoge los efectos atribuibles a la actividad propia del Grupo ILUNION en el ejercicio analizado, incluyendo la producción, el empleo, los salarios, la contribución fiscal directa y el Valor Añadido Bruto generado por sus operaciones.</p>
+    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;background:#edf8f1;border:1px solid #9fd8b6;border-left:4px solid #1a7a4a;border-radius:8px;padding:12px 14px;">El <strong>impacto indirecto</strong> recoge los efectos generados en la cadena de suministro como consecuencia de las compras de bienes y servicios realizadas por el Grupo ILUNION a sus proveedores. Este impacto refleja la actividad económica activada en otros sectores productivos por la demanda intermedia del Grupo.</p>
+    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;background:#fff7ea;border:1px solid #f3c97a;border-left:4px solid #b45309;border-radius:8px;padding:12px 14px;">El <strong>impacto inducido</strong> recoge los efectos derivados del consumo privado asociado a las rentas salariales generadas directamente por la actividad del Grupo ILUNION. Este impacto refleja la actividad económica activada cuando dichas rentas se destinan al consumo de bienes y servicios en el conjunto de la economía.</p>
+    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:10px;">Para cada variable analizada, el impacto total se obtiene como la agregación de los tres niveles de impacto:</p>
+    <div class="info-box" style="margin-bottom:14px;">
+      <p style="margin:0;text-align:center;font-size:16px;"><strong>Impacto total = Impacto directo + Impacto indirecto + Impacto inducido</strong></p>
+    </div>
+    <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">Adicionalmente, el modelo calcula indicadores de efecto tractor, entendidos como ratios de relación entre el impacto total estimado y cada uno de los componentes de impacto considerados. Estos indicadores permiten comparar la magnitud del impacto total respecto al impacto directo, indirecto o inducido, facilitando la interpretación relativa del peso de cada dimensión dentro del resultado agregado.</p>
+    <p style="color:var(--ink-light);line-height:1.7;">Estas razones deben interpretarse como indicadores complementarios de lectura relativa y no como impactos adicionales. Su finalidad es facilitar la comparación entre dimensiones —producción, empleo, Valor Añadido Bruto, salarios y contribución fiscal— y aportar una referencia sintética sobre la relación entre el impacto total y cada componente del modelo.</p>
   </section>
 
   <!-- ═══════════════════════════════ BLOQUE 2 ═══════════════════════════════ -->
