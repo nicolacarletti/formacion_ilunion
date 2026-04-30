@@ -674,7 +674,7 @@
   <section id="agenda">
     <div class="section-eyebrow">📋 Estructura</div>
     <h2 class="section-title">Agenda de la formación</h2>
-    <p class="section-subtitle">La sesión se organiza en 7 bloques de contenido, alineados con la estructura actual de navegación, más un cierre con mensajes clave.</p>
+    <p class="section-subtitle">La sesión se organiza en 7 bloques de contenido, más un cierre con mensajes clave.</p>
     <div class="agenda-grid">
       <div class="agenda-card">
         <div class="block-num">Bloque 01</div>
@@ -730,6 +730,11 @@
         <h3 style="font-size:17px;font-weight:600;margin-bottom:10px;">Objetivo de la sesión</h3>
         <p style="color:var(--ink-light);line-height:1.7;margin-bottom:14px;">El objetivo de la formación es que las áreas del Grupo ILUNION comprendan el modelo de impacto socioeconómico de forma integral y puedan utilizar la herramienta con criterios homogéneos, garantizando la calidad de los datos de entrada, la correcta interpretación de los resultados y la consistencia metodológica entre ejercicios.</p>
       </div>
+    </div>
+
+    <div class="info-box" style="margin-bottom:16px;">
+      <h4>Definición de impacto socioeconómico</h4>
+      <p style="margin-bottom:0;">El impacto socioeconómico es la contribución total que una organización genera en la economía y en la sociedad a partir de su actividad. Incluye efectos <strong>directos</strong>, <strong>indirectos</strong> e <strong>inducidos</strong>, y se refleja en variables como empleo, valor añadido bruto, salarios, cotizaciones sociales e impuestos.</p>
     </div>
 
     <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Los diferentes vectores de impacto</h3>
@@ -803,6 +808,19 @@
       <div class="f-note">Este enfoque diferencia dos planos de cálculo complementarios. El <strong>impacto directo</strong> se calcula a partir de datos internos del Grupo ILUNION (empleo, remuneraciones, compras, fiscalidad y otras variables reportadas). Los impactos <strong>indirecto e inducido</strong> se estiman mediante las interdependencias sectoriales recogidas en las Tablas Input-Output, aplicando multiplicadores a la cadena de suministro y al consumo asociado a la masa salarial de los empleados propios de ILUNION y de los empleados de sus proveedores.<br><br>El modelo ofrece resultados a distintos niveles de agregación: consolidado del Grupo, por línea de negocio y a nivel territorial.</div>
     </div>
 
+    <div class="info-box" style="margin:16px 0 24px;">
+      <h4>Principales variables que calcula el modelo</h4>
+      <p style="margin-bottom:8px;">A partir del modelo Input-Output se estiman, entre otras, las siguientes magnitudes de impacto:</p>
+      <ul style="margin:0;padding-left:18px;color:var(--ink-light);line-height:1.7;">
+        <li>Valor Añadido Bruto (VAB)</li>
+        <li>Empleo</li>
+        <li>Salarios brutos</li>
+        <li>Cotizaciones sociales</li>
+        <li>Salarios y cotizaciones</li>
+        <li>Impuestos</li>
+      </ul>
+    </div>
+
     <div class="two-col" style="margin-bottom:28px;">
       <h3 style="font-size:16px;font-weight:600;margin:2px 0 0;">Cálculo del impacto directo</h3>
       <div class="method-card">
@@ -829,6 +847,7 @@
 
     <div class="info-box" style="margin-bottom:20px;">
       <h4>Construcción de coeficientes a partir de las tablas del INE</h4>
+      <img src="./assets/multiplicadores.png" alt="Tabla Input-Output para construcción de coeficientes" style="width:100%;height:auto;border:1px solid var(--border);border-radius:8px;margin:0 0 12px;">
       <p style="margin-bottom:8px;">A partir de las tablas Input-Output del INE, los coeficientes sectoriales se construyen como ratios sobre la producción sectorial:</p>
       <div class="coef-grid">
         <div class="coef-item"><strong>Coeficiente de Valor Añadido Bruto (VAB)</strong> = VAB sectorial / Producción sectorial</div>
@@ -858,7 +877,6 @@
               <tr><td><strong>Qué captura</strong></td><td>Los encadenamientos productivos en la cadena de suministro (efectos indirectos).</td></tr>
               <tr><td><strong>Cómo se calcula</strong></td><td>Compras domésticas del Grupo ILUNION clasificadas por sector (CNAE/Producto) x matriz inversa de Leontief → producción indirecta por sector; sobre esa producción se aplican coeficientes técnicos para estimar empleo, VAB, salarios, cotizaciones y fiscalidad indirecta.</td></tr>
               <tr><td><strong>Resultado</strong></td><td>Producción, empleo, VAB, salarios, cotizaciones y fiscalidad activados en los sectores proveedores.</td></tr>
-              <tr><td><strong>Aplicación práctica</strong></td><td>Si ILUNION compra EUR 10M en servicios de transporte, el modelo estima el impacto indirecto total generado en la cadena logística.</td></tr>
             </tbody>
           </table>
         </div>
@@ -888,7 +906,7 @@
       </div>
       <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion(this)">
-          <h4>📊 ¿Qué outputs genera la hoja Matrices I-O?</h4>
+          <h4>📊 ¿Qué outputs generan las matrices I-O?</h4>
           <span class="accordion-arrow">▼</span>
         </div>
         <div class="accordion-body">
@@ -923,6 +941,13 @@
       <div class="f-eq induced-step"><strong>Motor del modelo:</strong> La herramienta transforma ese consumo en demanda sectorial y calcula el efecto en cadena que genera en la economía</div>
       <div class="f-eq induced-step"><strong>Salida:</strong> Producción inducida por sector → aplicación de coeficientes técnicos → KPIs inducidos (empleo, VAB, salarios, cotizaciones y fiscalidad)</div>
       <div class="f-note">Nota metodológica: una vez obtenidos los resultados en la base temporal de cálculo del modelo, las magnitudes monetarias se reexpresan en precios corrientes del año de reporte para su presentación e interpretación.</div>
+    </div>
+
+    <div class="formula-box flow-logic" style="margin-top:14px;">
+      <div class="f-title">Efecto tractor</div>
+      <div class="f-eq"><strong>Definición:</strong> indicador multiplicador que muestra cuánto impacto total se genera por cada unidad de impacto directo.</div>
+      <div class="f-eq"><strong>Fórmula general:</strong> Efecto tractor = Impacto total / Impacto directo</div>
+      <div class="f-note">Se puede calcular para VAB, empleo, salarios e impuestos para analizar el grado de arrastre económico de la actividad de ILUNION.</div>
     </div>
   </section>
 
@@ -2359,7 +2384,6 @@
                 { label: 'Contribución total al PIB (VAB)', calculated: tot.vab, expected: ilunionCaseFixture.expected.consolidated.vab, format: fmtEur },
                 { label: 'Empleo total', calculated: tot.employment, expected: ilunionCaseFixture.expected.consolidated.employment, format: (v) => fmtFte(v, 1), tolerance: 1e-4 },
                 { label: 'Empleo total con discapacidad (exacto)', calculated: tot.employmentDisability, expected: ilunionCaseFixture.expected.consolidated.employmentDisability, format: (v) => fmtFte(v, 2), tolerance: 1e-4 },
-                { label: 'Empleo total con discapacidad (display 1 decimal)', calculated: tot.employmentDisability, expected: ilunionCaseFixture.expected.consolidated.employmentDisability, format: (v) => fmtFte(v, 1), tolerance: 1e-4 },
                 { label: 'Sueldos y salarios brutos totales', calculated: tot.grossSalaries, expected: ilunionCaseFixture.expected.consolidated.grossSalaries, format: fmtEur },
                 { label: 'Cotizaciones sociales totales', calculated: tot.socialContributions, expected: ilunionCaseFixture.expected.consolidated.socialContributions, format: fmtEur },
                 { label: 'Contribución fiscal total', calculated: tot.fiscalContribution, expected: ilunionCaseFixture.expected.consolidated.fiscalContribution, format: fmtEur },
