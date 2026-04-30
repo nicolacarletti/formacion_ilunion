@@ -2039,6 +2039,19 @@
     const indc = calcInducedImpact(ilunionCaseFixture.induced);
     const indcNet = calcInducedNetSalaryBase(ilunionCaseFixture.induced);
     const tot = calcTotalConsolidated(ilunionCaseFixture.consolidated);
+    const cons = ilunionCaseFixture.consolidated;
+    const remDirect = cons.grossSalaries.direct + cons.socialContributions.direct;
+    const remTotal = tot.grossSalaries + tot.socialContributions;
+    const tractorPib = cons.vab.direct !== 0 ? tot.vab / cons.vab.direct : null;
+    const tractorEmp =
+      cons.employment.direct !== 0 ? tot.employment / cons.employment.direct : null;
+    const tractorSal = remDirect !== 0 ? remTotal / remDirect : null;
+    const tractorFisc =
+      cons.fiscalContribution.direct !== 0
+        ? tot.fiscalContribution / cons.fiscalContribution.direct
+        : null;
+    const fmtAdim = (x) =>
+      x != null && Number.isFinite(x) ? formatters.num2.format(x) : 'N/D';
 
     const html = `
       <div class="accordion">
@@ -2353,6 +2366,20 @@
               ])}
             </tbody></table>
             <p style="margin:10px 0 0;font-size:12px;color:var(--ink-muted);">No agregables automáticos en impacto total: salario digno, brechas salariales, costes evitados e impactos ambientales monetizados. En consolidado de Grupo deben eliminarse compras intragrupo.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(this)"><h4>4.6 Efecto tractor</h4><span class="accordion-arrow">▼</span></div>
+          <div class="accordion-body">
+            <p style="margin-bottom:8px;">El efecto tractor mide cuántas veces se amplifica el impacto directo al considerar también los efectos indirectos e inducidos.</p>
+            <p style="margin:8px 0;font-weight:600;">Efecto tractor = Impacto total / Impacto directo</p>
+            <table class="data-table"><thead><tr><th>Magnitud</th><th>Fórmula</th><th style="text-align:right">Resultado</th><th>Unidad</th></tr></thead><tbody>
+              <tr><td>Contribución al PIB / VAB</td><td>Efecto tractor PIB = VAB total / VAB directo</td><td style="text-align:right">${fmtAdim(tractorPib)}</td><td>adimensional</td></tr>
+              <tr><td>Empleo</td><td>Efecto tractor empleo = empleo total / empleo directo</td><td style="text-align:right">${fmtAdim(tractorEmp)}</td><td>adimensional</td></tr>
+              <tr><td>Salarios</td><td>Efecto tractor salarios = remuneración total / remuneración directa</td><td style="text-align:right">${fmtAdim(tractorSal)}</td><td>adimensional</td></tr>
+              <tr><td>Impuestos</td><td>Efecto tractor impuestos = contribución fiscal total / contribución fiscal directa</td><td style="text-align:right">${fmtAdim(tractorFisc)}</td><td>adimensional</td></tr>
+            </tbody></table>
           </div>
         </div>
       </div>`;
